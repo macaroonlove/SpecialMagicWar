@@ -291,8 +291,8 @@ namespace SpecialMagicWar.Editor
             AgentTemplate newAgent = CreateInstance<AgentTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Unit/Agent";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Unit/Agent", "Agent_", "asset", "아군 템플릿은 FrameWork/Core/GameData/Unit/Agent 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Unit/Agent";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Unit/Agent", "Agent_", "asset", "아군 템플릿은 SpecialMagicWar/GameData/Unit/Agent 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newAgent.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("Agent_", ""));
@@ -411,8 +411,8 @@ namespace SpecialMagicWar.Editor
             EnemyTemplate newEnemy = CreateInstance<EnemyTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Unit/Enemy";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Unit/Enemy", "Enemy_", "asset", "적 템플릿은 FrameWork/Core/GameData/Unit/Enemy 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Unit/Enemy";
+            string path = EditorUtility.SaveFilePanelInProject("FrameWork/SpecialMagicWar/Unit/Enemy", "Enemy_", "asset", "적 템플릿은 SpecialMagicWar/GameData/Unit/Enemy 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newEnemy.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("Enemy_", ""));
@@ -529,8 +529,8 @@ namespace SpecialMagicWar.Editor
             BuffTemplate newBuff = CreateInstance<BuffTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Status/BuffStatus";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Status/BuffStatus", "BuffStatus_", "asset", "상태이상 템플릿은 FrameWork/Core/GameData/Status/BuffStatus 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Status/BuffStatus";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Status/BuffStatus", "BuffStatus_", "asset", "상태이상 템플릿은 SpecialMagicWar/GameData/Status/BuffStatus 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newBuff.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("BuffStatus_", ""));
@@ -644,8 +644,8 @@ namespace SpecialMagicWar.Editor
             AbnormalStatusTemplate newAbnormalStatus = CreateInstance<AbnormalStatusTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Status/AbnormalStatus";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Status/AbnormalStatus", "AbnormalStatus_", "asset", "상태이상 템플릿은 FrameWork/Core/GameData/Status/AbnormalStatus 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Status/AbnormalStatus";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Status/AbnormalStatus", "AbnormalStatus_", "asset", "상태이상 템플릿은 SpecialMagicWar/GameData/Status/AbnormalStatus 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newAbnormalStatus.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("AbnormalStatus_", ""));
@@ -764,8 +764,8 @@ namespace SpecialMagicWar.Editor
             GlobalStatusTemplate newGlobalStatus = CreateInstance<GlobalStatusTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Status/GlobalStatus";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Status/GlobalStatus", "GlobalStatus_", "asset", "상태이상 템플릿은 FrameWork/Core/GameData/Status/GlobalStatus 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Status/GlobalStatus";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Status/GlobalStatus", "GlobalStatus_", "asset", "상태이상 템플릿은 SpecialMagicWar/GameData/Status/GlobalStatus 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newGlobalStatus.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("GlobalStatus_", ""));
@@ -884,8 +884,8 @@ namespace SpecialMagicWar.Editor
             ActiveSkillTemplate newSkill = CreateInstance<ActiveSkillTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Skill/ActiveSkill";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Skill/ActiveSkill", "ActiveSkill_", "asset", "스킬 템플릿은 FrameWork/Core/GameData/Skill/ActiveSkill 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Skill/ActiveSkill";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Skill/ActiveSkill", "ActiveSkill_", "asset", "스킬 템플릿은 SpecialMagicWar/GameData/Skill/ActiveSkill 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newSkill.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("ActiveSkill_", ""));
@@ -1004,8 +1004,8 @@ namespace SpecialMagicWar.Editor
             PassiveSkillTemplate newSkill = CreateInstance<PassiveSkillTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Skill/PassiveSkill";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Skill/PassiveSkill", "PassiveSkill_", "asset", "스킬 템플릿은 FrameWork/Core/GameData/Skill/PassiveSkill 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Skill/PassiveSkill";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Skill/PassiveSkill", "PassiveSkill_", "asset", "스킬 템플릿은 SpecialMagicWar/GameData/Skill/PassiveSkill 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newSkill.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("PassiveSkill_", ""));
@@ -1124,8 +1124,8 @@ namespace SpecialMagicWar.Editor
             ActiveItemTemplate newItem = CreateInstance<ActiveItemTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Item/ActiveItem";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Item/ActiveItem", "ActiveItem_", "asset", "아이템 템플릿은 FrameWork/Core/GameData/Item/ActiveItem 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Item/ActiveItem";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Item/ActiveItem", "ActiveItem_", "asset", "아이템 템플릿은 SpecialMagicWar/GameData/Item/ActiveItem 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newItem.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("ActiveItem_", ""));
@@ -1244,8 +1244,8 @@ namespace SpecialMagicWar.Editor
             PassiveItemTemplate newItem = CreateInstance<PassiveItemTemplate>();
 
             // 에셋 저장
-            string defaultPath = "Assets/FrameWork/Core/GameData/Item/PassiveItem";
-            string path = EditorUtility.SaveFilePanelInProject("FrameWork/Core/GameData/Item/PassiveItem", "PassiveItem_", "asset", "스킬 템플릿은 FrameWork/Core/GameData/Item/PassiveItem 위치에 저장됩니다..", defaultPath);
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Item/PassiveItem";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Item/PassiveItem", "PassiveItem_", "asset", "스킬 템플릿은 SpecialMagicWar/GameData/Item/PassiveItem 위치에 저장됩니다..", defaultPath);
             if (!string.IsNullOrEmpty(path))
             {
                 newItem.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("PassiveItem_", ""));

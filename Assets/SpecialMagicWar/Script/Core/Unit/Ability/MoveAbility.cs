@@ -102,7 +102,7 @@ namespace SpecialMagicWar.Core
         {
             bool isLeft = IsUnitLeft(direction);
 
-            float scaleX = isLeft ? 1f : -1f;
+            float scaleX = isLeft ? 0.5f : -0.5f;
             transform.GetChild(3).DOScaleX(scaleX, 0.1f);
         }
         #endregion
@@ -121,12 +121,12 @@ namespace SpecialMagicWar.Core
 
         protected void MoveAnimation()
         {
-            _unitAnimationAbility.Move(finalMoveSpeed);
+            _unitAnimationAbility.Move(true);
         }
 
         protected void StopMoveAnimation()
         {
-            _unitAnimationAbility.Move(0);
+            _unitAnimationAbility.Move(false);
         }
     }
 }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PersistentSingleton_ManagerPrefab
+  m_EditorClassIdentifier: 
+  m_GroupName: PersistentSingleton_ManagerPrefab
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2eebbf8c47a0a2944b1f1d789b938877
+  m_SerializeEntries:
+  - m_GUID: 4bfb7415e32ffa04cb63e9b1427e5de9
+    m_Address: GameDataManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbd5eafc9ed85ea4da3224a0bb05f408
+    m_Address: LoadingManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5d0e86774bd7e245a58e25a659c3550
+    m_Address: SaveManager
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b2ae1d0d472e3054ea807a4e030aeabf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 16f259d59e3b14040b3ee8ef44c5b8b3, type: 2}
+    - {fileID: 11400000, guid: bbb3e42ad0852c44d931f39464b2739f, type: 2}

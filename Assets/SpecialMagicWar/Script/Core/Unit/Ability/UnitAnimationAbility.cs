@@ -15,7 +15,7 @@ namespace SpecialMagicWar.Core
             _animator = GetComponentInChildren<Animator>();
 
             _attack = Animator.StringToHash("Attack");
-            _moveState = Animator.StringToHash("MoveState");
+            _moveState = Animator.StringToHash("isMoving");
         }
 
         internal void Attack()
@@ -23,9 +23,9 @@ namespace SpecialMagicWar.Core
             _animator.SetTrigger(_attack);
         }
 
-        internal void Move(float speed)
+        internal void Move(bool isMove)
         {
-            _animator.SetFloat(_moveState, speed);
+            _animator.SetBool(_moveState, isMove);
         }
 
         internal bool TrySetTrigger(int hash)

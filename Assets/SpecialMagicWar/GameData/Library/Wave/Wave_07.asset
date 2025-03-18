@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15acee0675053b448a4357f1b507107, type: 3}
+  m_Name: Wave_07
+  m_EditorClassIdentifier: 
+  spawnTime: 150
+  waveInfo:
+  - template: {fileID: 11400000, guid: cc4db67f1d057e5468b2344f357c56e8, type: 2}
+    spawnPosition: {x: -2.4, y: -2, z: 0}
+    delayTime: 0
+    spawnCount: 10
+    spawnInterval: 2
+    wayPoint:
+    - {x: -2.4, y: 4, z: 0}
+  - template: {fileID: 11400000, guid: 56648aba43d1ba24fb7938173252a63c, type: 2}
+    spawnPosition: {x: -2.4, y: -2, z: 0}
+    delayTime: 15
+    spawnCount: 5
+    spawnInterval: 1
+    wayPoint:
+    - {x: -2.4, y: 4, z: 0}
+  - template: {fileID: 11400000, guid: ce4c0436237afc64992caf0b6a428903, type: 2}
+    spawnPosition: {x: -2.4, y: -2, z: 0}
+    delayTime: 22
+    spawnCount: 1
+    spawnInterval: 1
+    wayPoint:
+    - {x: -2.4, y: 4, z: 0}

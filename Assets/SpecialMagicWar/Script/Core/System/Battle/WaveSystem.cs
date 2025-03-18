@@ -39,32 +39,37 @@ namespace SpecialMagicWar.Core
             if (_timeSystem.currentTime >= _waveLibrary.waves[_currentWaveIndex].spawnTime)
             {
                 WaveTemplate currentWave = _waveLibrary.waves[_currentWaveIndex];
-                StartCoroutine(SpawnWave(currentWave));
+                StartWave(currentWave);
                 _currentWaveIndex++;
             }
         }
 
-        private IEnumerator SpawnWave(WaveTemplate wave)
+        private void StartWave(WaveTemplate wave)
         {
             foreach (var waveInfo in wave.waveInfo)
             {
-                // 딜레이 후 적 스폰
-                yield return new WaitForSeconds(waveInfo.delayTime);
+                StartCoroutine(SpawnWave(waveInfo));
+            }
+        }
 
-                var wfs = new WaitForSeconds(waveInfo.spawnInterval);
+        private IEnumerator SpawnWave(WaveInfo waveInfo)
+        {
+            // 딜레이 후 적 스폰
+            yield return new WaitForSeconds(waveInfo.delayTime);
 
-                for (int i = 0; i < waveInfo.spawnCount; i++)
+            var wfs = new WaitForSeconds(waveInfo.spawnInterval);
+
+            for (int i = 0; i < waveInfo.spawnCount; i++)
+            {
+                var unit = _enemySpawnSystem.SpawnUnit(waveInfo.template, waveInfo.spawnPosition);
+
+                // 경로 초기화
+                unit.GetAbility<MoveWayPointAbility>().InitializeWayPoint(waveInfo.wayPoint);
+
+                if (i < waveInfo.spawnCount - 1)
                 {
-                    var unit = _enemySpawnSystem.SpawnUnit(waveInfo.template, waveInfo.spawnPosition);
-
-                    // 경로 초기화
-                    unit.GetAbility<MoveWayPointAbility>().InitializeWayPoint(waveInfo.wayPoint);
-
-                    if (i < waveInfo.spawnCount - 1)
-                    {
-                        // 스폰 간격 대기
-                        yield return wfs;
-                    }
+                    // 스폰 간격 대기
+                    yield return wfs;
                 }
             }
         }

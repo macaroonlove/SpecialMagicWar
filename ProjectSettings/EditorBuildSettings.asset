@@ -8,4 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SpecialMagicWar/Scenes/SpecialMagicWar.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 497360e411d633849afbc2f5df376235,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: dcc1aef9c610b6d40ac033e42143b2fe,
+      type: 2}

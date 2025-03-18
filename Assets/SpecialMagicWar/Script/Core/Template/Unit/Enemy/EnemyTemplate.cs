@@ -13,8 +13,6 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private GameObject _prefab;
 
         [HideInInspector, SerializeField] private float _moveSpeed;
-        [HideInInspector, SerializeField] private float _chaseRange;
-        [HideInInspector, SerializeField] private float _chaseFailRange;
         [HideInInspector, SerializeField] private EMoveType _moveType;
 
         [HideInInspector, SerializeField] private int _atk;
@@ -57,8 +55,6 @@ namespace SpecialMagicWar.Core
         public GameObject prefab => _prefab;
 
         public float MoveSpeed => _moveSpeed;
-        public float ChaseRange => _chaseRange;
-        public float ChaseFailRange => _chaseFailRange;
         public EMoveType MoveType => _moveType;
 
         public int ATK => _atk;
@@ -117,8 +113,6 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _sprite;
         private SerializedProperty _prefab;
         private SerializedProperty _moveSpeed;
-        private SerializedProperty _chaseRange;
-        private SerializedProperty _chaseFailRange;
         private SerializedProperty _moveType;
         private SerializedProperty _atk;
         private SerializedProperty _attackTerm;
@@ -151,8 +145,6 @@ namespace SpecialMagicWar.Editor
             _sprite = serializedObject.FindProperty("_sprite");
             _prefab = serializedObject.FindProperty("_prefab");
             _moveSpeed = serializedObject.FindProperty("_moveSpeed");
-            _chaseRange = serializedObject.FindProperty("_chaseRange");
-            _chaseFailRange = serializedObject.FindProperty("_chaseFailRange");
             _moveType = serializedObject.FindProperty("_moveType");
             _atk = serializedObject.FindProperty("_atk");
             _attackTerm = serializedObject.FindProperty("_attackTerm");
@@ -218,18 +210,6 @@ namespace SpecialMagicWar.Editor
             GUILayout.Label("이동 속도", GUILayout.Width(192));
             EditorGUILayout.PropertyField(_moveSpeed, GUIContent.none);
             GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("추적 거리", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_chaseRange, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("추적 실패 거리", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_chaseFailRange, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            _chaseFailRange.floatValue = Mathf.Max(_chaseRange.floatValue, _chaseFailRange.floatValue);
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("이동 방식", GUILayout.Width(192));

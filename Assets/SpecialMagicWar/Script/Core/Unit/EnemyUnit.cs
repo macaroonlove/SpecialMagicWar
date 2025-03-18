@@ -45,7 +45,6 @@ namespace SpecialMagicWar.Editor
             menu.AddItem(new GUIContent("액티브 스킬"), false, AddAbility, typeof(ActiveSkillAbility));
             menu.AddItem(new GUIContent("패시브 스킬"), false, AddAbility, typeof(PassiveSkillAbility));
 
-            menu.AddItem(new GUIContent("추적 이동"), false, AddAbility, typeof(MoveChaseAbility));
             menu.AddItem(new GUIContent("특정 지점 이동"), false, AddAbility, typeof(MoveWayPointAbility));
 
             menu.AddItem(new GUIContent("투사체"), false, AddAbility, typeof(ProjectileAbility));
