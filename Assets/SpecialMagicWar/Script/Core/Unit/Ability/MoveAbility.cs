@@ -73,11 +73,7 @@ namespace SpecialMagicWar.Core
             _abnormalStatusAbility = unit.GetAbility<AbnormalStatusAbility>();
             _unitAnimationAbility = unit.GetAbility<UnitAnimationAbility>();
 
-            if (unit is AgentUnit agentUnit)
-            {
-                _baseMoveSpeed = agentUnit.template.MoveSpeed;
-            }
-            else if (unit is EnemyUnit enemyUnit)
+            if (unit is EnemyUnit enemyUnit)
             {
                 _baseMoveSpeed = enemyUnit.template.MoveSpeed;
             }

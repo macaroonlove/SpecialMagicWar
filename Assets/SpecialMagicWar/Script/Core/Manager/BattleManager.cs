@@ -35,6 +35,14 @@ namespace SpecialMagicWar.Core
             //InitializeBattle();
         }
 
+        //[ContextMenu("플레이어 생성")]
+        private void Start()
+        {
+            // TODO: 포톤을 사용하여 방에 입장했을 경우 생성
+            // 플레이어 생성
+            GetComponentInChildren<PlayerCreateSystem>().CreatePlayer();
+        }
+
         private void OnDestroy()
         {
             onBattleManagerDestroy?.Invoke();

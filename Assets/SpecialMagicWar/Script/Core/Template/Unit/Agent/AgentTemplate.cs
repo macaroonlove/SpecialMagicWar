@@ -13,11 +13,6 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private Sprite _sprite;
         [HideInInspector, SerializeField] private GameObject _prefab;
 
-        [HideInInspector, SerializeField] private float _moveSpeed;
-        [HideInInspector, SerializeField] private float _chaseRange;
-        [HideInInspector, SerializeField] private float _chaseFailRange;
-        [HideInInspector, SerializeField] private EMoveType _moveType;
-
         [HideInInspector, SerializeField] private int _atk;
         [HideInInspector, SerializeField] private float _attackTerm;
         [HideInInspector, SerializeField] private float _attackRange;
@@ -58,11 +53,6 @@ namespace SpecialMagicWar.Core
 
         public Sprite sprite => _sprite;
         public GameObject prefab => _prefab;
-
-        public float MoveSpeed => _moveSpeed;
-        public float ChaseRange => _chaseRange;
-        public float ChaseFailRange => _chaseFailRange;
-        public EMoveType MoveType => _moveType;
 
         public int ATK => _atk;
         public float AttackTerm => _attackTerm;
@@ -119,10 +109,6 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _description;
         private SerializedProperty _sprite;
         private SerializedProperty _prefab;
-        private SerializedProperty _moveSpeed;
-        private SerializedProperty _chaseRange;
-        private SerializedProperty _chaseFailRange;
-        private SerializedProperty _moveType;
         private SerializedProperty _atk;
         private SerializedProperty _attackTerm;
         private SerializedProperty _attackRange;
@@ -154,10 +140,6 @@ namespace SpecialMagicWar.Editor
             _description = serializedObject.FindProperty("_description");
             _sprite = serializedObject.FindProperty("_sprite");
             _prefab = serializedObject.FindProperty("_prefab");
-            _moveSpeed = serializedObject.FindProperty("_moveSpeed");
-            _chaseRange = serializedObject.FindProperty("_chaseRange");
-            _chaseFailRange = serializedObject.FindProperty("_chaseFailRange");
-            _moveType = serializedObject.FindProperty("_moveType");
             _atk = serializedObject.FindProperty("_atk");
             _attackTerm = serializedObject.FindProperty("_attackTerm");
             _attackRange = serializedObject.FindProperty("_attackRange");
@@ -215,30 +197,6 @@ namespace SpecialMagicWar.Editor
 
             GUILayout.EndVertical();
 
-            GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("이동 속도", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_moveSpeed, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("추적 거리", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_chaseRange, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("추적 실패 거리", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_chaseFailRange, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            _chaseFailRange.floatValue = Mathf.Max(_chaseRange.floatValue, _chaseFailRange.floatValue);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("이동 방식", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_moveType, GUIContent.none);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);

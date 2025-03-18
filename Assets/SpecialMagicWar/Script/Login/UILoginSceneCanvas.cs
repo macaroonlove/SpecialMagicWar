@@ -113,7 +113,7 @@ namespace SpecialMagicWar.Login
             {
                 if (profileData.isClearTutorial)
                 {
-                    LoadingManager.Instance.LoadScene("FrameWork"); // Lobby
+                    LoadingManager.Instance.LoadScene("SpecialMagicWar"); // Lobby
                 }
                 else
                 {
@@ -157,7 +157,7 @@ namespace SpecialMagicWar.Login
                         profileData.isClearTutorial = true;
                     }
 
-                    LoadingManager.Instance.LoadScene("Lobby");
+                    LoadingManager.Instance.LoadScene("SpecialMagicWar");
                 }
                 else
                 {

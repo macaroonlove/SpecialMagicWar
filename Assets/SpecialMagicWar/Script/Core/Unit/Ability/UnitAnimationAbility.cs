@@ -14,7 +14,7 @@ namespace SpecialMagicWar.Core
         {
             _animator = GetComponentInChildren<Animator>();
 
-            _attack = Animator.StringToHash("Attack");
+            _attack = Animator.StringToHash("attack");
             _moveState = Animator.StringToHash("isMoving");
         }
 

@@ -18,6 +18,9 @@ namespace SpecialMagicWar.Save
         [Tooltip("골드")]
         public ObscuredInt gold;
 
+        [Tooltip("적용하고 있는 플레이어 스킨")]
+        public ObscuredInt playerSkin = 0;
+
         [Tooltip("보유하고 있는 아군 유닛들")]
         public List<Agent> ownedAgents = new List<Agent>();
 
@@ -56,6 +59,7 @@ namespace SpecialMagicWar.Save
         public bool isLoaded { get; private set; }
 
         public string displayName { get => _data.displayName; set => _data.displayName = value; }
+        public int playerSkin { get => _data.playerSkin; set => _data.playerSkin = value; }
         public bool isClearTutorial { get => _data.isClearTutorial; set => _data.isClearTutorial = value; }
 
         public override void SetDefaultValues()
@@ -68,6 +72,7 @@ namespace SpecialMagicWar.Save
 
             // 초기 골드 추가
             _data.gold = 100;
+            _data.playerSkin = 0;
 
             isLoaded = true;
         }
@@ -79,7 +84,7 @@ namespace SpecialMagicWar.Save
             if (_data != null)
             {
                 isLoaded = _data.ownedAgents.Count > 0;
-
+                Debug.Log(_data);
                 _goldVariable.Value = _data.gold;
             }
 

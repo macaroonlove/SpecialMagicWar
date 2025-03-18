@@ -18,12 +18,10 @@ MonoBehaviour:
   _sprite: {fileID: 0}
   _prefab: {fileID: 6398994567412904052, guid: c0e55b8ad2d10a04d8ef6e4442a09a6e, type: 3}
   _moveSpeed: 2
-  _chaseRange: 0
-  _chaseFailRange: 0
   _moveType: 0
-  _atk: 0
-  _attackTerm: 0
-  _attackRange: 0
+  _atk: 10
+  _attackTerm: 1
+  _attackRange: 0.3
   _isProjectileAttack: 0
   _projectilePrefab: {fileID: 0}
   _spawnPoint: 0

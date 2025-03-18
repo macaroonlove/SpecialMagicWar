@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: 1736555264916169751, guid: 75cb26b8e16740e4da6f307f6d902c09,
         type: 3}
       propertyPath: m_Name
-      value: Wave9_Boss Variant
+      value: Wave9_Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8793557464739838390, guid: 75cb26b8e16740e4da6f307f6d902c09,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8793557464739838390, guid: 75cb26b8e16740e4da6f307f6d902c09,
         type: 3}
@@ -194,7 +194,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4257422641565858584, guid: f4a032b5d6fd07740913b99389b565ed,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1403598967935629244}
   m_SourcePrefab: {fileID: 100100000, guid: f4a032b5d6fd07740913b99389b565ed, type: 3}
 --- !u!4 &6174047383309251269 stripped
 Transform:
@@ -202,3 +206,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7979244083240438238}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6174047383309251270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4257422641565858584, guid: f4a032b5d6fd07740913b99389b565ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 7979244083240438238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1403598967935629244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174047383309251270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e2ef1f0363e5d4abb963d96b74d510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
