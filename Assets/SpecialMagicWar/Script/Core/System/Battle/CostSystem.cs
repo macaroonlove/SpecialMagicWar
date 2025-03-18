@@ -69,7 +69,7 @@ namespace SpecialMagicWar.Core
 
             _isInitializeCostSystem = true;
 
-            SetCost(100);
+            SetCost(1000);
         }
 
         public void Deinitialize()

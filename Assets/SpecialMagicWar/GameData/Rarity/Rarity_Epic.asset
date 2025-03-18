@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Rarity_Epic
   m_EditorClassIdentifier: 
   _displayName: "\uC601\uC6C5"
-  _rarity: 1
+  _rarity: 2
   _sprite: {fileID: 0}

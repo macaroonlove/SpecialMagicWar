@@ -32,17 +32,18 @@ namespace SpecialMagicWar.Core
         }
         #endregion
 
+        [SerializeField] private ActiveSkillTemplate _template;
+
         private Image _cooldownTimeImage;
         private TextMeshProUGUI _countText;
-        private CanvasGroupController _haveSpell;
+        private CanvasGroupController _haveSpell;        
 
         private Unit _unit;
         private ActiveSkillAbility _activeSkillAbility;
-        [SerializeField] private ActiveSkillTemplate _template;
+        private UISpellCanvas _uiSpellCanvas;
 
         private float _inverseMaxCoolDownTime;
         private float _currentCoolDownTime;
-
         private int _spellCount;
 
         #region 프로퍼티
@@ -72,23 +73,18 @@ namespace SpecialMagicWar.Core
             _countText = GetText((int)Texts.CountText);
             _haveSpell = GetCanvasGroupController((int)CanvasGroupControllers.HaveSpell);
 
-            GetImage((int)Images.DisableIcon).sprite = _template.sprite;
-            GetImage((int)Images.EnableIcon).sprite = _template.sprite;
+            var sprite = _template.sprite;
+            GetImage((int)Images.DisableIcon).sprite = sprite;
+            GetImage((int)Images.EnableIcon).sprite = sprite;
 
             GetButton((int)Buttons.HaveSpell).onClick.AddListener(CompositeSkill);
-
-            BattleManager.Instance.playerCreateSystem.onCreatePlayer += SetUnit;
         }
 
-        private void OnDestroy()
-        {
-            BattleManager.Instance.playerCreateSystem.onCreatePlayer -= SetUnit;
-        }
-
-        private void SetUnit(AgentUnit unit)
+        internal void SetUnit(AgentUnit unit, UISpellCanvas uiSpellCanvas)
         {
             _unit = unit;
             _activeSkillAbility = _unit.GetAbility<ActiveSkillAbility>();
+            _uiSpellCanvas = uiSpellCanvas;
 
             Hide();
         }
@@ -101,10 +97,7 @@ namespace SpecialMagicWar.Core
             _currentCoolDownTime = 0;
             
             _spellCount++;
-            _countText.text = _spellCount.ToString();
-
-            if (_spellCount >= 3) _countText.color = Color.green;
-            else _countText.color = Color.white;
+            UpdateSpellText();
         }
 
         internal void Hide()
@@ -170,7 +163,25 @@ namespace SpecialMagicWar.Core
 
         private void CompositeSkill()
         {
+            if (_spellCount < 3) return;
+            if (_template.rarity.rarity == ERarity.God) return;
 
+            _uiSpellCanvas.GenerateRandomNextSpell(_template.rarity.rarity);
+            _spellCount -= 3;
+            UpdateSpellText();
+
+            if (_spellCount == 0)
+            {
+                Hide();
+            }
+        }
+
+        private void UpdateSpellText()
+        {
+            _countText.text = _spellCount.ToString();
+
+            if (_spellCount >= 3 && _template.rarity.rarity != ERarity.God) _countText.color = Color.green;
+            else _countText.color = Color.white;
         }
     }
 }

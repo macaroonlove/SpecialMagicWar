@@ -33,6 +33,41 @@ namespace SpecialMagicWar.Core
             _legendRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Legend).ToList();
             _beginningRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Beginning).ToList();
             _godRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.God).ToList();
+
+            BattleManager.Instance.playerCreateSystem.onCreatePlayer += InitializeSpellButton;
+        }
+
+        private void OnDestroy()
+        {
+            BattleManager.Instance.playerCreateSystem.onCreatePlayer -= InitializeSpellButton;
+        }
+
+        private void InitializeSpellButton(AgentUnit unit)
+        {
+            foreach (var spell in _commonRarity)
+            {
+                spell.SetUnit(unit, this);
+            }
+            foreach (var spell in _rareRarity)
+            {
+                spell.SetUnit(unit, this);
+            }
+            foreach (var spell in _epicRarity)
+            {
+                spell.SetUnit(unit, this);
+            }
+            foreach (var spell in _legendRarity)
+            {
+                spell.SetUnit(unit, this);
+            }
+            foreach (var spell in _beginningRarity)
+            {
+                spell.SetUnit(unit, this);
+            }
+            foreach (var spell in _godRarity)
+            {
+                spell.SetUnit(unit, this);
+            }
         }
 
         internal void GenerateRandomSpell()
@@ -87,6 +122,35 @@ namespace SpecialMagicWar.Core
                 default:
                     selectedList = _commonRarity;
                     break;
+            }
+
+            var spell = selectedList[Random.Range(0, 3)];
+            spell.Show();
+        }
+
+        internal void GenerateRandomNextSpell(ERarity rarity)
+        {
+            List<UISpellButton> selectedList;
+
+            switch (rarity)
+            {
+                case ERarity.Common:
+                    selectedList = _rareRarity;
+                    break;
+                case ERarity.Rare:
+                    selectedList = _epicRarity;
+                    break;
+                case ERarity.Epic:
+                    selectedList = _legendRarity;
+                    break;
+                case ERarity.Legend:
+                    selectedList = _beginningRarity;
+                    break;
+                case ERarity.Beginning:
+                    selectedList = _godRarity;
+                    break;
+                default:
+                    return;
             }
 
             var spell = selectedList[Random.Range(0, 3)];

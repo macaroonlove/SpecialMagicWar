@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Rarity_Legend
   m_EditorClassIdentifier: 
   _displayName: "\uC804\uC124"
-  _rarity: 0
+  _rarity: 3
   _sprite: {fileID: 0}

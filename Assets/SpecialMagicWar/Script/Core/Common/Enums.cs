@@ -100,10 +100,10 @@ namespace SpecialMagicWar.Core
     /// </summary>
     public enum ERarity
     {
-        Legend,
-        Epic,
-        Rare,
         Common,
+        Rare,
+        Epic,
+        Legend,
         Beginning,
         God,
     }
