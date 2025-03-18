@@ -92,7 +92,7 @@ namespace SpecialMagicWar.Core
         private void OnDeath()
         {
             Deinitialize();
-            CoreManager.Instance.GetSubSystem<PoolSystem>().DeSpawn(gameObject);
+            CoreManager.Instance.GetSubSystem<PoolSystem>().DeSpawn(gameObject, 1);
         }
 
         private void Update()

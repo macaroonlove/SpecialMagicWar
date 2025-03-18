@@ -12,9 +12,11 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private string _displayName;
         [HideInInspector, SerializeField] private string _description;
 
+        [HideInInspector, SerializeField] private RarityTemplate _rarity;
         [HideInInspector, SerializeField] private int _needMana;
         [HideInInspector, SerializeField] private float _cooldownTime;
 
+        [HideInInspector, SerializeField] private ESpellType _spellType;
         [HideInInspector, SerializeField] private EActiveSkillType _skillType;
         [HideInInspector, SerializeField] private EUnitType _unitType;
         [HideInInspector, SerializeField] private float _skillRange;
@@ -35,9 +37,11 @@ namespace SpecialMagicWar.Core
         public string displayName => _displayName;
         public string description => _description;
 
+        public RarityTemplate rarity => _rarity;
         public int needMana => _needMana;
         public float cooldownTime => _cooldownTime;
 
+        public ESpellType spellType => _spellType;
         public EActiveSkillType skillType => _skillType;
         public EUnitType unitType => _unitType;
         public float skillRange => _skillRange;
@@ -74,8 +78,10 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _id;
         private SerializedProperty _displayName;
         private SerializedProperty _description;
+        private SerializedProperty _rarity;
         private SerializedProperty _needMana;
         private SerializedProperty _cooldownTime;
+        private SerializedProperty _spellType;
         private SerializedProperty _skillType;
         private SerializedProperty _unitType;
         private SerializedProperty _skillRange;
@@ -95,8 +101,10 @@ namespace SpecialMagicWar.Editor
             _id = serializedObject.FindProperty("_id");
             _displayName = serializedObject.FindProperty("_displayName");
             _description = serializedObject.FindProperty("_description");
+            _rarity = serializedObject.FindProperty("_rarity");
             _needMana = serializedObject.FindProperty("_needMana");
             _cooldownTime = serializedObject.FindProperty("_cooldownTime");
+            _spellType = serializedObject.FindProperty("_spellType");
             _skillType = serializedObject.FindProperty("_skillType");
             _unitType = serializedObject.FindProperty("_unitType");
             _skillRange = serializedObject.FindProperty("_skillRange");
@@ -140,6 +148,13 @@ namespace SpecialMagicWar.Editor
             GUILayout.Space(10);
 
             GUILayout.BeginHorizontal();
+            GUILayout.Label("등급", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_rarity, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
             GUILayout.Label("소모 마나량", GUILayout.Width(192));
             EditorGUILayout.PropertyField(_needMana, GUIContent.none);
             GUILayout.EndHorizontal();
@@ -147,6 +162,11 @@ namespace SpecialMagicWar.Editor
             GUILayout.BeginHorizontal();
             GUILayout.Label("쿨타임", GUILayout.Width(192));
             EditorGUILayout.PropertyField(_cooldownTime, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("속성", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_spellType, GUIContent.none);
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
@@ -244,6 +264,7 @@ namespace SpecialMagicWar.Editor
                 menu.AddItem(new GUIContent("투사체 버프 스킬 (타겟팅)"), false, CreateEffectCallback, typeof(ProjectileBuffByTargetUnitEffect));
                 menu.AddItem(new GUIContent("즉시 상태이상 스킬 (타겟팅)"), false, CreateEffectCallback, typeof(InstantAbnormalStatusByTargetUnitEffect));
                 menu.AddItem(new GUIContent("투사체 상태이상 스킬 (타겟팅)"), false, CreateEffectCallback, typeof(ProjectileAbnormalStatusByTargetUnitEffect));
+                menu.AddItem(new GUIContent("즉시 피해면역 스킬 (타겟팅)"), false, CreateEffectCallback, typeof(InstantImmunityByTargetUnitEffect));
             }
 
             menu.ShowAsContext();

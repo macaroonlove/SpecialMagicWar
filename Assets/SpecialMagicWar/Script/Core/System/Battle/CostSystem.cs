@@ -69,8 +69,7 @@ namespace SpecialMagicWar.Core
 
             _isInitializeCostSystem = true;
 
-            // TODO: 초기값이 있다면 수정해주기
-            SetCost(0);
+            SetCost(100);
         }
 
         public void Deinitialize()

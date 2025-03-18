@@ -104,6 +104,8 @@ namespace SpecialMagicWar.Core
         Epic,
         Rare,
         Common,
+        Beginning,
+        God,
     }
 
     /// <summary>
@@ -114,6 +116,15 @@ namespace SpecialMagicWar.Core
         All,
         Circle,
         //Quad,
+    }
+
+    /// <summary>
+    /// 스킬 범위 타입
+    /// </summary>
+    public enum ESkillRangeType
+    {
+        Straight,
+        Circle,
     }
 
     /// <summary>
@@ -134,6 +145,13 @@ namespace SpecialMagicWar.Core
         /// <para>Cone형과 Straight형 스킬에 사용됩니다.</para>
         /// </summary>
         NonTargeting,
+    }
+
+    public enum ESpellType
+    {
+        Land,
+        Fire,
+        Water,
     }
 
     /// <summary>

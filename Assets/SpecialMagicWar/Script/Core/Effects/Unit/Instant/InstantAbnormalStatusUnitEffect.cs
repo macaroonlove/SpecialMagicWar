@@ -7,6 +7,7 @@ namespace SpecialMagicWar.Core
     {
         [SerializeField] protected bool _isInfinity;
         [SerializeField] protected float _duration;
+        [SerializeField] protected float _percentage = 100;
         [SerializeField] protected AbnormalStatusTemplate _abnormalStatus;
 
         public override string GetDescription()
@@ -16,6 +17,9 @@ namespace SpecialMagicWar.Core
 
         protected override void SkillImpact(Unit casterUnit, Unit targetUnit)
         {
+            var value = Random.Range(0, 100.0f);
+            if (value <= _percentage) return;
+
             if (_isInfinity)
             {
                 targetUnit.GetAbility<AbnormalStatusAbility>().ApplyAbnormalStatus(_abnormalStatus, int.MaxValue);
@@ -45,7 +49,10 @@ namespace SpecialMagicWar.Core
                 GUI.Label(labelRect, "지속시간");
                 _duration = EditorGUI.FloatField(valueRect, _duration);
             }
-
+            labelRect.y += 20;
+            valueRect.y += 20;
+            GUI.Label(labelRect, "확률");
+            _percentage = EditorGUI.FloatField(valueRect, _percentage);
             labelRect.y += 20;
             valueRect.y += 20;
             GUI.Label(labelRect, "상태이상");
@@ -56,7 +63,7 @@ namespace SpecialMagicWar.Core
         {
             int rowNum = base.GetNumRows();
 
-            rowNum += 2;
+            rowNum += 3;
 
             if (!_isInfinity)
             {

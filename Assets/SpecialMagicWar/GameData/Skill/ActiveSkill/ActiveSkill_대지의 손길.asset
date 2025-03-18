@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
+  m_Name: "ActiveSkill_\uB300\uC9C0\uC758 \uC190\uAE38"
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: -3786673782929868589, guid: 5bc9c55e31d7c4c3380f05786b90bb35,
+    type: 3}
+  _id: 9
+  _displayName: "\uB300\uC9C0\uC758 \uC190\uAE38"
+  _description: "\uB300\uC9C0\uC758 \uC190\uAE38\uB85C \uADFC\uC811\uD55C \uC801\uC5D0\uAC8C
+    5500\uC758 \uBC94\uC704 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n\uC801\uC5D0\uAC8C
+    \uD53C\uD574\uB97C \uC785\uD78C \uACBD\uC6B0, \uD50C\uB808\uC774\uC5B4\uC758
+    \uCCB4\uB825\uC744 1% \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  _rarity: {fileID: 11400000, guid: fdffd9bf88ebfee489c82a6af675e02e, type: 2}
+  _needMana: 0
+  _cooldownTime: 2.5
+  _spellType: 0
+  _skillType: 0
+  _unitType: 0
+  _skillRange: 0
+  _parameterName: attack
+  _parameterHash: 1203776827
+  _casterFX: {fileID: 0}
+  _targetFX: {fileID: 0}
+  effects:
+  - {fileID: 2692669350992264927}
+  - {fileID: 1262877589787281049}
+--- !u!114 &1262877589787281049
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f094091aa5456a41a0769b63a7e81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetFX: {fileID: 0}
+  _repeatCount: 1
+  _isTick: 0
+  _tickCycle: 0
+  _tickCount: 0
+  _applyTypeByAmountDatas:
+  - applyType: 4
+    amount: 1
+  _target: 0
+  _radius: 0
+  _numberOfTarget: 0
+--- !u!114 &2692669350992264927
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2468a6a634185654c8ce0ab02e8208f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetFX: {fileID: 0}
+  _repeatCount: 1
+  _isTick: 0
+  _tickCycle: 0
+  _tickCount: 0
+  _damageType: 2
+  _applyTypeByAmountDatas:
+  - applyType: 0
+    amount: 5500
+  _attackType: 0
+  _target: 3
+  _skillRangeType: 0
+  _radius: 0.4
+  _numberOfTarget: 0

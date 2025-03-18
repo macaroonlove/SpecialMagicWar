@@ -128,6 +128,50 @@ namespace SpecialMagicWar.Core
         }
 
         /// <summary>
+        /// 유닛의 위치를 기준으로 아래 방향으로 공격 가능한 아군 유닛을 반환
+        /// </summary>
+        internal List<AgentUnit> GetAttackableAgentsInStraight(Vector3 unitPos, float radius, EAttackType attackType, int maxCount = int.MaxValue)
+        {
+            List<AgentUnit> agents = new List<AgentUnit>();
+            List<(AgentUnit enemy, float distance)> agentsWithDistance = new List<(AgentUnit, float)>();
+
+            foreach (AgentUnit agent in _agents)
+            {
+                if (agent != null && agent.isActiveAndEnabled)
+                {
+                    // 공격 대상이 아니라면 타겟에 추가하지 않음
+                    if (!agent.GetAbility<HitAbility>().finalTargetOfAttack) continue;
+
+                    Vector3 direction = (agent.transform.position - unitPos).normalized;
+
+                    // Y축 아래 방향 (Vector3.down)과 유사한 방향인지 확인
+                    if (Vector3.Dot(direction, Vector3.down) >= 0.95f) // 0.95는 약간의 오차 허용
+                    {
+                        float distance = Mathf.Abs(agent.transform.position.y - unitPos.y);
+
+                        if (distance <= radius)
+                        {
+                            agentsWithDistance.Add((agent, distance));
+                        }
+                    }
+                }
+            }
+
+            if (agentsWithDistance.Count > maxCount)
+            {
+                agentsWithDistance.Sort((a, b) => a.distance.CompareTo(b.distance));
+            }
+
+            foreach (var (agent, _) in agentsWithDistance)
+            {
+                if (agents.Count >= maxCount) break;
+                agents.Add(agent);
+            }
+
+            return agents;
+        }
+
+        /// <summary>
         /// 공격 가능한 모든 아군 유닛을 반환
         /// </summary>
         internal List<AgentUnit> GetAllAttackableAgents(EAttackType attackType)

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
+  m_Name: "ActiveSkill_\uAC00\uB791\uBE44"
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 7195734205691627793, guid: f4fd86b5ee49b470697a84be25c668cb, type: 3}
+  _id: 2
+  _displayName: "\uAC00\uB791\uBE44"
+  _description: "\uBB3C\uBC29\uC6B8\uC744 \uB358\uC838 \uCC98\uC74C \uB9DE\uB294
+    \uC801\uC5D0\uAC8C 110\uC758 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  _rarity: {fileID: 11400000, guid: fa45f24bb474d5b4290abb85fc24fc02, type: 2}
+  _needMana: 0
+  _cooldownTime: 0.8
+  _spellType: 2
+  _skillType: 0
+  _unitType: 0
+  _skillRange: 0
+  _parameterName: attack
+  _parameterHash: 1203776827
+  _casterFX: {fileID: 0}
+  _targetFX: {fileID: 0}
+  effects:
+  - {fileID: 1395206088603111651}
+--- !u!114 &1395206088603111651
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3cfed2620ab4e47a983f4794b88fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 3195638163789533073, guid: ed3e588a5f739c54b862a20496be3f3e, type: 3}
+  _spawnPoint: 0
+  _repeatCount: 1
+  _isTick: 0
+  _tickCycle: 0
+  _tickCount: 0
+  _damageType: 2
+  _applyTypeByAmountDatas:
+  - applyType: 0
+    amount: 110
+  _attackType: 1
+  _target: 1
+  _skillRangeType: 0
+  _radius: 10
+  _numberOfTarget: 0

@@ -41,7 +41,7 @@ namespace SpecialMagicWar.Core
         /// <summary>
         /// 공격 가능한 유닛 찾기
         /// </summary>
-        internal List<Unit> FindAttackableTarget(ETarget target, float range, EAttackType attackType, int attackCount = int.MaxValue)
+        internal List<Unit> FindAttackableTarget(ETarget target, float range, EAttackType attackType, ESkillRangeType rangeType, int attackCount = int.MaxValue)
         {
             List<Unit> targets = new List<Unit>();
 
@@ -55,13 +55,34 @@ namespace SpecialMagicWar.Core
                         targets.Add(unit);
                         return targets;
                     case ETarget.OneTargetInRange:
-                        attackTargets = _enemySystem.GetAttackableEnemiesInRadius(transform.position, range, attackType, 1);
+                        if (rangeType == ESkillRangeType.Circle)
+                        {
+                            attackTargets = _enemySystem.GetAttackableEnemiesInRadius(transform.position, range, attackType, 1);
+                        }
+                        else if (rangeType == ESkillRangeType.Straight)
+                        {
+                            attackTargets = _enemySystem.GetAttackableEnemiesInStraight(transform.position, range, attackType, 1);
+                        }
                         break;
                     case ETarget.NumTargetInRange:
-                        attackTargets = _enemySystem.GetAttackableEnemiesInRadius(transform.position, range, attackType, attackCount);
+                        if (rangeType == ESkillRangeType.Circle)
+                        {
+                            attackTargets = _enemySystem.GetAttackableEnemiesInRadius(transform.position, range, attackType, attackCount);
+                        }
+                        else if (rangeType == ESkillRangeType.Straight)
+                        {
+                            attackTargets = _enemySystem.GetAttackableEnemiesInStraight(transform.position, range, attackType, attackCount);
+                        }
                         break;
                     case ETarget.AllTargetInRange:
-                        attackTargets = _enemySystem.GetAttackableEnemiesInRadius(transform.position, range, attackType);
+                        if (rangeType == ESkillRangeType.Circle)
+                        {
+                            attackTargets = _enemySystem.GetAttackableEnemiesInRadius(transform.position, range, attackType);
+                        }
+                        else if (rangeType == ESkillRangeType.Straight)
+                        {
+                            attackTargets = _enemySystem.GetAttackableEnemiesInStraight(transform.position, range, attackType);
+                        }
                         break;
                     case ETarget.AllTarget:
                         attackTargets = _enemySystem.GetAttackableAllEnemies(attackType);
@@ -83,13 +104,34 @@ namespace SpecialMagicWar.Core
                         targets.Add(unit);
                         return targets;
                     case ETarget.OneTargetInRange:
-                        attackTargets = _agentSystem.GetAttackableAgentsInRadius(transform.position, range, attackType, 1);
+                        if (rangeType == ESkillRangeType.Circle)
+                        {
+                            attackTargets = _agentSystem.GetAttackableAgentsInRadius(transform.position, range, attackType, 1);
+                        }
+                        else if (rangeType == ESkillRangeType.Straight)
+                        {
+                            attackTargets = _agentSystem.GetAttackableAgentsInStraight(transform.position, range, attackType, 1);
+                        }
                         break;
                     case ETarget.NumTargetInRange:
-                        attackTargets = _agentSystem.GetAttackableAgentsInRadius(transform.position, range, attackType, attackCount);
+                        if (rangeType == ESkillRangeType.Circle)
+                        {
+                            attackTargets = _agentSystem.GetAttackableAgentsInRadius(transform.position, range, attackType);
+                        }
+                        else if (rangeType == ESkillRangeType.Straight)
+                        {
+                            attackTargets = _agentSystem.GetAttackableAgentsInStraight(transform.position, range, attackType);
+                        }
                         break;
                     case ETarget.AllTargetInRange:
-                        attackTargets = _agentSystem.GetAttackableAgentsInRadius(transform.position, range, attackType);
+                        if (rangeType == ESkillRangeType.Circle)
+                        {
+                            attackTargets = _agentSystem.GetAttackableAgentsInRadius(transform.position, range, attackType);
+                        }
+                        else if (rangeType == ESkillRangeType.Straight)
+                        {
+                            attackTargets = _agentSystem.GetAttackableAgentsInStraight(transform.position, range, attackType);
+                        }
                         break;
                     case ETarget.AllTarget:
                         attackTargets = _agentSystem.GetAllAttackableAgents(attackType);

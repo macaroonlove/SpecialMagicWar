@@ -130,6 +130,52 @@ namespace SpecialMagicWar.Core
         }
 
         /// <summary>
+        /// 유닛의 위치를 기준으로 아래 방향으로 공격 가능한 적 유닛을 반환
+        /// </summary>
+        internal List<EnemyUnit> GetAttackableEnemiesInStraight(Vector3 unitPos, float radius, EAttackType attackType, int maxCount = int.MaxValue)
+        {
+            List<EnemyUnit> enemies = new List<EnemyUnit>();
+            List<(EnemyUnit enemy, float distance)> enemiesWithDistance = new List<(EnemyUnit, float)>();
+
+            foreach (EnemyUnit enemy in _enemies)
+            {
+                if (enemy != null && enemy.isActiveAndEnabled)
+                {
+                    // 적이 공중 유닛일 떄, 원거리가 아니라면 공격 불가
+                    if (enemy.template.MoveType == EMoveType.Sky && attackType != EAttackType.Far) continue;
+                    // 공격 대상이 아니라면 타겟에 추가하지 않음
+                    if (!enemy.GetAbility<HitAbility>().finalTargetOfAttack) continue;
+
+                    Vector3 direction = (enemy.transform.position - unitPos).normalized;
+
+                    if (Vector3.Dot(direction, Vector3.down) >= 0.95f)
+                    {
+                        float distance = Mathf.Abs(enemy.transform.position.y - unitPos.y);
+
+                        if (distance <= radius)
+                        {
+                            enemiesWithDistance.Add((enemy, distance));
+                        }
+                    }
+                }
+            }
+
+            if (enemiesWithDistance.Count > maxCount)
+            {
+                enemiesWithDistance.Sort((a, b) => a.distance.CompareTo(b.distance));
+            }
+
+            foreach (var (enemy, _) in enemiesWithDistance)
+            {
+                if (enemies.Count >= maxCount) break;
+                enemies.Add(enemy);
+            }
+
+            return enemies;
+        }
+
+
+        /// <summary>
         /// 공격 가능한 모든 적 유닛을 반환
         /// </summary>
         internal List<EnemyUnit> GetAttackableAllEnemies(EAttackType attackType)

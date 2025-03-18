@@ -8,12 +8,27 @@ namespace SpecialMagicWar.Core
     {
         [SerializeField] private ETarget _target;
         [SerializeField] private EAttackType _attackType;
+        [SerializeField] private ESkillRangeType _skillRangeType;
+        [SerializeField] private bool _isRandomTarget;
         [SerializeField] private float _radius;
         [SerializeField] private int _numberOfTarget;
 
         public List<Unit> GetTarget(Unit casterUnit)
         {
-            return casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(_target, _radius, _attackType, _numberOfTarget);
+            if (_target == ETarget.AllTarget && _isRandomTarget)
+            {
+                var targets = casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(_target, _radius, _attackType, _skillRangeType);
+                
+                if (targets.Count > 0)
+                {
+                    var units = new List<Unit>();
+                    units.Add(targets[Random.Range(0, targets.Count)]);
+
+                    return units;
+                }
+            }
+
+            return casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(_target, _radius, _attackType, _skillRangeType, _numberOfTarget);
         }
 
 #if UNITY_EDITOR
@@ -29,8 +44,20 @@ namespace SpecialMagicWar.Core
             {
                 labelRect.y += 20;
                 valueRect.y += 20;
+                GUI.Label(labelRect, "스킬 범위 방식");
+                _skillRangeType = (ESkillRangeType)EditorGUI.EnumPopup(valueRect, _skillRangeType);
+                labelRect.y += 20;
+                valueRect.y += 20;
                 GUI.Label(labelRect, "범위");
                 _radius = EditorGUI.FloatField(valueRect, _radius);
+            }
+
+            if (_target == ETarget.AllTarget)
+            {
+                labelRect.y += 20;
+                valueRect.y += 20;
+                GUI.Label(labelRect, "랜덤한 적 한명 받아오기");
+                _isRandomTarget = EditorGUI.Toggle(valueRect, _isRandomTarget);
             }
 
             if (_target == ETarget.NumTargetInRange)
@@ -57,6 +84,11 @@ namespace SpecialMagicWar.Core
             rowNum += 4;
 
             if (_target != ETarget.Myself && _target != ETarget.AllTarget)
+            {
+                rowNum += 2;
+            }
+
+            if (_target == ETarget.AllTarget)
             {
                 rowNum++;
             }

@@ -239,8 +239,19 @@ namespace SpecialMagicWar.Core
         {
             foreach (var status in statusDic)
             {
-                var instance = status.Value;
+                // 화상이 있을 경우
+                if (status.Key.displayName == "화상")
+                {
+                    // 주위 1칸 적에게 800만큼의 피해
+                    var targets = unit.GetAbility<FindTargetAbility>().FindAllyTarget(ETarget.AllTargetInRange, 1);
+                    foreach (var target in targets)
+                    {
+                        target.GetAbility<HitAbility>().Hit(800);
+                    }
+                }
 
+                var instance = status.Value;
+                
                 RemoveStatus(status.Key.effects);
 
                 ExecuteRemoveFX(status.Key);

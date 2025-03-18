@@ -54,7 +54,7 @@ namespace SpecialMagicWar.Core
 
         private void GetTargetCone(Unit casterUnit, Vector3 targetVector)
         {
-            var targets = casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(ETarget.AllTargetInRange, _skillRange, EAttackType.Far);
+            var targets = casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(ETarget.AllTargetInRange, _skillRange, EAttackType.Far, ESkillRangeType.Circle);
 
             Vector3 forward = (targetVector - casterUnit.transform.position).normalized;
 

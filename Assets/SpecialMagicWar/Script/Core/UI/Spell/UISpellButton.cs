@@ -7,9 +7,9 @@ using UnityEngine.UI;
 namespace SpecialMagicWar.Core
 {
     /// <summary>
-    /// Show 상태라면 실행되는 스킬 버튼
+    /// Show 상태라면 실행되는 스펠 버튼
     /// </summary>
-    public class UIActiveSkillExecuteButton : UIBase
+    public class UISpellButton : UIBase
     {
         #region 바인딩
         enum Images
@@ -22,6 +22,10 @@ namespace SpecialMagicWar.Core
         {
             HaveSpell,
         }
+        enum Texts
+        {
+            CountText,
+        }
         enum CanvasGroupControllers
         {
             HaveSpell,
@@ -29,6 +33,7 @@ namespace SpecialMagicWar.Core
         #endregion
 
         private Image _cooldownTimeImage;
+        private TextMeshProUGUI _countText;
         private CanvasGroupController _haveSpell;
 
         private Unit _unit;
@@ -38,7 +43,11 @@ namespace SpecialMagicWar.Core
         private float _inverseMaxCoolDownTime;
         private float _currentCoolDownTime;
 
+        private int _spellCount;
+
         #region 프로퍼티
+        internal ActiveSkillTemplate template => _template;
+
         private float finalCoolDownTime
         {
             get
@@ -52,11 +61,15 @@ namespace SpecialMagicWar.Core
 
         protected override void Initialize()
         {
+            if (_template == null) return;
+
             BindImage(typeof(Images));
             BindButton(typeof(Buttons));
+            BindText(typeof(Texts));
             BindCanvasGroupController(typeof(CanvasGroupControllers));
 
             _cooldownTimeImage = GetImage((int)Images.CooldownTimeImage);
+            _countText = GetText((int)Texts.CountText);
             _haveSpell = GetCanvasGroupController((int)CanvasGroupControllers.HaveSpell);
 
             GetImage((int)Images.DisableIcon).sprite = _template.sprite;
@@ -76,7 +89,8 @@ namespace SpecialMagicWar.Core
         {
             _unit = unit;
             _activeSkillAbility = _unit.GetAbility<ActiveSkillAbility>();
-            Show();
+
+            Hide();
         }
 
         internal void Show()
@@ -85,10 +99,18 @@ namespace SpecialMagicWar.Core
 
             CalcMaxCoolDownTime();
             _currentCoolDownTime = 0;
+            
+            _spellCount++;
+            _countText.text = _spellCount.ToString();
+
+            if (_spellCount >= 3) _countText.color = Color.green;
+            else _countText.color = Color.white;
         }
 
         internal void Hide()
         {
+            _spellCount = 0;
+            _countText.text = "";
             _haveSpell.Hide(true);
         }
 
@@ -124,6 +146,8 @@ namespace SpecialMagicWar.Core
 
         private void Update()
         {
+            if (_spellCount == 0) return;
+
             UpdateCoolDownTime();
 
             if (_currentCoolDownTime <= 0)

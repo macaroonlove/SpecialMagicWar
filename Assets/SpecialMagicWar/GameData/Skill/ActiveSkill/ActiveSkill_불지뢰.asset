@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
+  m_Name: "ActiveSkill_\uBD88\uC9C0\uB8B0"
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: -9100664811620793741, guid: 3e7f1bcf5e1004551853fead34d7fb5b,
+    type: 3}
+  _id: 10
+  _displayName: "\uBD88\uC9C0\uB8B0"
+  _description: "\uBB34\uC791\uC704 \uC704\uCE58\uC5D0 \uBD88\uC9C0\uB8B0\uB97C \uC124\uCE58\uD569\uB2C8\uB2E4.
+    \uBD88\uC9C0\uB8B0\uB294 \uC801\uACFC \uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD558\uC5EC
+    \uBC94\uC704 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n(\uCD5C\uB300 30\uAC1C \uC124\uCE58
+    \uAC00\uB2A5)"
+  _rarity: {fileID: 11400000, guid: fdffd9bf88ebfee489c82a6af675e02e, type: 2}
+  _needMana: 0
+  _cooldownTime: 2.7
+  _spellType: 1
+  _skillType: 2
+  _unitType: 0
+  _skillRange: 0
+  _parameterName: attack
+  _parameterHash: 1203776827
+  _casterFX: {fileID: 0}
+  _targetFX: {fileID: 0}
+  effects: []

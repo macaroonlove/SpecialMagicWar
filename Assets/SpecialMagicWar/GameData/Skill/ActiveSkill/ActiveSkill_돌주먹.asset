@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3332643270170971700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e142ffecf24b6e4d903fd26472a3da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetFX: {fileID: 0}
+  _isInfinity: 0
+  _duration: 0.5
+  _percentage: 20
+  _abnormalStatus: {fileID: 11400000, guid: 61095473c202cbe48871bb33a7ae57d8, type: 2}
+  _target: 3
+  _attackType: 0
+  _skillRangeType: 0
+  _isRandomTarget: 0
+  _radius: 0.4
+  _numberOfTarget: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
+  m_Name: "ActiveSkill_\uB3CC\uC8FC\uBA39"
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 6918893452191571754, guid: 7f9c604e1b12d455cba1d0e36fbd14f9, type: 3}
+  _id: 3
+  _displayName: "\uB3CC\uC8FC\uBA39"
+  _description: "\uB3CC\uC8FC\uBA39\uC73C\uB85C \uADFC\uC811\uD55C \uC801\uC5D0\uAC8C
+    1700\uC758 \uBC94\uC704 \uD53C\uD574\uB97C \uC8FC\uACE0, 20% \uD655\uB960\uB85C
+    0.5\uCD08 \uB3D9\uC548 \uAE30\uC808\uC2DC\uD0B5\uB2C8\uB2E4."
+  _rarity: {fileID: 11400000, guid: 0923c9a685a91524e96bcc4f83d2a8e8, type: 2}
+  _needMana: 0
+  _cooldownTime: 4
+  _spellType: 0
+  _skillType: 0
+  _unitType: 0
+  _skillRange: 0
+  _parameterName: attack
+  _parameterHash: 1203776827
+  _casterFX: {fileID: 0}
+  _targetFX: {fileID: 0}
+  effects:
+  - {fileID: 2462819152384550406}
+  - {fileID: -3332643270170971700}
+--- !u!114 &2462819152384550406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2468a6a634185654c8ce0ab02e8208f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetFX: {fileID: 0}
+  _repeatCount: 1
+  _isTick: 0
+  _tickCycle: 0
+  _tickCount: 0
+  _damageType: 2
+  _applyTypeByAmountDatas:
+  - applyType: 0
+    amount: 1700
+  _attackType: 0
+  _target: 3
+  _skillRangeType: 0
+  _radius: 0.4
+  _numberOfTarget: 0

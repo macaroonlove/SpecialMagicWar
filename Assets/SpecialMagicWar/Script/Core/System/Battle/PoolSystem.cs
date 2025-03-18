@@ -77,7 +77,7 @@ namespace SpecialMagicWar.Core
         }
         #endregion
 
-        public void DeSpawn(GameObject obj)
+        public void DeSpawn(GameObject obj, float delay = 0)
         {
             string key = obj.name;
 
@@ -86,8 +86,26 @@ namespace SpecialMagicWar.Core
                 _objectPool[key] = new Stack<GameObject>();
             }
 
-            _objectPool[key].Push(obj);
             obj.SetActive(false);
+
+            if (delay == 0)
+            {
+                _objectPool[key].Push(obj);
+            }
+            else
+            {
+                StartCoroutine(CoDespawn(obj, delay));
+            }
+            
+        }
+
+        private IEnumerator CoDespawn(GameObject obj, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            string key = obj.name;
+
+            _objectPool[key].Push(obj);
         }
     }
 }

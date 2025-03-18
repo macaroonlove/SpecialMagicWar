@@ -334,7 +334,7 @@ namespace SpecialMagicWar.Core
         {
             _currentTarget.Clear();
 
-            var attackTargets = _findTargetAbility.FindAttackableTarget(ETarget.NumTargetInRange, finalAttackRange, _currentAttackType, finalAttackCount);
+            var attackTargets = _findTargetAbility.FindAttackableTarget(ETarget.NumTargetInRange, finalAttackRange, _currentAttackType, ESkillRangeType.Circle, finalAttackCount);
 
             if (attackTargets.Count > 0)
             {
