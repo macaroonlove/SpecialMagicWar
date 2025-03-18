@@ -17,26 +17,13 @@ MonoBehaviour:
   _description: 
   _sprite: {fileID: 0}
   _prefab: {fileID: 2202580174079812442, guid: 8895d2640d77cf64fabc6a3b84212446, type: 3}
-  _atk: 0
-  _attackTerm: 0
-  _attackRange: 0
-  _isProjectileAttack: 0
-  _projectilePrefab: {fileID: 0}
-  _spawnPoint: 0
-  _attackType: 0
   _damageType: 0
   _criticalHitChance: 0
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
   _maxHP: 1000
-  _physicalResistance: 0
-  _magicResistance: 0
-  _maxMana: 0
-  _startMana: 0
+  _physicalResistance: 100
+  _magicResistance: 100
   _hpRecoveryPerSec: 0
-  _manaRecoveryPerSec: 0
-  _manaRecoveryType: 0
-  _casterFX: {fileID: 0}
-  _targetFX: {fileID: 0}
   isOwned: 0

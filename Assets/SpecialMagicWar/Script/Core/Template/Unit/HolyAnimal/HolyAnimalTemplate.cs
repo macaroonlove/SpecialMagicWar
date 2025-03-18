@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace SpecialMagicWar.Core
 {
-    [CreateAssetMenu(menuName = "Templates/Unit/Agent", fileName = "Agent_", order = 0)]
-    public class AgentTemplate : ScriptableObject
+    [CreateAssetMenu(menuName = "Templates/Unit/HolyAnimal", fileName = "HolyAnimal_", order = 0)]
+    public class HolyAnimalTemplate : ScriptableObject
     {
         [HideInInspector, SerializeField] private int _id;
         [HideInInspector, SerializeField] private string _displayName;
@@ -13,6 +13,15 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private Sprite _sprite;
         [HideInInspector, SerializeField] private GameObject _prefab;
 
+        [HideInInspector, SerializeField] private int _atk;
+        [HideInInspector, SerializeField] private float _attackTerm;
+        [HideInInspector, SerializeField] private float _attackRange;
+
+        [HideInInspector, SerializeField] private bool _isProjectileAttack;
+        [HideInInspector, SerializeField] private GameObject _projectilePrefab;
+        [HideInInspector, SerializeField] private ESpawnPoint _spawnPoint;
+
+        [HideInInspector, SerializeField] private EAttackType _attackType;
         [HideInInspector, SerializeField] private EDamageType _damageType;
 
         [HideInInspector, SerializeField] private float _criticalHitChance;
@@ -25,7 +34,15 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private int _physicalResistance;
         [HideInInspector, SerializeField] private int _magicResistance;
 
+        [HideInInspector, SerializeField,] private int _maxMana;
+        [HideInInspector, SerializeField] private int _startMana;
+
         [HideInInspector, SerializeField] private int _hpRecoveryPerSec;
+        [HideInInspector, SerializeField] private int _manaRecoveryPerSec;
+        [HideInInspector, SerializeField] private EManaRecoveryType _manaRecoveryType;
+
+        [HideInInspector, SerializeField] private FX _casterFX;
+        [HideInInspector, SerializeField] private FX _targetFX;
 
         [HideInInspector, ReadOnly] public bool isOwned;
 
@@ -37,6 +54,15 @@ namespace SpecialMagicWar.Core
         public Sprite sprite => _sprite;
         public GameObject prefab => _prefab;
 
+        public int ATK => _atk;
+        public float AttackTerm => _attackTerm;
+        public float AttackRange => _attackRange;
+
+        public bool isProjectileAttack => _isProjectileAttack;
+        public GameObject projectilePrefab => _projectilePrefab;
+        public ESpawnPoint spawnPoint => _spawnPoint;
+
+        public EAttackType AttackType => _attackType;
         public EDamageType DamageType => _damageType;
 
         public float CriticalHitChance => _criticalHitChance;
@@ -49,7 +75,15 @@ namespace SpecialMagicWar.Core
         public int PhysicalResistance => _physicalResistance;
         public int MagicResistance => _magicResistance;
 
+        public int MaxMana => _maxMana;
+        public int StartMana => _startMana;
+
         public int HPRecoveryPerSec => _hpRecoveryPerSec;
+        public int ManaRecoveryPerSec => _manaRecoveryPerSec;
+        public EManaRecoveryType ManaRecoveryType => _manaRecoveryType;
+
+        public FX casterFX => _casterFX;
+        public FX targetFX => _targetFX;
         #endregion
 
         #region 값 변경 메서드
@@ -67,14 +101,21 @@ namespace SpecialMagicWar.Editor
     using SpecialMagicWar.Core;
     using UnityEditor;
 
-    [CustomEditor(typeof(AgentTemplate)), CanEditMultipleObjects]
-    public class AgentTemplateEditor : Editor
+    [CustomEditor(typeof(HolyAnimalTemplate)), CanEditMultipleObjects]
+    public class HolyAnimalTemplateEditor : Editor
     {
         private SerializedProperty _id;
         private SerializedProperty _displayName;
         private SerializedProperty _description;
         private SerializedProperty _sprite;
         private SerializedProperty _prefab;
+        private SerializedProperty _atk;
+        private SerializedProperty _attackTerm;
+        private SerializedProperty _attackRange;
+        private SerializedProperty _isProjectileAttack;
+        private SerializedProperty _projectilePrefab;
+        private SerializedProperty _spawnPoint;
+        private SerializedProperty _attackType;
         private SerializedProperty _damageType;
         private SerializedProperty _criticalHitChance;
         private SerializedProperty _criticalHitDamage;
@@ -83,7 +124,13 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _maxHP;
         private SerializedProperty _physicalResistance;
         private SerializedProperty _magicResistance;
+        private SerializedProperty _maxMana;
+        private SerializedProperty _startMana;
         private SerializedProperty _hpRecoveryPerSec;
+        private SerializedProperty _manaRecoveryPerSec;
+        private SerializedProperty _manaRecoveryType;
+        private SerializedProperty _casterFX;
+        private SerializedProperty _targetFX;
         private SerializedProperty _isOwned;
 
         private void OnEnable()
@@ -93,6 +140,13 @@ namespace SpecialMagicWar.Editor
             _description = serializedObject.FindProperty("_description");
             _sprite = serializedObject.FindProperty("_sprite");
             _prefab = serializedObject.FindProperty("_prefab");
+            _atk = serializedObject.FindProperty("_atk");
+            _attackTerm = serializedObject.FindProperty("_attackTerm");
+            _attackRange = serializedObject.FindProperty("_attackRange");
+            _isProjectileAttack = serializedObject.FindProperty("_isProjectileAttack");
+            _projectilePrefab = serializedObject.FindProperty("_projectilePrefab");
+            _spawnPoint = serializedObject.FindProperty("_spawnPoint");
+            _attackType = serializedObject.FindProperty("_attackType");
             _damageType = serializedObject.FindProperty("_damageType");
             _criticalHitChance = serializedObject.FindProperty("_criticalHitChance");
             _criticalHitDamage = serializedObject.FindProperty("_criticalHitDamage");
@@ -101,7 +155,13 @@ namespace SpecialMagicWar.Editor
             _maxHP = serializedObject.FindProperty("_maxHP");
             _physicalResistance = serializedObject.FindProperty("_physicalResistance");
             _magicResistance = serializedObject.FindProperty("_magicResistance");
+            _maxMana = serializedObject.FindProperty("_maxMana");
+            _startMana = serializedObject.FindProperty("_startMana");
             _hpRecoveryPerSec = serializedObject.FindProperty("_hpRecoveryPerSec");
+            _manaRecoveryPerSec = serializedObject.FindProperty("_manaRecoveryPerSec");
+            _manaRecoveryType = serializedObject.FindProperty("_manaRecoveryType");
+            _casterFX = serializedObject.FindProperty("_casterFX");
+            _targetFX = serializedObject.FindProperty("_targetFX");
             _isOwned = serializedObject.FindProperty("isOwned");
         }
 
@@ -140,6 +200,48 @@ namespace SpecialMagicWar.Editor
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("공격력", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_atk, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("공격 간격", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_attackTerm, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("공격 사거리", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_attackRange, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("투사체 사용 여부", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_isProjectileAttack, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            if (_isProjectileAttack.boolValue)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("투사체 프리팹", GUILayout.Width(192));
+                EditorGUILayout.PropertyField(_projectilePrefab, GUIContent.none);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("스폰 위치", GUILayout.Width(192));
+                EditorGUILayout.PropertyField(_spawnPoint, GUIContent.none);
+                GUILayout.EndHorizontal();
+            }
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("공격 방식", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_attackType, GUIContent.none);
+            GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("데미지 타입", GUILayout.Width(192));
@@ -190,8 +292,52 @@ namespace SpecialMagicWar.Editor
             GUILayout.Space(10);
 
             GUILayout.BeginHorizontal();
+            GUILayout.Label("최대 마나", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_maxMana, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("시작 마나", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_startMana, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
             GUILayout.Label("초당 체력 회복량", GUILayout.Width(192));
             EditorGUILayout.PropertyField(_hpRecoveryPerSec, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("마나 회복 방식", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_manaRecoveryType, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            if (_manaRecoveryType.enumValueIndex != (int)EManaRecoveryType.None)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("초당 마나 회복량", GUILayout.Width(192));
+                EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
+                GUILayout.EndHorizontal();
+            }
+            else if (_manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Attack || _manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Hit)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("마나 회복량", GUILayout.Width(192));
+                EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
+                GUILayout.EndHorizontal();
+            }
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("공격 시, 시전자 FX", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_casterFX, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("공격 시, 대상자 FX", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_targetFX, GUIContent.none);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(20);

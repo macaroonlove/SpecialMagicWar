@@ -513,6 +513,10 @@ MonoBehaviour:
     - a3260a188802fbb49ac854c9a7a82044
     - eb701b8c8057dfd4488f94f62099dd5f
     - c770a70afd8f88f40bb0f25e3b0dbb55
+    - 08b2f2493a1a3714e8684821997826ff
+    - 75b89a803485e694f90855a48482fa4f
+    - b112c7111a2d6df4583fea633bd075f2
+    - 4658215f670b84858bd0c8d70a2f9496
     values:
     - colorIndex: 1
       iconNameOrGuid: RawImage Icon
@@ -1511,4 +1515,12 @@ MonoBehaviour:
     - colorIndex: 5
       iconNameOrGuid: 
     - colorIndex: 5
+      iconNameOrGuid: 
+    - colorIndex: 8
+      iconNameOrGuid: ScriptableObject Icon
+    - colorIndex: 6
+      iconNameOrGuid: 
+    - colorIndex: 7
+      iconNameOrGuid: Prefab Icon
+    - colorIndex: 10
       iconNameOrGuid: 

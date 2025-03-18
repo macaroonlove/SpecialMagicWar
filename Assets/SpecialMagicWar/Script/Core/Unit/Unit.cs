@@ -45,6 +45,7 @@ namespace SpecialMagicWar.Core
         internal void Initialize(Unit unit)
         {
             _healthAbility = GetComponent<HealthAbility>();
+            _healthAbility.onDeath += OnDeath;
 
             var alwaysAbilities = GetComponents<AlwaysAbility>();
             var conditionAbilities = GetComponents<ConditionAbility>();
@@ -84,6 +85,14 @@ namespace SpecialMagicWar.Core
             }
 
             onAbilityDeinitialize?.Invoke();
+
+            _healthAbility.onDeath -= OnDeath;
+        }
+
+        private void OnDeath()
+        {
+            Deinitialize();
+            CoreManager.Instance.GetSubSystem<PoolSystem>().DeSpawn(gameObject);
         }
 
         private void Update()

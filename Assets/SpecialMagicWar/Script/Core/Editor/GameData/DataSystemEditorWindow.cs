@@ -18,11 +18,17 @@ namespace SpecialMagicWar.Editor
         #region À¯´Ö
         private int selectedUnitTitle = 0;
 
-        #region ¾Æ±º À¯´Ö
+        #region ÇÃ·¹ÀÌ¾î À¯´Ö
         private UnityEditor.Editor agentEditor;
         private int selectedAgentIndex = 0;
         private Vector2 agentScrollPosition;
         private List<Tuple<AgentTemplate, Texture2D>> agentTemplates = new List<Tuple<AgentTemplate, Texture2D>>();
+        #endregion
+        #region ½Å¼ö À¯´Ö
+        private UnityEditor.Editor holyAnimalEditor;
+        private int selectedHolyAnimalIndex = 0;
+        private Vector2 holyAnimalScrollPosition;
+        private List<Tuple<HolyAnimalTemplate, Texture2D>> holyAnimalTemplates = new List<Tuple<HolyAnimalTemplate, Texture2D>>();
         #endregion
         #region Àû±º À¯´Ö
         private UnityEditor.Editor enemyEditor;
@@ -110,6 +116,11 @@ namespace SpecialMagicWar.Editor
                 DestroyImmediate(enemyEditor);
                 enemyEditor = null;
             }
+            if (holyAnimalEditor != null)
+            {
+                DestroyImmediate(holyAnimalEditor);
+                holyAnimalEditor = null;
+            }
             if (buffEditor != null)
             {
                 DestroyImmediate(buffEditor);
@@ -163,13 +174,15 @@ namespace SpecialMagicWar.Editor
         private void DrawUnitTitle()
         {
             GUILayout.BeginHorizontal();
-            if (GUILayout.Toggle(selectedUnitTitle == 0, "¾Æ±º À¯´Ö", "Button")) selectedUnitTitle = 0;
-            if (GUILayout.Toggle(selectedUnitTitle == 1, "Àû À¯´Ö", "Button")) selectedUnitTitle = 1;
+            if (GUILayout.Toggle(selectedUnitTitle == 0, "ÇÃ·¹ÀÌ¾î À¯´Ö", "Button")) selectedUnitTitle = 0;
+            if (GUILayout.Toggle(selectedUnitTitle == 1, "½Å¼ö À¯´Ö", "Button")) selectedUnitTitle = 1;
+            if (GUILayout.Toggle(selectedUnitTitle == 2, "Àû À¯´Ö", "Button")) selectedUnitTitle = 2;
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
 
             if (selectedUnitTitle == 0) DrawAgentTab();
+            else if (selectedUnitTitle == 1) DrawHolyAnimalTab();
             else DrawEnemyTab();
         }
 
@@ -214,20 +227,20 @@ namespace SpecialMagicWar.Editor
             else DrawPassiveItemTab();
         }
 
-        #region ¾Æ±º À¯´Ö
+        #region ÇÃ·¹ÀÌ¾î À¯´Ö
         private void DrawAgentTab()
         {
             GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
             GUILayout.BeginVertical(GUILayout.Width(200));
-            if (GUILayout.Button("¾Æ±º À¯´Ö Ãß°¡"))
+            if (GUILayout.Button("ÇÃ·¹ÀÌ¾î À¯´Ö Ãß°¡"))
             {
                 AddAgentTemplate();
             }
-            if (GUILayout.Button("¾Æ±º À¯´Ö »èÁ¦"))
+            if (GUILayout.Button("ÇÃ·¹ÀÌ¾î À¯´Ö »èÁ¦"))
             {
                 DeleteSelectedAgentTemplate();
             }
-            if (GUILayout.Button("¾Æ±º À¯´Ö Å½»ö"))
+            if (GUILayout.Button("ÇÃ·¹ÀÌ¾î À¯´Ö Å½»ö"))
             {
                 LoadAgentTemplates();
             }
@@ -330,6 +343,126 @@ namespace SpecialMagicWar.Editor
                 texture = texture.ResizeTexture(30, 30);
 
                 agentTemplates.Add(new Tuple<AgentTemplate, Texture2D>(agent, texture));
+            }
+        }
+        #endregion
+
+        #region ½Å¼ö À¯´Ö
+        private void DrawHolyAnimalTab()
+        {
+            GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
+            GUILayout.BeginVertical(GUILayout.Width(200));
+            if (GUILayout.Button("½Å¼ö À¯´Ö Ãß°¡"))
+            {
+                AddHolyAnimalTemplate();
+            }
+            if (GUILayout.Button("½Å¼ö À¯´Ö »èÁ¦"))
+            {
+                DeleteSelectedHolyAnimalTemplate();
+            }
+            if (GUILayout.Button("½Å¼ö À¯´Ö Å½»ö"))
+            {
+                LoadHolyAnimalTemplates();
+            }
+
+            DrawLine();
+
+            holyAnimalScrollPosition = GUILayout.BeginScrollView(holyAnimalScrollPosition, false, true);
+
+            var holyAnimalCatalog = new GUIStyle(GUI.skin.button);
+            holyAnimalCatalog.alignment = TextAnchor.MiddleLeft;
+            holyAnimalCatalog.padding = new RectOffset(5, 5, 5, 5);
+            holyAnimalCatalog.margin = new RectOffset(5, 5, -2, -2);
+            holyAnimalCatalog.border = new RectOffset(0, 0, 0, 0);
+            holyAnimalCatalog.fixedWidth = GUI.skin.box.fixedWidth;
+            holyAnimalCatalog.fixedHeight = GUI.skin.box.fixedHeight;
+
+            for (int i = 0; i < holyAnimalTemplates.Count; i++)
+            {
+                bool isSelected = (selectedHolyAnimalIndex == i);
+
+                var text = "  " + holyAnimalTemplates[i].Item1.displayName;
+                text = text.Substring(0, Mathf.Min(text.Length, 13));
+                GUIContent content = new GUIContent(text, holyAnimalTemplates[i].Item2);
+
+                if (GUILayout.Toggle(isSelected, content, holyAnimalCatalog))
+                {
+                    if (selectedHolyAnimalIndex != i)
+                    {
+                        selectedHolyAnimalIndex = i;
+
+                        GUI.FocusControl(null);
+                    }
+                }
+            }
+            GUILayout.EndScrollView();
+            GUILayout.EndVertical();
+
+            GUILayout.BeginVertical(GUILayout.ExpandWidth(true));
+
+            if (holyAnimalTemplates.Count > 0 && selectedHolyAnimalIndex < holyAnimalTemplates.Count)
+            {
+                HolyAnimalTemplate selectedHolyAnimal = holyAnimalTemplates[selectedHolyAnimalIndex].Item1;
+
+                if (holyAnimalEditor == null || holyAnimalEditor.target != selectedHolyAnimal)
+                {
+                    holyAnimalEditor = UnityEditor.Editor.CreateEditor(selectedHolyAnimal);
+                }
+
+                contentScrollPosition = GUILayout.BeginScrollView(contentScrollPosition, false, false);
+                holyAnimalEditor.OnInspectorGUI();
+                GUILayout.EndScrollView();
+            }
+
+            GUILayout.EndVertical();
+            GUILayout.EndHorizontal();
+        }
+
+        private void AddHolyAnimalTemplate()
+        {
+            // ½Å¼ö À¯´Ö ÅÛÇÃ¸´ »ý¼º
+            HolyAnimalTemplate newHolyAnimal = CreateInstance<HolyAnimalTemplate>();
+
+            // ¿¡¼Â ÀúÀå
+            string defaultPath = "Assets/SpecialMagicWar/GameData/Unit/HolyAnimal";
+            string path = EditorUtility.SaveFilePanelInProject("SpecialMagicWar/GameData/Unit/HolyAnimal", "HolyAnimal_", "asset", "¾Æ±º ÅÛÇÃ¸´Àº SpecialMagicWar/GameData/Unit/HolyAnimal À§Ä¡¿¡ ÀúÀåµË´Ï´Ù..", defaultPath);
+            if (!string.IsNullOrEmpty(path))
+            {
+                newHolyAnimal.SetDisplayName(Path.GetFileNameWithoutExtension(path).Replace("HolyAnimal_", ""));
+
+                AssetDatabase.CreateAsset(newHolyAnimal, path);
+                AssetDatabase.SaveAssets();
+                LoadHolyAnimalTemplates();
+            }
+        }
+
+        private void DeleteSelectedHolyAnimalTemplate()
+        {
+            if (holyAnimalTemplates.Count > 0)
+            {
+                HolyAnimalTemplate selectedHolyAnimal = holyAnimalTemplates[selectedHolyAnimalIndex].Item1;
+                string assetPath = AssetDatabase.GetAssetPath(selectedHolyAnimal);
+                holyAnimalTemplates.RemoveAt(selectedHolyAnimalIndex);
+                AssetDatabase.DeleteAsset(assetPath);
+                AssetDatabase.SaveAssets();
+            }
+        }
+
+        private void LoadHolyAnimalTemplates()
+        {
+            if (emptyTexture2D == null) emptyTexture2D = CreateTexture(Color.gray);
+
+            holyAnimalTemplates.Clear();
+            string[] guids = AssetDatabase.FindAssets("t:HolyAnimalTemplate");
+            foreach (var guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                HolyAnimalTemplate agent = AssetDatabase.LoadAssetAtPath<HolyAnimalTemplate>(path);
+
+                var texture = (agent.sprite == null) ? emptyTexture2D : agent.sprite.texture;
+                texture = texture.ResizeTexture(30, 30);
+
+                holyAnimalTemplates.Add(new Tuple<HolyAnimalTemplate, Texture2D>(agent, texture));
             }
         }
         #endregion

@@ -1,11 +1,14 @@
 using FrameWork;
 using SpecialMagicWar.Save;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpecialMagicWar.Core
 {
     public class PlayerCreateSystem : MonoBehaviour
     {
+        internal event UnityAction<AgentUnit> onCreatePlayer;
+
         internal void CreatePlayer()
         {
             var agentSystem = BattleManager.Instance.GetSubSystem<AgentSystem>();
@@ -27,6 +30,7 @@ namespace SpecialMagicWar.Core
 
                     // À¯´Ö µî·Ï
                     agentSystem.Regist(unit);
+                    onCreatePlayer?.Invoke(unit);
                 }
                 else
                 {

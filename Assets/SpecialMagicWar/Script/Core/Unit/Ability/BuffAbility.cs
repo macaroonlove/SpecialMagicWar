@@ -147,13 +147,19 @@ namespace SpecialMagicWar.Core
         {
             base.Initialize(unit);
 
-            unit.GetAbility<AttackAbility>().onAttack += RemoveStatusByAttack;
+            if (unit is not AgentUnit)
+            {
+                unit.GetAbility<AttackAbility>().onAttack += RemoveStatusByAttack;
+            }
             unit.GetAbility<HealthAbility>().onDeath += ClearStatusEffects;
         }
 
         internal override void Deinitialize()
         {
-            unit.GetAbility<AttackAbility>().onAttack -= RemoveStatusByAttack;
+            if (unit is not AgentUnit)
+            {
+                unit.GetAbility<AttackAbility>().onAttack -= RemoveStatusByAttack;
+            }
             unit.GetAbility<HealthAbility>().onDeath -= ClearStatusEffects;
         }
 

@@ -81,15 +81,15 @@ namespace SpecialMagicWar.Core
 
         internal override void Initialize(Unit unit)
         {
-            if (unit is AgentUnit agentUnit)
+            if (unit is HolyAnimalUnit holyAnimalUnit)
             {
                 _buffAbility = unit.GetAbility<BuffAbility>();
                 _abnormalStatusAbility = unit.GetAbility<AbnormalStatusAbility>();
 
-                _baseMaxMana = agentUnit.template.MaxMana;
-                _currentMana = agentUnit.template.StartMana;
-                _baseManaRecoveryPerSec = agentUnit.template.ManaRecoveryPerSec;
-                _manaRecoveryType = agentUnit.template.ManaRecoveryType;
+                _baseMaxMana = holyAnimalUnit.template.MaxMana;
+                _currentMana = holyAnimalUnit.template.StartMana;
+                _baseManaRecoveryPerSec = holyAnimalUnit.template.ManaRecoveryPerSec;
+                _manaRecoveryType = holyAnimalUnit.template.ManaRecoveryType;
             }
             else if (unit is EnemyUnit enemyUnit)
             {

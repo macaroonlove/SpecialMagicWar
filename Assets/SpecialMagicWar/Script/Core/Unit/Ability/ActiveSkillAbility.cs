@@ -128,9 +128,9 @@ namespace SpecialMagicWar.Core
                     return false;
             }
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10, layerMask))
             {
-                var distance = Vector3.Distance(unit.transform.position, hit.point);
+                var distance = hit.distance;
 
                 if (distance <= template.skillRange)
                 {
@@ -144,7 +144,7 @@ namespace SpecialMagicWar.Core
 
         private bool TryExecuteNonTargetingSkill(ActiveSkillTemplate template)
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10))
             {
                 _targetVector = hit.point;
 
@@ -165,7 +165,7 @@ namespace SpecialMagicWar.Core
                 isSuccess = _unitAnimationAbility.TrySetTrigger(template.parameterHash);
                 _isSkillActive = true;
             }
-            
+
             if (isSuccess == false)
             {
                 ExecuteSkill();

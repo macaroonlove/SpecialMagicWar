@@ -14,6 +14,7 @@ namespace SpecialMagicWar.Core
         private Dictionary<Type, IBattleSystem> _subSystems = new Dictionary<Type, IBattleSystem>();
 
         internal Transform canvas { get; private set; }
+        internal PlayerCreateSystem playerCreateSystem { get; private set; }
 
         internal event UnityAction onBattleInitialize;
         internal event UnityAction onBattleDeinitialize;
@@ -30,6 +31,7 @@ namespace SpecialMagicWar.Core
             }
 
             canvas = GetComponentInChildren<Canvas>().transform;
+            playerCreateSystem = GetComponentInChildren<PlayerCreateSystem>();
 
             // TODO: 포톤을 통해 방에 입장하면 RPC를 통해 target을 AllViaServer로 Ready 여부를 보냄, 두 플레이어가 모두 준비 완료했을 때, 호출하도록 구현
             //InitializeBattle();
@@ -40,7 +42,15 @@ namespace SpecialMagicWar.Core
         {
             // TODO: 포톤을 사용하여 방에 입장했을 경우 생성
             // 플레이어 생성
-            GetComponentInChildren<PlayerCreateSystem>().CreatePlayer();
+            playerCreateSystem.CreatePlayer();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                InitializeBattle();
+            }
         }
 
         private void OnDestroy()

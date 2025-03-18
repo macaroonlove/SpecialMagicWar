@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
-  m_Name: "ActiveSkill_\uBCA0\uAE30"
+  m_Name: "ActiveSkill_\uBAA8\uB798\uC8FC\uBA39"
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 21300000, guid: 2a5c892bdd014164da633b8c6fd0f246, type: 3}
+  _sprite: {fileID: 5223213533427645220, guid: d24756e433435b249be5737019648d69, type: 3}
   _id: 0
-  _displayName: "\uBCA0\uAE30"
-  _description: "\uC801\uC744 \uBCA0\uC5B4 \uBB3C\uB9AC \uD53C\uD574(50 + <color=red>\uACF5\uACA9\uB825\uC758
-    100%</color> + <color=yellow>\uCD5C\uB300HP\uC758 10%</color>)\uB97C \uC785\uD799\uB2C8\uB2E4."
-  _needMana: 5
-  _cooldownTime: 5
+  _displayName: "\uBAA8\uB798\uC8FC\uBA39"
+  _description: "\uBAA8\uB798\uC8FC\uBA39\uC73C\uB85C \uADFC\uC811\uD55C \uC801\uC5D0\uAC8C
+    200\uC758 \uBC94\uC704 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  _needMana: 0
+  _cooldownTime: 1.3
   _skillType: 0
   _unitType: 0
   _skillRange: 0
-  _parameterName: 
-  _parameterHash: 0
+  _parameterName: attack
+  _parameterHash: 1203776827
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}
   effects:
-  - {fileID: 7610122780046898410}
---- !u!114 &7610122780046898410
+  - {fileID: 8504595588848378478}
+--- !u!114 &8504595588848378478
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,15 +45,11 @@ MonoBehaviour:
   _isTick: 0
   _tickCycle: 0
   _tickCount: 0
-  _damageType: 1
+  _damageType: 2
   _applyTypeByAmountDatas:
   - applyType: 0
-    amount: 50
-  - applyType: 2
-    amount: 0.1
-  - applyType: 4
-    amount: 0.01
+    amount: 200
   _attackType: 0
-  _target: 1
-  _radius: 3
+  _target: 3
+  _radius: 0.4
   _numberOfTarget: 0

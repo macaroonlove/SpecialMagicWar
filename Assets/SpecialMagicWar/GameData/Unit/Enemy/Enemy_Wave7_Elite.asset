@@ -18,8 +18,6 @@ MonoBehaviour:
   _sprite: {fileID: 0}
   _prefab: {fileID: 5061083932297513561, guid: 5883ca282d09ea843b73a144fa8c0263, type: 3}
   _moveSpeed: 2
-  _chaseRange: 0
-  _chaseFailRange: 0
   _moveType: 0
   _atk: 0
   _attackTerm: 0
@@ -33,7 +31,7 @@ MonoBehaviour:
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
-  _maxHP: 0
+  _maxHP: 1000
   _physicalResistance: 0
   _magicResistance: 0
   _maxMana: 0

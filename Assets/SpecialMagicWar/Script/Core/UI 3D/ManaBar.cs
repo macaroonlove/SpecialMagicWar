@@ -54,7 +54,7 @@ namespace SpecialMagicWar.Core
         {
             Hide();
 
-            if (_manaAbility.finalMaxMana > 0)
+            if (_manaAbility?.finalMaxMana > 0)
             {
                 _manaAbility.onChangedMana -= OnChangedMana;
             }

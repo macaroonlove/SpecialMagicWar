@@ -172,20 +172,20 @@ namespace SpecialMagicWar.Core
             _findTargetAbility = unit.GetAbility<FindTargetAbility>();
             _projectileAbility = unit.GetAbility<ProjectileAbility>();
 
-            if (unit is AgentUnit agentUnit)
+            if (unit is HolyAnimalUnit holyAnimalUnit)
             {
-                _baseATK = agentUnit.template.ATK;
-                _baseAttackTerm = agentUnit.template.AttackTerm;
-                _baseAttackRange = agentUnit.template.AttackRange;
-                _baseAttackType = agentUnit.template.AttackType;
-                _casterFX = agentUnit.template.casterFX;
-                _targetFX = agentUnit.template.targetFX;
+                _baseATK = holyAnimalUnit.template.ATK;
+                _baseAttackTerm = holyAnimalUnit.template.AttackTerm;
+                _baseAttackRange = holyAnimalUnit.template.AttackRange;
+                _baseAttackType = holyAnimalUnit.template.AttackType;
+                _casterFX = holyAnimalUnit.template.casterFX;
+                _targetFX = holyAnimalUnit.template.targetFX;
 
-                if (agentUnit.template.isProjectileAttack)
+                if (holyAnimalUnit.template.isProjectileAttack)
                 {
                     _isProjectileAttack = true;
-                    _projectilePrefab = agentUnit.template.projectilePrefab;
-                    _spawnPoint = agentUnit.template.spawnPoint;
+                    _projectilePrefab = holyAnimalUnit.template.projectilePrefab;
+                    _spawnPoint = holyAnimalUnit.template.spawnPoint;
                 }
             }
             else if (unit is EnemyUnit enemyUnit)
