@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: AgentLibrary_All
   m_EditorClassIdentifier: 
   templates:
-  - {fileID: 11400000, guid: 6bbf354f76a6e634f825d69f66293dff, type: 2}
+  - {fileID: 11400000, guid: 45c1af25a18fc7c448b858e0e8f490bc, type: 2}
   _isAll: 1
-  _isOwned: 0

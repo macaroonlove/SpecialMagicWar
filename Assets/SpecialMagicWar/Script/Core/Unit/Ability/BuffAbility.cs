@@ -151,7 +151,10 @@ namespace SpecialMagicWar.Core
             {
                 unit.GetAbility<AttackAbility>().onAttack += RemoveStatusByAttack;
             }
-            unit.GetAbility<HealthAbility>().onDeath += ClearStatusEffects;
+            if (unit is not HolyAnimalUnit)
+            {
+                unit.healthAbility.onDeath += ClearStatusEffects;
+            }
         }
 
         internal override void Deinitialize()
@@ -160,7 +163,10 @@ namespace SpecialMagicWar.Core
             {
                 unit.GetAbility<AttackAbility>().onAttack -= RemoveStatusByAttack;
             }
-            unit.GetAbility<HealthAbility>().onDeath -= ClearStatusEffects;
+            if (unit is not HolyAnimalUnit)
+            {
+                unit.healthAbility.onDeath -= ClearStatusEffects;
+            }
         }
 
         internal void ApplyBuff(BuffTemplate template, float duration)

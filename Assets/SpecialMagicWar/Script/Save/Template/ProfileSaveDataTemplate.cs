@@ -21,8 +21,11 @@ namespace SpecialMagicWar.Save
         [Tooltip("적용하고 있는 플레이어 스킨")]
         public ObscuredInt playerSkin = 0;
 
-        [Tooltip("보유하고 있는 아군 유닛들")]
-        public List<Agent> ownedAgents = new List<Agent>();
+        [Tooltip("보유하고 있는 플레이어 스킨들")]
+        public List<int> ownedPlayerSkinIds = new List<int>();
+
+        [Tooltip("보유하고 있는 신수들")]
+        public List<Agent> ownedHolyAnimals = new List<Agent>();
 
         [Tooltip("보유하고 있는 패시브 아이템들의 아이디")]
         public List<int> ownedPassiveItemIds = new List<int>();
@@ -62,16 +65,29 @@ namespace SpecialMagicWar.Save
         public int playerSkin { get => _data.playerSkin; set => _data.playerSkin = value; }
         public bool isClearTutorial { get => _data.isClearTutorial; set => _data.isClearTutorial = value; }
 
+        public List<ProfileSaveData.Agent> ownedHolyAnimals => _data.ownedHolyAnimals;
+
         public override void SetDefaultValues()
         {
             _data = new ProfileSaveData();
 
-            // 초기 캐릭터 추가
-            AddAgent(0);
-            AddAgent(1);
+            // 초기 플레이어 스킨 추가
+            AddPlayerSkin(0);
+
+            // 초기 신수 추가
+            AddHolyAnimal(0);
+            AddHolyAnimal(1);
+            AddHolyAnimal(2);
+            AddHolyAnimal(3);
+            AddHolyAnimal(4);
+            AddHolyAnimal(5);
+            AddHolyAnimal(6);
+            AddHolyAnimal(7);
 
             // 초기 골드 추가
             _data.gold = 100;
+
+            // 초기 플레이어 스킨 적용
             _data.playerSkin = 0;
 
             isLoaded = true;
@@ -83,8 +99,8 @@ namespace SpecialMagicWar.Save
 
             if (_data != null)
             {
-                isLoaded = _data.ownedAgents.Count > 0;
-                Debug.Log(_data);
+                isLoaded = _data.ownedHolyAnimals.Count > 0;
+                
                 _goldVariable.Value = _data.gold;
             }
 
@@ -106,23 +122,34 @@ namespace SpecialMagicWar.Save
             isLoaded = false;
         }
 
-        #region 유닛
         /// <summary>
-        /// 유닛을 레벨업 하는데 요구하는 개수
+        /// 플레이어 스킨 추가
         /// </summary>
-        private static readonly ObscuredInt[] _agentUpgradeRequirements = { 0, 1, 3, 5, 7, 10, 15, 30, 50, 90, 150 };
+        public void AddPlayerSkin(int id)
+        {
+            if (_data.ownedPlayerSkinIds.Contains(id) == false)
+            {
+                _data.ownedPlayerSkinIds.Add(id);
+            }
+        }
+
+        #region 신수 유닛
+        /// <summary>
+        /// 신수를 레벨업 하는데 요구하는 개수
+        /// </summary>
+        private static readonly ObscuredInt[] _holyAnimalUpgradeRequirements = { 0, 1, 3, 5, 7, 10, 15, 30, 50, 90, 150 };
 
         /// <summary>
-        /// 유닛 추가
+        /// 신수 추가
         /// </summary>
-        public void AddAgent(int id)
+        public void AddHolyAnimal(int id)
         {
-            var modifyUnit = _data.ownedAgents.Find(x => x.id == id);
+            var modifyUnit = _data.ownedHolyAnimals.Find(x => x.id == id);
 
             // 유닛이 없었다면 유닛 추가
             if (modifyUnit == null)
             {
-                _data.ownedAgents.Add(new ProfileSaveData.Agent(id));
+                _data.ownedHolyAnimals.Add(new ProfileSaveData.Agent(id));
             }
             // 유닛이 있었다면 유닛의 개수 추가
             else
@@ -132,16 +159,16 @@ namespace SpecialMagicWar.Save
         }
 
         /// <summary>
-        /// 유닛 업그레이드
+        /// 신수 레벨업
         /// </summary>
-        public bool UpgradeAgent(int id)
+        public bool UpgradeHolyAnimal(int id)
         {
-            var modifyUnit = _data.ownedAgents.Find(x => x.id == id);
+            var modifyUnit = _data.ownedHolyAnimals.Find(x => x.id == id);
 
             // 유닛이 있다면 && 최대 레벨이 아니라면
-            if (modifyUnit != null && modifyUnit.level < _agentUpgradeRequirements.Length - 1)
+            if (modifyUnit != null && modifyUnit.level < _holyAnimalUpgradeRequirements.Length - 1)
             {
-                int requiredCount = _agentUpgradeRequirements[modifyUnit.level];
+                int requiredCount = _holyAnimalUpgradeRequirements[modifyUnit.level];
 
                 if (modifyUnit.unitCount >= requiredCount)
                 {
@@ -156,15 +183,15 @@ namespace SpecialMagicWar.Save
         }
 
         /// <summary>
-        /// 업그레이드 가능한 유닛인지 판별
+        /// 레벨업 가능한 유닛인지 판별
         /// </summary>
-        public bool GetUpgradeableUnit(int id)
+        public bool GetUpgradeableHolyAnimal(int id)
         {
-            var modifyUnit = _data.ownedAgents.Find(x => x.id == id);
+            var modifyUnit = _data.ownedHolyAnimals.Find(x => x.id == id);
 
             return modifyUnit != null
-                && modifyUnit.level < _agentUpgradeRequirements.Length - 1
-                && modifyUnit.unitCount >= _agentUpgradeRequirements[modifyUnit.level];
+                && modifyUnit.level < _holyAnimalUpgradeRequirements.Length - 1
+                && modifyUnit.unitCount >= _holyAnimalUpgradeRequirements[modifyUnit.level];
         }
         #endregion
 

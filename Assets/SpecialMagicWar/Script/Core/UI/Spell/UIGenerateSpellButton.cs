@@ -19,15 +19,18 @@ namespace SpecialMagicWar.Core
         }
         #endregion
 
-        [SerializeField] private UISpellCanvas _uiSpellCanvas;
+        private UISpellCanvas _uiSpellCanvas;
+
         private TextMeshProUGUI _needCostText;
         private Button _button;
 
         private CostSystem _costSystem;
         private int _needCost;
 
-        protected override void Initialize()
+        internal void Initialize(UISpellCanvas uiSpellCanvas)
         {
+            _uiSpellCanvas = uiSpellCanvas;
+
             _costSystem = BattleManager.Instance.GetSubSystem<CostSystem>();
             _costSystem.onChangedCost += OnChangeCost;
 

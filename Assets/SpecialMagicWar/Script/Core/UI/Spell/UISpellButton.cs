@@ -48,6 +48,7 @@ namespace SpecialMagicWar.Core
 
         #region 프로퍼티
         internal ActiveSkillTemplate template => _template;
+        internal int spellCount => _spellCount;
 
         private float finalCoolDownTime
         {

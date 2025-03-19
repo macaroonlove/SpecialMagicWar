@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 namespace SpecialMagicWar.Core
 {
+    /// <summary>
+    /// 플레이어 유닛(샤먼) 소환하는 시스템
+    /// </summary>
     public class PlayerCreateSystem : MonoBehaviour
     {
         internal event UnityAction<AgentUnit> onCreatePlayer;

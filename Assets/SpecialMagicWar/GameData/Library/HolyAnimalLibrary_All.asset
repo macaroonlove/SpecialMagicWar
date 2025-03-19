@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927c1b7f2d35f9f448de0cba6f17bd6c, type: 3}
+  m_Name: HolyAnimalLibrary_All
+  m_EditorClassIdentifier: 
+  templates:
+  - {fileID: 11400000, guid: 86bb97ed363d6b446b06fdcfa8a6329f, type: 2}
+  - {fileID: 11400000, guid: 891a81a5267ed06489335a684b610595, type: 2}
+  - {fileID: 11400000, guid: d59ddbe549a900242ae8b66b40447f36, type: 2}
+  - {fileID: 11400000, guid: 973aadccc9f56fa4db1ecc87a33c41f7, type: 2}
+  - {fileID: 11400000, guid: 47a5ab5a4197beb43a86f5619faf3239, type: 2}
+  - {fileID: 11400000, guid: e89e7ceb8ec6f3e4e88903db56180f81, type: 2}
+  - {fileID: 11400000, guid: 16dc537b232f42f4e98578c80a1e0869, type: 2}
+  - {fileID: 11400000, guid: 3b0a3da60974f1c4c829ef124d37cbf6, type: 2}
+  _isAll: 1

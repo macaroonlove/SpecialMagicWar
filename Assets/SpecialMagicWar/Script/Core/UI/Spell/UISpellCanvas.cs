@@ -2,11 +2,14 @@ using FrameWork.UIBinding;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpecialMagicWar.Core
 {
     public class UISpellCanvas : UIBase
     {
+        private List<UISpellButton> _spells;
+
         private List<UISpellButton> _commonRarity;
         private List<UISpellButton> _rareRarity;
         private List<UISpellButton> _epicRarity;
@@ -23,9 +26,13 @@ namespace SpecialMagicWar.Core
             { 0.20f, 0.20f, 0.25f, 0.20f, 0.10f, 0.05f },
         };
 
+        internal List<UISpellButton> spells => _spells;
+
+        internal event UnityAction<List<UISpellButton>> onChangeSpell;
+
         protected override void Initialize()
         {
-            var _spells = GetComponentsInChildren<UISpellButton>().ToList();
+            _spells = GetComponentsInChildren<UISpellButton>().ToList();
 
             _commonRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Common).ToList();
             _rareRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Rare).ToList();
@@ -33,16 +40,9 @@ namespace SpecialMagicWar.Core
             _legendRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Legend).ToList();
             _beginningRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Beginning).ToList();
             _godRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.God).ToList();
-
-            BattleManager.Instance.playerCreateSystem.onCreatePlayer += InitializeSpellButton;
         }
 
-        private void OnDestroy()
-        {
-            BattleManager.Instance.playerCreateSystem.onCreatePlayer -= InitializeSpellButton;
-        }
-
-        private void InitializeSpellButton(AgentUnit unit)
+        internal void Initialize(AgentUnit unit)
         {
             foreach (var spell in _commonRarity)
             {
@@ -126,6 +126,8 @@ namespace SpecialMagicWar.Core
 
             var spell = selectedList[Random.Range(0, 3)];
             spell.Show();
+
+            onChangeSpell?.Invoke(_spells);
         }
 
         internal void GenerateRandomNextSpell(ERarity rarity)
@@ -155,6 +157,8 @@ namespace SpecialMagicWar.Core
 
             var spell = selectedList[Random.Range(0, 3)];
             spell.Show();
+
+            onChangeSpell?.Invoke(_spells);
         }
     }
 }

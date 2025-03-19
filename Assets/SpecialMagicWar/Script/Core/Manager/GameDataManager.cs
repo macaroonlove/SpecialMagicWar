@@ -1,5 +1,4 @@
 using FrameWork;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,17 +7,20 @@ namespace SpecialMagicWar.Core
 {
     public class GameDataManager : PersistentSingleton<GameDataManager>
     {
-        [SerializeField] private AgentLibraryTemplate _allAgentLibrary;
-        [SerializeField] private AgentLibraryTemplate _ownedAgentLibrary;
+        [SerializeField] private PlayerLibraryTemplate _playerLibrary;
+        [SerializeField] private HolyAnimalLibraryTemplate _holyAnimalLibrary;
         [SerializeField] private WaveLibraryTemplate _waveLibrary;
-
-        internal List<AgentTemplate> ownedAgentTemplate => _ownedAgentLibrary.templates;
-
+        
         internal WaveLibraryTemplate waveLibrary => _waveLibrary;
 
-        internal AgentTemplate GetAllAgentTemplateById(int id)
+        internal AgentTemplate GetPlayerTemplateById(int id)
         {
-            return _allAgentLibrary.templates.Where(x => x.id == id).FirstOrDefault();
+            return _playerLibrary.templates.Where(x => x.id == id).FirstOrDefault();
+        }
+
+        internal HolyAnimalTemplate GetHolyAnimalTemplateById(int id)
+        {
+            return _holyAnimalLibrary.templates.Where(x => x.id == id).FirstOrDefault();
         }
     }
 }

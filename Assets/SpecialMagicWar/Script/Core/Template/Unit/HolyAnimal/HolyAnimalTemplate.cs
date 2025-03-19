@@ -1,8 +1,16 @@
 using FrameWork.Editor;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpecialMagicWar.Core
 {
+    [System.Serializable]
+    public class SpawnCondition
+    {
+        public ActiveSkillTemplate spellTemplate;
+        public int count;
+    }
+
     [CreateAssetMenu(menuName = "Templates/Unit/HolyAnimal", fileName = "HolyAnimal_", order = 0)]
     public class HolyAnimalTemplate : ScriptableObject
     {
@@ -34,12 +42,14 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private int _physicalResistance;
         [HideInInspector, SerializeField] private int _magicResistance;
 
-        [HideInInspector, SerializeField,] private int _maxMana;
+        [HideInInspector, SerializeField] private int _maxMana;
         [HideInInspector, SerializeField] private int _startMana;
 
         [HideInInspector, SerializeField] private int _hpRecoveryPerSec;
         [HideInInspector, SerializeField] private int _manaRecoveryPerSec;
         [HideInInspector, SerializeField] private EManaRecoveryType _manaRecoveryType;
+
+        [SerializeField] private List<SpawnCondition> _conditions = new List<SpawnCondition>();
 
         [HideInInspector, SerializeField] private FX _casterFX;
         [HideInInspector, SerializeField] private FX _targetFX;
@@ -81,6 +91,8 @@ namespace SpecialMagicWar.Core
         public int HPRecoveryPerSec => _hpRecoveryPerSec;
         public int ManaRecoveryPerSec => _manaRecoveryPerSec;
         public EManaRecoveryType ManaRecoveryType => _manaRecoveryType;
+
+        public List<SpawnCondition> conditions => _conditions;
 
         public FX casterFX => _casterFX;
         public FX targetFX => _targetFX;
@@ -129,6 +141,7 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _hpRecoveryPerSec;
         private SerializedProperty _manaRecoveryPerSec;
         private SerializedProperty _manaRecoveryType;
+        private SerializedProperty _conditions;
         private SerializedProperty _casterFX;
         private SerializedProperty _targetFX;
         private SerializedProperty _isOwned;
@@ -160,6 +173,7 @@ namespace SpecialMagicWar.Editor
             _hpRecoveryPerSec = serializedObject.FindProperty("_hpRecoveryPerSec");
             _manaRecoveryPerSec = serializedObject.FindProperty("_manaRecoveryPerSec");
             _manaRecoveryType = serializedObject.FindProperty("_manaRecoveryType");
+            _conditions = serializedObject.FindProperty("_conditions");
             _casterFX = serializedObject.FindProperty("_casterFX");
             _targetFX = serializedObject.FindProperty("_targetFX");
             _isOwned = serializedObject.FindProperty("isOwned");
@@ -327,6 +341,13 @@ namespace SpecialMagicWar.Editor
                 EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
                 GUILayout.EndHorizontal();
             }
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("소환 조건", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_conditions, GUIContent.none);
+            GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
 

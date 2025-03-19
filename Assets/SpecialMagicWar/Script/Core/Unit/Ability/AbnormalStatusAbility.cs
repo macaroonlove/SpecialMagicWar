@@ -43,14 +43,20 @@ namespace SpecialMagicWar.Core
         {
             base.Initialize(unit);
 
-            unit.GetAbility<HitAbility>().onHit += RemoveStatusByHit;
-            unit.GetAbility<HealthAbility>().onDeath += ClearStatusEffects;
+            if (unit is not HolyAnimalUnit)
+            {
+                unit.GetAbility<HitAbility>().onHit += RemoveStatusByHit;
+                unit.healthAbility.onDeath += ClearStatusEffects;
+            }
         }
 
         internal void DeInitialize()
         {
-            unit.GetAbility<HitAbility>().onHit -= RemoveStatusByHit;
-            unit.GetAbility<HealthAbility>().onDeath -= ClearStatusEffects;
+            if (unit is not HolyAnimalUnit)
+            {
+                unit.GetAbility<HitAbility>().onHit -= RemoveStatusByHit;
+                unit.healthAbility.onDeath -= ClearStatusEffects;
+            }
         }
 
         internal void ApplyAbnormalStatus(AbnormalStatusTemplate template, float duration)

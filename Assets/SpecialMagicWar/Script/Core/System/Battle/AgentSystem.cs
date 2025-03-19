@@ -11,7 +11,10 @@ namespace SpecialMagicWar.Core
     /// </summary>
     public class AgentSystem : MonoBehaviour, IBattleSystem
     {
-        [SerializeField, ReadOnly] private List<AgentUnit> _agents = new List<AgentUnit>();
+        [SerializeField, ReadOnly] private List<AgentUnit> _players = new List<AgentUnit>();
+        [SerializeField, ReadOnly] private List<HolyAnimalUnit> _holyAnimals = new List<HolyAnimalUnit>();
+
+        internal int holyAnimalCount => _holyAnimals.Count;
 
         internal event UnityAction<Unit> onRegist;
 
@@ -23,7 +26,7 @@ namespace SpecialMagicWar.Core
         public void Deinitialize()
         {
             // 유닛 오브젝트 모두 파괴
-            foreach (var agent in _agents)
+            foreach (var agent in _players)
             {
                 Destroy(agent.gameObject);
             }
@@ -31,14 +34,26 @@ namespace SpecialMagicWar.Core
 
         internal void Regist(AgentUnit agent)
         {
-            _agents.Add(agent);
+            _players.Add(agent);
 
             onRegist?.Invoke(agent);
         }
 
         internal void Deregist(AgentUnit agent)
         {
-            _agents.Remove(agent);
+            _players.Remove(agent);
+        }
+
+        internal void Regist(HolyAnimalUnit holyAnimal)
+        {
+            _holyAnimals.Add(holyAnimal);
+
+            onRegist?.Invoke(holyAnimal);
+        }
+
+        internal void Deregist(HolyAnimalUnit holyAnimal)
+        {
+            _holyAnimals.Remove(holyAnimal);
         }
 
         #region 유틸리티 메서드
@@ -47,7 +62,7 @@ namespace SpecialMagicWar.Core
         /// </summary>
         internal List<AgentUnit> GetAllAgents()
         {
-            return _agents;
+            return _players;
         }
 
         /// <summary>
@@ -60,7 +75,7 @@ namespace SpecialMagicWar.Core
 
             radius *= radius;
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {
@@ -97,7 +112,7 @@ namespace SpecialMagicWar.Core
 
             radius *= radius;
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {
@@ -135,7 +150,7 @@ namespace SpecialMagicWar.Core
             List<AgentUnit> agents = new List<AgentUnit>();
             List<(AgentUnit enemy, float distance)> agentsWithDistance = new List<(AgentUnit, float)>();
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {
@@ -178,7 +193,7 @@ namespace SpecialMagicWar.Core
         {
             List<AgentUnit> agents = new List<AgentUnit>();
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {
@@ -202,7 +217,7 @@ namespace SpecialMagicWar.Core
 
             radius *= radius;
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {
@@ -239,7 +254,7 @@ namespace SpecialMagicWar.Core
         {
             List<AgentUnit> agents = new List<AgentUnit>();
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {
@@ -262,7 +277,7 @@ namespace SpecialMagicWar.Core
             radius *= radius;
             float nearestDistance = Mathf.Infinity;
 
-            foreach (AgentUnit agent in _agents)
+            foreach (AgentUnit agent in _players)
             {
                 if (agent != null && agent.isActiveAndEnabled)
                 {

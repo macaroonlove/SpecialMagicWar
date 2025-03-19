@@ -517,6 +517,8 @@ MonoBehaviour:
     - 75b89a803485e694f90855a48482fa4f
     - b112c7111a2d6df4583fea633bd075f2
     - 4658215f670b84858bd0c8d70a2f9496
+    - f3a10a7034903c649beaf9d547bf0eae
+    - 9fbfdbfa2e2b24443a1ece7a6891d2f9
     values:
     - colorIndex: 1
       iconNameOrGuid: RawImage Icon
@@ -1523,4 +1525,8 @@ MonoBehaviour:
     - colorIndex: 7
       iconNameOrGuid: Prefab Icon
     - colorIndex: 10
+      iconNameOrGuid: 
+    - colorIndex: 6
+      iconNameOrGuid: 
+    - colorIndex: 7
       iconNameOrGuid: 

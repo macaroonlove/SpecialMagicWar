@@ -5,17 +5,15 @@ using UnityEngine;
 
 namespace SpecialMagicWar.Core
 {
-    [CreateAssetMenu(menuName = "Templates/Library/Agent", fileName = "AgentLibrary", order = 0)]
-    public class AgentLibraryTemplate : ScriptableObject
+    [CreateAssetMenu(menuName = "Templates/Library/Player", fileName = "PlayerLibrary", order = 0)]
+    public class PlayerLibraryTemplate : ScriptableObject
     {
         public List<AgentTemplate> templates = new List<AgentTemplate>();
 
         [Header("필터")]
         [Label("모든 유닛"), SerializeField] private bool _isAll;
-        [Condition("_isAll", false)]
-        [Label("소유 여부"), SerializeField] private bool _isOwned;
 
-        [ContextMenu("필터로 AgentTemplate 찾기")]
+        [ContextMenu("필터로 PlayerTemplate 찾기")]
         public void FindAllRefresh()
         {
             templates.Clear();
@@ -26,13 +24,14 @@ namespace SpecialMagicWar.Core
                 var template = AssetDatabase.LoadAssetAtPath(path, typeof(AgentTemplate)) as AgentTemplate;
 
                 bool isInclude = _isAll;
-                isInclude |= _isOwned && template.isOwned;
 
                 if (template != null && isInclude)
                 {
                     templates.Add(template);
                 }
             }
+            templates.Sort((t1, t2) => t1.id.CompareTo(t2.id));
+
             // 변경 사항을 저장
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();

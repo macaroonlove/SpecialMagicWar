@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011bf72bf5d10f44292b190b49cbb11d, type: 3}
+  m_Name: "HolyAnimal_\uB9CC\uD2F0\uCF54\uC5B4"
+  m_EditorClassIdentifier: 
+  _id: 3
+  _displayName: "\uB9CC\uD2F0\uCF54\uC5B4"
+  _description: 
+  _sprite: {fileID: 21300000, guid: 9de2f57ee2155724395d03165950dc75, type: 3}
+  _prefab: {fileID: 3662881773140096974, guid: 336e13dc1651edc4f86777c6366338f6, type: 3}
+  _atk: 0
+  _attackTerm: 0
+  _attackRange: 0
+  _isProjectileAttack: 0
+  _projectilePrefab: {fileID: 0}
+  _spawnPoint: 0
+  _attackType: 0
+  _damageType: 0
+  _criticalHitChance: 0
+  _criticalHitDamage: 0
+  _physicalPenetration: 0
+  _magicPenetration: 0
+  _maxHP: 0
+  _physicalResistance: 0
+  _magicResistance: 0
+  _maxMana: 0
+  _startMana: 0
+  _hpRecoveryPerSec: 0
+  _manaRecoveryPerSec: 0
+  _manaRecoveryType: 0
+  _conditions:
+  - spellTemplate: {fileID: 11400000, guid: b75bf6d49f1d31f478115bf762517816, type: 2}
+    count: 1
+  - spellTemplate: {fileID: 11400000, guid: 9578318a27577b24cbc8fa83ee94c831, type: 2}
+    count: 1
+  _casterFX: {fileID: 0}
+  _targetFX: {fileID: 0}
+  isOwned: 0

@@ -40,12 +40,18 @@ namespace SpecialMagicWar.Core
         {
             _poolSystem = CoreManager.Instance.GetSubSystem<PoolSystem>();
 
-            unit.healthAbility.onDeath += DespawnAll;
+            if (unit is not HolyAnimalUnit)
+            {
+                unit.healthAbility.onDeath += DespawnAll;
+            }
         }
 
         private void DeinitializeParticleFX()
         {
-            unit.healthAbility.onDeath -= DespawnAll;
+            if (unit is not HolyAnimalUnit)
+            {
+                unit.healthAbility.onDeath -= DespawnAll;
+            }
         }
 
         private void DestroyParticleFX()
