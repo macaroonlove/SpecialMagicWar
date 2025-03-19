@@ -19,10 +19,14 @@ namespace SpecialMagicWar.Core
         }
         #endregion
 
+        [SerializeField] private InGameTemplate _template;
+
         private UISpellCanvas _uiSpellCanvas;
         private UIBountyCanvas _uiBountyCanvas;
         private UIBountyLockCanvas _uiBountyLockCanvas;
         private UIHolyAnimalCanvas _uiHolyAnimalCanvas;
+        private UIEnforceCanvas _uiEnforceCanvas;
+        private UIProbabilityInfoCanvas _uiProbabilityInfoCanvas;
 
         private UIGenerateSpellButton _uiGenerateSpellButton;
 
@@ -44,6 +48,8 @@ namespace SpecialMagicWar.Core
             _uiBountyCanvas = GetComponentInChildren<UIBountyCanvas>(true);
             _uiBountyLockCanvas = GetComponentInChildren<UIBountyLockCanvas>();
             _uiHolyAnimalCanvas = GetComponentInChildren<UIHolyAnimalCanvas>(true);
+            _uiEnforceCanvas = GetComponentInChildren<UIEnforceCanvas>(true);
+            _uiProbabilityInfoCanvas = GetComponentInChildren<UIProbabilityInfoCanvas>(true);
             _uiGenerateSpellButton = GetComponentInChildren<UIGenerateSpellButton>();
             
             BattleManager.Instance.playerCreateSystem.onCreatePlayer += OnCreatePlayer;
@@ -56,9 +62,12 @@ namespace SpecialMagicWar.Core
 
         private void OnCreatePlayer(AgentUnit unit)
         {
-            _uiSpellCanvas?.Initialize(unit);
+            _template.Initialize();
+            _uiProbabilityInfoCanvas?.Initialize();
+            _uiSpellCanvas?.Initialize(unit, _template);
             _uiBountyCanvas?.Initialize(_bountyToggle, _uiBountyLockCanvas);
             _uiHolyAnimalCanvas?.Initialize(_uiSpellCanvas, _holyAnimalToggle);
+            _uiEnforceCanvas?.Initialize(_uiProbabilityInfoCanvas, _uiSpellCanvas, _template);
             _uiGenerateSpellButton?.Initialize(_uiSpellCanvas);
         }
     }

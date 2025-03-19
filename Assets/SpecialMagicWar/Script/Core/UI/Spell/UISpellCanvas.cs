@@ -1,6 +1,7 @@
 using FrameWork.UIBinding;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,15 @@ namespace SpecialMagicWar.Core
 {
     public class UISpellCanvas : UIBase
     {
+        #region ¹ÙÀÎµù
+        enum Texts
+        {
+            LandEnforceCount,
+            FireEnforceCount,
+            WaterEnforceCount,
+        }
+        #endregion
+
         private List<UISpellButton> _spells;
 
         private List<UISpellButton> _commonRarity;
@@ -17,14 +27,11 @@ namespace SpecialMagicWar.Core
         private List<UISpellButton> _beginningRarity;
         private List<UISpellButton> _godRarity;
 
-        private readonly float[,] spellProbabilityTable = new float[,]
-        {
-            { 0.50f, 0.30f, 0.15f, 0.05f, 0.00f, 0.00f },
-            { 0.40f, 0.30f, 0.20f, 0.07f, 0.03f, 0.00f },
-            { 0.30f, 0.30f, 0.25f, 0.10f, 0.04f, 0.01f },
-            { 0.25f, 0.25f, 0.25f, 0.15f, 0.08f, 0.02f },
-            { 0.20f, 0.20f, 0.25f, 0.20f, 0.10f, 0.05f },
-        };
+        private InGameTemplate _inGameTemplate;
+
+        private TextMeshProUGUI _landEnforceCount;
+        private TextMeshProUGUI _fireEnforceCount;
+        private TextMeshProUGUI _waterEnforceCount;
 
         internal List<UISpellButton> spells => _spells;
 
@@ -40,10 +47,33 @@ namespace SpecialMagicWar.Core
             _legendRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Legend).ToList();
             _beginningRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.Beginning).ToList();
             _godRarity = _spells.Where(spell => spell.template.rarity.rarity == ERarity.God).ToList();
+
+            BindText(typeof(Texts));
+
+            _landEnforceCount = GetText((int)Texts.LandEnforceCount);
+            _fireEnforceCount = GetText((int)Texts.FireEnforceCount);
+            _waterEnforceCount = GetText((int)Texts.WaterEnforceCount);
         }
 
-        internal void Initialize(AgentUnit unit)
+        internal void UpdateLandEnforceCount(string value)
         {
+            _landEnforceCount.text = value;
+        }
+
+        internal void UpdateFireEnforceCount(string value)
+        {
+            _fireEnforceCount.text = value;
+        }
+
+        internal void UpdateWaterEnforceCount(string value)
+        {
+            _waterEnforceCount.text = value;
+        }
+
+        internal void Initialize(AgentUnit unit, InGameTemplate inGameTemplate)
+        {
+            _inGameTemplate = inGameTemplate;
+
             foreach (var spell in _commonRarity)
             {
                 spell.SetUnit(unit, this);
@@ -72,16 +102,16 @@ namespace SpecialMagicWar.Core
 
         internal void GenerateRandomSpell()
         {
-            var level = 0;
+            var spellProbabilities = _inGameTemplate.GetSpellProbability();
 
             float[] probabilities = new float[]
             {
-                spellProbabilityTable[level, 0], // Common
-                spellProbabilityTable[level, 1], // Rare
-                spellProbabilityTable[level, 2], // Epic
-                spellProbabilityTable[level, 3], // Legend
-                spellProbabilityTable[level, 4], // Beginning
-                spellProbabilityTable[level, 5]  // God
+                spellProbabilities.god,
+                spellProbabilities.beginning,
+                spellProbabilities.legend,
+                spellProbabilities.epic,
+                spellProbabilities.rare,
+                spellProbabilities.common,
             };
 
             float rand = Random.value;
@@ -102,22 +132,19 @@ namespace SpecialMagicWar.Core
             switch (index)
             {
                 case 1:
-                    selectedList = _commonRarity;
+                    selectedList = _godRarity;
                     break;
                 case 2:
-                    selectedList = _rareRarity;
-                    break;
-                case 3:
-                    selectedList = _epicRarity;
-                    break;
-                case 4:
-                    selectedList = _legendRarity;
-                    break;
-                case 5:
                     selectedList = _beginningRarity;
                     break;
-                case 6:
-                    selectedList = _godRarity;
+                case 3:
+                    selectedList = _legendRarity;
+                    break;
+                case 4:
+                    selectedList = _epicRarity;
+                    break;
+                case 5:
+                    selectedList = _rareRarity;
                     break;
                 default:
                     selectedList = _commonRarity;
