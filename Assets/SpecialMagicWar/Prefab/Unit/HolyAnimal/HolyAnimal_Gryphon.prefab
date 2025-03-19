@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2093480981221593349, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2093480981221593349, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 7116394714028806410, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
       propertyPath: m_Name
-      value: HolyAnimal_Gryphon Variant
+      value: HolyAnimal_Gryphon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -179,8 +179,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7603960505685391456, guid: c3e9e29cbe894bf6bd068a45a71760c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8774607912123878466}
   m_SourcePrefab: {fileID: 100100000, guid: c3e9e29cbe894bf6bd068a45a71760c0, type: 3}
+--- !u!1 &644908926123344323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7603960505685391456, guid: c3e9e29cbe894bf6bd068a45a71760c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7022691312712661411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8774607912123878466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644908926123344323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e2ef1f0363e5d4abb963d96b74d510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &644908926123344324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7603960505685391463, guid: c3e9e29cbe894bf6bd068a45a71760c0,

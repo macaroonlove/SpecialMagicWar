@@ -17,14 +17,14 @@ MonoBehaviour:
   _description: 
   _sprite: {fileID: 21300000, guid: 04029f5731f334a46b7874572eca0e27, type: 3}
   _prefab: {fileID: 674665523081921001, guid: 877824da0ba47a04289199aa41a19267, type: 3}
-  _atk: 0
-  _attackTerm: 0
-  _attackRange: 0
+  _atk: 3000
+  _attackTerm: 5
+  _attackRange: 3
   _isProjectileAttack: 0
   _projectilePrefab: {fileID: 0}
   _spawnPoint: 0
   _attackType: 0
-  _damageType: 0
+  _damageType: 2
   _criticalHitChance: 0
   _criticalHitDamage: 0
   _physicalPenetration: 0

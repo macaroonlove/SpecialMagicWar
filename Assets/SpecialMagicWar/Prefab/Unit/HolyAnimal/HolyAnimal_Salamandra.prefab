@@ -91,9 +91,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1344187224804894081, guid: 08273d797ce24a188bd833fb9fbd3286,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1219238509059754330}
   m_SourcePrefab: {fileID: 100100000, guid: 08273d797ce24a188bd833fb9fbd3286, type: 3}
---- !u!4 &8735264562195658085 stripped
+--- !u!1 &6603905747292113162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1344187224804894081, guid: 08273d797ce24a188bd833fb9fbd3286,
+    type: 3}
+  m_PrefabInstance: {fileID: 5260849097268325515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219238509059754330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603905747292113162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e2ef1f0363e5d4abb963d96b74d510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &6603905747292113165 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1344187224804894086, guid: 08273d797ce24a188bd833fb9fbd3286,
     type: 3}
@@ -110,7 +132,7 @@ PrefabInstance:
     - target: {fileID: 2093480981221593349, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2093480981221593349, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
@@ -165,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 7116394714028806410, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
       propertyPath: m_Name
-      value: HolyAnimal_Salamandra Variant
+      value: HolyAnimal_Salamandra
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -173,7 +195,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2093480981221593349, guid: 7521aee1f07c3724fb05e8ffd3036644,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8735264562195658085}
+      addedObject: {fileID: 6603905747292113165}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7521aee1f07c3724fb05e8ffd3036644, type: 3}
 --- !u!4 &8544434749644997094 stripped

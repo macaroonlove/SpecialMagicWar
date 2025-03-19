@@ -119,11 +119,10 @@ namespace SpecialMagicWar.Core
         private void CheckAbilityState()
         {
             ConditionAbility newAbility = currentAbility;
-
             foreach (var ability in _conditionAbilities.Values)
             {
                 if (ability == currentAbility) continue;
-
+                
                 // 해당 능력이 실행 가능한 상황이라면
                 if (ability.IsExecute())
                 {

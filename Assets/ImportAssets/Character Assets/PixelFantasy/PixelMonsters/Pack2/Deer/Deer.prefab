@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 175464997677346249}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &175464996610553769
 Animator:
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 4723107735738678597, guid: 98b0da2766984b2a9e5867d263e58c96,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.4, y: 0.32}

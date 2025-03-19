@@ -335,7 +335,7 @@ namespace SpecialMagicWar.Core
             _currentTarget.Clear();
 
             var attackTargets = _findTargetAbility.FindAttackableTarget(ETarget.NumTargetInRange, finalAttackRange, _currentAttackType, ESkillRangeType.Circle, finalAttackCount);
-
+            
             if (attackTargets.Count > 0)
             {
                 _currentTarget.AddRange(attackTargets);
@@ -381,14 +381,17 @@ namespace SpecialMagicWar.Core
         private void ApplyAttack(Unit attackTarget)
         {
             ExecuteTargetFX(attackTarget);
-            
+
             attackTarget.GetAbility<HitAbility>().Hit(unit);
 
             onAttack?.Invoke();
 
-            foreach (var effect in _passiveSkillAbility.attackEventEffects)
+            if (_passiveSkillAbility != null)
             {
-                effect.Execute(unit, attackTarget);
+                foreach (var effect in _passiveSkillAbility.attackEventEffects)
+                {
+                    effect.Execute(unit, attackTarget);
+                }
             }
         }
         #endregion

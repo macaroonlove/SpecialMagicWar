@@ -45,7 +45,7 @@ namespace SpecialMagicWar.Core
         {
             List<Unit> targets = new List<Unit>();
 
-            if (unit is AgentUnit)
+            if (unit is AgentUnit || unit is HolyAnimalUnit)
             {
                 List<EnemyUnit> attackTargets = new List<EnemyUnit>();
 
@@ -154,7 +154,7 @@ namespace SpecialMagicWar.Core
         {
             List<Unit> targets = new List<Unit>();
 
-            if (unit is AgentUnit)
+            if (unit is AgentUnit || unit is HolyAnimalUnit)
             {
                 List<AgentUnit> healTargets = new List<AgentUnit>();
 
@@ -222,7 +222,7 @@ namespace SpecialMagicWar.Core
         {
             List<Unit> targets = new List<Unit>();
 
-            if (unit is AgentUnit)
+            if (unit is AgentUnit || unit is HolyAnimalUnit)
             {
                 List<AgentUnit> allyTargets = new List<AgentUnit>();
 
