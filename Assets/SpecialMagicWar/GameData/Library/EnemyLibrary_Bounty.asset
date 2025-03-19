@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38241b7dd51df1b40b3bb9aa62292253, type: 3}
   m_Name: EnemyLibrary_Bounty
   m_EditorClassIdentifier: 
-  templates: []
+  templates:
+  - {fileID: 11400000, guid: 7841b703a16beba49ac1cdb0e8e4b7d4, type: 2}
+  - {fileID: 11400000, guid: 515ae45d4cfee0947851d2277ce94322, type: 2}
+  - {fileID: 11400000, guid: 703e705479988ba46b0ba26e24b22965, type: 2}
+  - {fileID: 11400000, guid: 5d032b91b943d6e40857c2bb47643c6a, type: 2}
+  - {fileID: 11400000, guid: d50b5a48362ab3b4bb083fb547361a31, type: 2}
+  - {fileID: 11400000, guid: 82a83fba9fdfb0e4facc330a2af24db4, type: 2}
   _isAll: 0

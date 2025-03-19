@@ -160,6 +160,7 @@ namespace SpecialMagicWar.Core
             if (_holyAnimalCreateSystem.CreateUnit(_template) == false) return;
 
             _impossible.Show(true);
+            _uiHolyAnimalCanvas.Close();
         }
     }
 }

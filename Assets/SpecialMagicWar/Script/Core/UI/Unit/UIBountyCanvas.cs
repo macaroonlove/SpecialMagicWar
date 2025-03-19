@@ -1,7 +1,7 @@
 using FrameWork.Editor;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SpecialMagicWar.Core
 {
@@ -9,23 +9,28 @@ namespace SpecialMagicWar.Core
     {
         [Label("적 소환 버튼 프리팹"), SerializeField] private GameObject _prefab;
         [Label("적 소환 버튼 부모 위치"), SerializeField] private Transform _parent;
+        [Label("비활성 시간"), SerializeField] private int _disableTime = 60;
 
-        private List<UIGenerateHolyAnimalButton> _buttonList = new List<UIGenerateHolyAnimalButton>();
+        private Toggle _bountyToggle;
+        private UIBountyLockCanvas _bountyLockCanvas;
 
-        internal void Initialize()
+        private List<UIGenerateBountyButton> _buttonList = new List<UIGenerateBountyButton>();
+
+        internal void Initialize(Toggle bountyToggle, UIBountyLockCanvas bountyLockCanvas)
         {
-            //var holyAnimals = SaveManager.Instance.profileData.ownedHolyAnimals;
+            _bountyToggle = bountyToggle;
+            _bountyLockCanvas = bountyLockCanvas;
 
-            //foreach (var animal in holyAnimals)
-            //{
-            //    var template = GameDataManager.Instance.GetHolyAnimalTemplateById(animal.id);
+            var bountys = GameDataManager.Instance.bountyLibrary.templates;
 
-            //    var instance = Instantiate(_prefab, _parent);
-            //    var btn = instance.GetComponent<UIGenerateHolyAnimalButton>();
-            //    btn.Initialize(template);
+            foreach (var template in bountys)
+            {
+                var instance = Instantiate(_prefab, _parent);
+                var btn = instance.GetComponent<UIGenerateBountyButton>();
+                btn.Initialize(template, this);
 
-            //    _buttonList.Add(btn);
-            //}
+                _buttonList.Add(btn);
+            }
         }
 
         private void OnDestroy()
@@ -38,28 +43,9 @@ namespace SpecialMagicWar.Core
             _buttonList.Clear();
         }
 
-        private void OnEnable()
+        internal void DisableGenerate()
         {
-            foreach (var btn in _buttonList)
-            {
-                
-            }
-        }
-
-        private void OnDisable()
-        {
-            foreach (var btn in _buttonList)
-            {
-                
-            }
-        }
-
-        internal void SelectAnyButton()
-        {
-            foreach (var btn in _buttonList)
-            {
-                btn.DisableGenerateButton();
-            }
+            _bountyLockCanvas.Show(_bountyToggle, _disableTime);
         }
     }
 }

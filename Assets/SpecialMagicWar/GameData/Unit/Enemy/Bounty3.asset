@@ -17,6 +17,8 @@ MonoBehaviour:
   _description: 
   _sprite: {fileID: 21300000, guid: 28040be0d1b31de448126c72aacd9ceb, type: 3}
   _prefab: {fileID: 8236704452329014857, guid: 24f0e14d9462c894eacfe52a587182a2, type: 3}
+  _gainCost: 450
+  _gainSoul: 0
   _moveSpeed: 2
   _moveType: 0
   _atk: 0
@@ -31,13 +33,9 @@ MonoBehaviour:
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
-  _maxHP: 1000
+  _maxHP: 200000
   _physicalResistance: 0
   _magicResistance: 0
-  _maxMana: 0
-  _startMana: 0
   _hpRecoveryPerSec: 0
-  _manaRecoveryPerSec: 0
-  _manaRecoveryType: 0
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}

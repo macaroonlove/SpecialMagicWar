@@ -4,6 +4,7 @@ using SpecialMagicWar.Save;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SpecialMagicWar.Core
 {
@@ -13,12 +14,14 @@ namespace SpecialMagicWar.Core
         [Label("신수 소환 버튼 부모 위치"), SerializeField] private Transform _parent;
 
         private UISpellCanvas _uiSpellCanvas;
+        private Toggle _holyAnimalToggle;
 
         private List<UIGenerateHolyAnimalButton> _buttonList = new List<UIGenerateHolyAnimalButton>();
 
-        internal void Initialize(UISpellCanvas uiSpellCanvas)
+        internal void Initialize(UISpellCanvas uiSpellCanvas, Toggle holyAnimalToggle)
         {
             _uiSpellCanvas = uiSpellCanvas;
+            _holyAnimalToggle = holyAnimalToggle;
 
             var holyAnimals = SaveManager.Instance.profileData.ownedHolyAnimals;
 
@@ -66,6 +69,11 @@ namespace SpecialMagicWar.Core
             {
                 btn.DisableGenerateButton();
             }
+        }
+
+        internal void Close()
+        {
+            _holyAnimalToggle.isOn = false;
         }
     }
 }

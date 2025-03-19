@@ -15,8 +15,10 @@ MonoBehaviour:
   _id: 101
   _displayName: Bounty2
   _description: 
-  _sprite: {fileID: 21300000, guid: a224eb743000ec2458b836fa94f1145c, type: 3}
+  _sprite: {fileID: 21300000, guid: 5313d43cfb90d37469e436cb120343fe, type: 3}
   _prefab: {fileID: 7003344975929362857, guid: 99b233a6b1f145043ad4cf9ec8368755, type: 3}
+  _gainCost: 0
+  _gainSoul: 1
   _moveSpeed: 2
   _moveType: 0
   _atk: 0
@@ -31,13 +33,9 @@ MonoBehaviour:
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
-  _maxHP: 1000
+  _maxHP: 50000
   _physicalResistance: 0
   _magicResistance: 0
-  _maxMana: 0
-  _startMana: 0
   _hpRecoveryPerSec: 0
-  _manaRecoveryPerSec: 0
-  _manaRecoveryType: 0
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}
