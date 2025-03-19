@@ -8,7 +8,6 @@ namespace SpecialMagicWar.Core
     public class ActiveSkillAbility : ConditionAbility
     {
         private UnitAnimationAbility _unitAnimationAbility;
-        private ManaAbility _manaAbility;
         private AbnormalStatusAbility _abnormalStatusAbility;
 
         private ActiveSkillTemplate _template;
@@ -41,7 +40,6 @@ namespace SpecialMagicWar.Core
             base.Initialize(unit);
 
             _unitAnimationAbility = unit.GetAbility<UnitAnimationAbility>();
-            _manaAbility = unit.GetAbility<ManaAbility>();
             _abnormalStatusAbility = unit.GetAbility<AbnormalStatusAbility>();
 
             _skillEventHandler = GetComponentInChildren<SkillEventHandler>();
@@ -74,9 +72,6 @@ namespace SpecialMagicWar.Core
         {
             // 스킬 사용이 불가능하다면
             if (finalIsSkillAble == false) return false;
-
-            // 마나가 부족하다면
-            if (_manaAbility.TryExecuteSkill(template.needMana) == false) return false;
 
             switch (template.skillType)
             {

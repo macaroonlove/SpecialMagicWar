@@ -12,6 +12,9 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private Sprite _sprite;
         [HideInInspector, SerializeField] private GameObject _prefab;
 
+        [HideInInspector, SerializeField] private int _gainCost;
+        [HideInInspector, SerializeField] private int _gainSoul;
+
         [HideInInspector, SerializeField] private float _moveSpeed;
         [HideInInspector, SerializeField] private EMoveType _moveType;
 
@@ -36,12 +39,7 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private int _physicalResistance;
         [HideInInspector, SerializeField] private int _magicResistance;
 
-        [HideInInspector, SerializeField,] private int _maxMana;
-        [HideInInspector, SerializeField] private int _startMana;
-
         [HideInInspector, SerializeField] private int _hpRecoveryPerSec;
-        [HideInInspector, SerializeField] private int _manaRecoveryPerSec;
-        [HideInInspector, SerializeField] private EManaRecoveryType _manaRecoveryType;
 
         [HideInInspector, SerializeField] private FX _casterFX;
         [HideInInspector, SerializeField] private FX _targetFX;
@@ -53,6 +51,9 @@ namespace SpecialMagicWar.Core
 
         public Sprite sprite => _sprite;
         public GameObject prefab => _prefab;
+        
+        public int gainCost => _gainCost;
+        public int gainSoul => _gainSoul;
 
         public float MoveSpeed => _moveSpeed;
         public EMoveType MoveType => _moveType;
@@ -78,12 +79,7 @@ namespace SpecialMagicWar.Core
         public int PhysicalResistance => _physicalResistance;
         public int MagicResistance => _magicResistance;
 
-        public int MaxMana => _maxMana;
-        public int StartMana => _startMana;
-
         public int HPRecoveryPerSec => _hpRecoveryPerSec;
-        public int ManaRecoveryPerSec => _manaRecoveryPerSec;
-        public EManaRecoveryType ManaRecoveryType => _manaRecoveryType;
 
         public FX casterFX => _casterFX;
         public FX targetFX => _targetFX;
@@ -112,6 +108,8 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _description;
         private SerializedProperty _sprite;
         private SerializedProperty _prefab;
+        private SerializedProperty _gainCost;
+        private SerializedProperty _gainSoul;
         private SerializedProperty _moveSpeed;
         private SerializedProperty _moveType;
         private SerializedProperty _atk;
@@ -129,11 +127,7 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _maxHP;
         private SerializedProperty _physicalResistance;
         private SerializedProperty _magicResistance;
-        private SerializedProperty _maxMana;
-        private SerializedProperty _startMana;
         private SerializedProperty _hpRecoveryPerSec;
-        private SerializedProperty _manaRecoveryPerSec;
-        private SerializedProperty _manaRecoveryType;
         private SerializedProperty _casterFX;
         private SerializedProperty _targetFX;
 
@@ -144,6 +138,8 @@ namespace SpecialMagicWar.Editor
             _description = serializedObject.FindProperty("_description");
             _sprite = serializedObject.FindProperty("_sprite");
             _prefab = serializedObject.FindProperty("_prefab");
+            _gainCost = serializedObject.FindProperty("_gainCost");
+            _gainSoul = serializedObject.FindProperty("_gainSoul");
             _moveSpeed = serializedObject.FindProperty("_moveSpeed");
             _moveType = serializedObject.FindProperty("_moveType");
             _atk = serializedObject.FindProperty("_atk");
@@ -161,11 +157,7 @@ namespace SpecialMagicWar.Editor
             _maxHP = serializedObject.FindProperty("_maxHP");
             _physicalResistance = serializedObject.FindProperty("_physicalResistance");
             _magicResistance = serializedObject.FindProperty("_magicResistance");
-            _maxMana = serializedObject.FindProperty("_maxMana");
-            _startMana = serializedObject.FindProperty("_startMana");
             _hpRecoveryPerSec = serializedObject.FindProperty("_hpRecoveryPerSec");
-            _manaRecoveryPerSec = serializedObject.FindProperty("_manaRecoveryPerSec");
-            _manaRecoveryType = serializedObject.FindProperty("_manaRecoveryType");
             _casterFX = serializedObject.FindProperty("_casterFX");
             _targetFX = serializedObject.FindProperty("_targetFX");
         }
@@ -202,6 +194,18 @@ namespace SpecialMagicWar.Editor
 
             GUILayout.EndVertical();
 
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("처치 시 획득 코스트", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_gainCost, GUIContent.none);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("처치 시 획득 영혼", GUILayout.Width(192));
+            EditorGUILayout.PropertyField(_gainSoul, GUIContent.none);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);
@@ -309,41 +313,9 @@ namespace SpecialMagicWar.Editor
             GUILayout.Space(10);
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("최대 마나", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_maxMana, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("시작 마나", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_startMana, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
             GUILayout.Label("초당 체력 회복량", GUILayout.Width(192));
             EditorGUILayout.PropertyField(_hpRecoveryPerSec, GUIContent.none);
             GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("마나 회복 방식", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_manaRecoveryType, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            if (_manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Automatic)
-            {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("초당 마나 회복량", GUILayout.Width(192));
-                EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
-                GUILayout.EndHorizontal();
-            }
-            else if (_manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Attack || _manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Hit)
-            {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("마나 회복량", GUILayout.Width(192));
-                EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
-                GUILayout.EndHorizontal();
-            }
 
             GUILayout.Space(10);
 
@@ -358,11 +330,6 @@ namespace SpecialMagicWar.Editor
             GUILayout.EndHorizontal();
 
             serializedObject.ApplyModifiedProperties();
-
-            //if (GUI.changed)
-            //{
-            //    EditorUtility.SetDirty(this);
-            //}
         }
     }
 }

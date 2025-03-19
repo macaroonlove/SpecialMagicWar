@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210bcf92f4da822409ad4c85029e24cf, type: 3}
   m_Name: Enemy_Wave3_Normal
   m_EditorClassIdentifier: 
-  _id: 6
+  _id: 4
   _displayName: Wave3_Normal
   _description: 
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: f85aafca549112e42a4b639a90783bd6, type: 3}
   _prefab: {fileID: 6012320744567781116, guid: 535742abfe21ab1479e978ec6580c37f, type: 3}
   _moveSpeed: 2
   _moveType: 0

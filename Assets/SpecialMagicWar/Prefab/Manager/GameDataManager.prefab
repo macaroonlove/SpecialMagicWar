@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &586372569706075548
 MonoBehaviour:
@@ -46,4 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerLibrary: {fileID: 11400000, guid: a2d62277f65baab47aadbc5ffeea41b5, type: 2}
   _holyAnimalLibrary: {fileID: 11400000, guid: c3d323ac51fa0634a9dc49086dd9e276, type: 2}
+  _bountyLibrary: {fileID: 11400000, guid: b6860599251bb084d88f857a0b232e4e, type: 2}
   _waveLibrary: {fileID: 11400000, guid: 1518715b4424af94d8659f9cc3d1bfd6, type: 2}

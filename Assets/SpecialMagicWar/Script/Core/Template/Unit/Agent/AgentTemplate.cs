@@ -13,8 +13,6 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private Sprite _sprite;
         [HideInInspector, SerializeField] private GameObject _prefab;
 
-        [HideInInspector, SerializeField] private EDamageType _damageType;
-
         [HideInInspector, SerializeField] private float _criticalHitChance;
         [HideInInspector, SerializeField] private float _criticalHitDamage;
 
@@ -36,8 +34,6 @@ namespace SpecialMagicWar.Core
 
         public Sprite sprite => _sprite;
         public GameObject prefab => _prefab;
-
-        public EDamageType DamageType => _damageType;
 
         public float CriticalHitChance => _criticalHitChance;
         public float CriticalHitDamage => _criticalHitDamage;
@@ -75,7 +71,6 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _description;
         private SerializedProperty _sprite;
         private SerializedProperty _prefab;
-        private SerializedProperty _damageType;
         private SerializedProperty _criticalHitChance;
         private SerializedProperty _criticalHitDamage;
         private SerializedProperty _physicalPenetration;
@@ -93,7 +88,6 @@ namespace SpecialMagicWar.Editor
             _description = serializedObject.FindProperty("_description");
             _sprite = serializedObject.FindProperty("_sprite");
             _prefab = serializedObject.FindProperty("_prefab");
-            _damageType = serializedObject.FindProperty("_damageType");
             _criticalHitChance = serializedObject.FindProperty("_criticalHitChance");
             _criticalHitDamage = serializedObject.FindProperty("_criticalHitDamage");
             _physicalPenetration = serializedObject.FindProperty("_physicalPenetration");
@@ -137,13 +131,6 @@ namespace SpecialMagicWar.Editor
 
             GUILayout.EndVertical();
 
-            GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("데미지 타입", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_damageType, GUIContent.none);
             GUILayout.EndHorizontal();
 
             GUILayout.Space(10);

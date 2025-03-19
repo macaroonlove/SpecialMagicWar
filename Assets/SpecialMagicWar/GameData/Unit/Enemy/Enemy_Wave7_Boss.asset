@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210bcf92f4da822409ad4c85029e24cf, type: 3}
   m_Name: Enemy_Wave7_Boss
   m_EditorClassIdentifier: 
-  _id: 20
+  _id: 13
   _displayName: Wave7_Boss
   _description: 
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: c482e1f182f5da944a9633135dad458e, type: 3}
   _prefab: {fileID: 2422458608222357536, guid: d2d165ce347be9a4b80a756de8c7e34d, type: 3}
   _moveSpeed: 2
   _moveType: 0

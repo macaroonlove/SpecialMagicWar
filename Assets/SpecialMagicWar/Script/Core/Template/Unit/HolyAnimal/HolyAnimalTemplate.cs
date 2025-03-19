@@ -38,17 +38,6 @@ namespace SpecialMagicWar.Core
         [HideInInspector, SerializeField] private int _physicalPenetration;
         [HideInInspector, SerializeField] private int _magicPenetration;
 
-        [HideInInspector, SerializeField] private int _maxHP;
-        [HideInInspector, SerializeField] private int _physicalResistance;
-        [HideInInspector, SerializeField] private int _magicResistance;
-
-        [HideInInspector, SerializeField] private int _maxMana;
-        [HideInInspector, SerializeField] private int _startMana;
-
-        [HideInInspector, SerializeField] private int _hpRecoveryPerSec;
-        [HideInInspector, SerializeField] private int _manaRecoveryPerSec;
-        [HideInInspector, SerializeField] private EManaRecoveryType _manaRecoveryType;
-
         [SerializeField] private List<SpawnCondition> _conditions = new List<SpawnCondition>();
 
         [HideInInspector, SerializeField] private FX _casterFX;
@@ -80,17 +69,6 @@ namespace SpecialMagicWar.Core
 
         public int PhysicalPenetration => _physicalPenetration;
         public int MagicPenetration => _magicPenetration;
-
-        public int MaxHP => _maxHP;
-        public int PhysicalResistance => _physicalResistance;
-        public int MagicResistance => _magicResistance;
-
-        public int MaxMana => _maxMana;
-        public int StartMana => _startMana;
-
-        public int HPRecoveryPerSec => _hpRecoveryPerSec;
-        public int ManaRecoveryPerSec => _manaRecoveryPerSec;
-        public EManaRecoveryType ManaRecoveryType => _manaRecoveryType;
 
         public List<SpawnCondition> conditions => _conditions;
 
@@ -133,14 +111,6 @@ namespace SpecialMagicWar.Editor
         private SerializedProperty _criticalHitDamage;
         private SerializedProperty _physicalPenetration;
         private SerializedProperty _magicPenetration;
-        private SerializedProperty _maxHP;
-        private SerializedProperty _physicalResistance;
-        private SerializedProperty _magicResistance;
-        private SerializedProperty _maxMana;
-        private SerializedProperty _startMana;
-        private SerializedProperty _hpRecoveryPerSec;
-        private SerializedProperty _manaRecoveryPerSec;
-        private SerializedProperty _manaRecoveryType;
         private SerializedProperty _conditions;
         private SerializedProperty _casterFX;
         private SerializedProperty _targetFX;
@@ -165,14 +135,6 @@ namespace SpecialMagicWar.Editor
             _criticalHitDamage = serializedObject.FindProperty("_criticalHitDamage");
             _physicalPenetration = serializedObject.FindProperty("_physicalPenetration");
             _magicPenetration = serializedObject.FindProperty("_magicPenetration");
-            _maxHP = serializedObject.FindProperty("_maxHP");
-            _physicalResistance = serializedObject.FindProperty("_physicalResistance");
-            _magicResistance = serializedObject.FindProperty("_magicResistance");
-            _maxMana = serializedObject.FindProperty("_maxMana");
-            _startMana = serializedObject.FindProperty("_startMana");
-            _hpRecoveryPerSec = serializedObject.FindProperty("_hpRecoveryPerSec");
-            _manaRecoveryPerSec = serializedObject.FindProperty("_manaRecoveryPerSec");
-            _manaRecoveryType = serializedObject.FindProperty("_manaRecoveryType");
             _conditions = serializedObject.FindProperty("_conditions");
             _casterFX = serializedObject.FindProperty("_casterFX");
             _targetFX = serializedObject.FindProperty("_targetFX");
@@ -285,62 +247,6 @@ namespace SpecialMagicWar.Editor
             GUILayout.Label("마법 관통력", GUILayout.Width(192));
             EditorGUILayout.PropertyField(_magicPenetration, GUIContent.none);
             GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("최대 체력", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_maxHP, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("방어력", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_physicalResistance, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("마법저항력", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_magicResistance, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("최대 마나", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_maxMana, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("시작 마나", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_startMana, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("초당 체력 회복량", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_hpRecoveryPerSec, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("마나 회복 방식", GUILayout.Width(192));
-            EditorGUILayout.PropertyField(_manaRecoveryType, GUIContent.none);
-            GUILayout.EndHorizontal();
-
-            if (_manaRecoveryType.enumValueIndex != (int)EManaRecoveryType.None)
-            {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("초당 마나 회복량", GUILayout.Width(192));
-                EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
-                GUILayout.EndHorizontal();
-            }
-            else if (_manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Attack || _manaRecoveryType.enumValueIndex == (int)EManaRecoveryType.Hit)
-            {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("마나 회복량", GUILayout.Width(192));
-                EditorGUILayout.PropertyField(_manaRecoveryPerSec, GUIContent.none);
-                GUILayout.EndHorizontal();
-            }
 
             GUILayout.Space(10);
 

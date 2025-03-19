@@ -89,7 +89,7 @@ namespace SpecialMagicWar.Core
             if (_healthAbility != null) _healthAbility.onDeath -= OnDeath;
         }
 
-        private void OnDeath()
+        protected virtual void OnDeath()
         {
             Deinitialize();
             CoreManager.Instance.GetSubSystem<PoolSystem>().DeSpawn(gameObject, 1);

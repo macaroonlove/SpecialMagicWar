@@ -12,26 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15acee0675053b448a4357f1b507107, type: 3}
   m_Name: Wave_02
   m_EditorClassIdentifier: 
-  spawnTime: 25
+  spawnTime: 10
   waveInfo:
-  - template: {fileID: 11400000, guid: 1a2789c2644ce0348bae9794d443ded6, type: 2}
+  - template: {fileID: 11400000, guid: 9bf7bea92e0fa6547a6f97144a19ceb6, type: 2}
     spawnPosition: {x: -2.4, y: -2, z: 0}
     delayTime: 0
-    spawnCount: 10
+    spawnCount: 6
     spawnInterval: 2
-    wayPoint:
-    - {x: -2.4, y: 4, z: 0}
-  - template: {fileID: 11400000, guid: 515ae45d4cfee0947851d2277ce94322, type: 2}
-    spawnPosition: {x: -2.4, y: -2, z: 0}
-    delayTime: 15
-    spawnCount: 5
-    spawnInterval: 1
-    wayPoint:
-    - {x: -2.4, y: 4, z: 0}
-  - template: {fileID: 11400000, guid: 609d24d4c1832fe4bb7db6ac33596bef, type: 2}
-    spawnPosition: {x: -2.4, y: -2, z: 0}
-    delayTime: 22
-    spawnCount: 1
-    spawnInterval: 1
     wayPoint:
     - {x: -2.4, y: 4, z: 0}

@@ -357,7 +357,6 @@ namespace SpecialMagicWar.Core
 
             if (unit is AgentUnit agentUnit)
             {
-                _baseDamageType = agentUnit.template.DamageType;
                 _basePhysicalResistance = agentUnit.template.PhysicalResistance;
                 _baseMagicResistance = agentUnit.template.MagicResistance;
                 _basePhysicalPenetration = agentUnit.template.PhysicalPenetration;

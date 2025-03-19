@@ -11,84 +11,16 @@ namespace SpecialMagicWar.Core
     {
         [SerializeField] private ObscuredIntVariable _costVariable;
 
-        private GlobalStatusSystem _globalStatusSystem;
-
-        private bool _isInitializeCostSystem;
-        private float _costRecoveryTimeProgress;
-
-        #region 프로퍼티
-        private bool finalIsCostRecovery
-        {
-            get
-            {
-                return _isInitializeCostSystem;
-            }
-        }
-
-        private float finalCostRecoveryTime
-        {
-            get
-            {
-                float result = 1;
-
-                #region 추가·차감
-                foreach (var effect in _globalStatusSystem.CostRecoveryTimeAdditionalDataEffects)
-                {
-                    result -= effect.value;
-                }
-                #endregion
-
-                #region 증가·감소
-                float increase = 1;
-
-                foreach (var effect in _globalStatusSystem.CostRecoveryTimeIncreaseDataEffects)
-                {
-                    increase += effect.value;
-                }
-
-                result /= increase;
-                #endregion
-
-                #region 상승·하락
-                foreach (var effect in _globalStatusSystem.CostRecoveryTimeMultiplierDataEffects)
-                {
-                    result /= effect.value;
-                }
-                #endregion
-
-                return result;
-            }
-        }
-        #endregion
-
         internal event UnityAction<int> onChangedCost;
 
         public void Initialize()
         {
-            _globalStatusSystem = CoreManager.Instance.GetSubSystem<GlobalStatusSystem>();
-
-            _isInitializeCostSystem = true;
-
             SetCost(1000);
         }
 
         public void Deinitialize()
         {
-            _globalStatusSystem = null;
 
-            _isInitializeCostSystem = false;
-        }
-
-        private void Update()
-        {
-            if (finalIsCostRecovery == false) return;
-
-            _costRecoveryTimeProgress += Time.deltaTime;
-            if (_costRecoveryTimeProgress >= finalCostRecoveryTime)
-            {
-                _costRecoveryTimeProgress = 0;
-                AddCost(1);
-            }
         }
 
         internal void AddCost(int value)

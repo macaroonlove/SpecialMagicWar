@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpecialMagicWar.Core
 {
@@ -11,6 +12,8 @@ namespace SpecialMagicWar.Core
 
         private int _currentWaveIndex;
         private bool _isWaveEnd;
+
+        public UnityAction<int, float> onWaveChanged;
 
         public void Initialize()
         {
@@ -40,7 +43,11 @@ namespace SpecialMagicWar.Core
             {
                 WaveTemplate currentWave = _waveLibrary.waves[_currentWaveIndex];
                 StartWave(currentWave);
+
                 _currentWaveIndex++;
+
+                if (_waveLibrary.waves.Count >= _currentWaveIndex + 1) 
+                onWaveChanged?.Invoke(_currentWaveIndex, (_waveLibrary.waves.Count >= _currentWaveIndex + 1) ? 0 : _waveLibrary.waves[_currentWaveIndex + 1].spawnTime - _waveLibrary.waves[_currentWaveIndex].spawnTime - 1);
             }
         }
 

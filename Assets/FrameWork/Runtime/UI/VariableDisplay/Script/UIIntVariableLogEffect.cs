@@ -18,12 +18,11 @@ namespace FrameWork.UI
         [SerializeField] private int _maxTextLength = 3;
         [SerializeField] private float _holdingTime = 1;
         [SerializeField] private float _moveTime = 1;
-        [SerializeField] private Color _plus = Color.green;
-        [SerializeField] private Color _minus = Color.red;
 
         private PoolSystem _poolSystem;
         private GameObject _logPrefab;
         private int prevValue = int.MinValue;
+        private Color _originColor;
 
         private Sequence _cachedSequence;
 
@@ -34,6 +33,8 @@ namespace FrameWork.UI
             _poolSystem = CoreManager.Instance.GetSubSystem<PoolSystem>();
             _logPrefab = GetObject((int)Objects.Log);
             _logPrefab.SetActive(false);
+
+            _originColor = _logPrefab.GetComponent<TextMeshProUGUI>().color;
         }
 
         internal void Initialize(int value)
@@ -45,30 +46,21 @@ namespace FrameWork.UI
         {
             var diff = value - prevValue;
             prevValue = value;
-
-            var instance = _poolSystem.Spawn(_logPrefab, _holdingTime + _moveTime, transform);
-            var text = instance.GetComponent<TextMeshProUGUI>();
-
-            instance.SetActive(true);
-            _cachedSequence?.Kill();
             
             if (diff > 0)
             {
+                var instance = _poolSystem.Spawn(_logPrefab, _holdingTime + _moveTime, transform);
+                var text = instance.GetComponent<TextMeshProUGUI>();
+
+                instance.SetActive(true);
+                _cachedSequence?.Kill();
+
                 text.text = $"+{diff.Format(_maxTextLength)}";
-                text.color = _plus;
+                text.color = _originColor;
 
                 _cachedSequence = DOTween.Sequence();
                 _cachedSequence.AppendInterval(_holdingTime);
-                _cachedSequence.Append(text.DOColor(new(_plus.r, _plus.g, _plus.b, 0), _moveTime));
-            }
-            else
-            {
-                text.text = $"-{diff.Format(_maxTextLength)}";
-                text.color = _minus;
-
-                _cachedSequence = DOTween.Sequence();
-                _cachedSequence.AppendInterval(_holdingTime);
-                _cachedSequence.Append(text.DOColor(new(_minus.r, _minus.g, _minus.b, 0), _moveTime));
+                _cachedSequence.Append(text.DOColor(new(_originColor.r, _originColor.g, _originColor.b, 0), _moveTime));
             }
         }
     }

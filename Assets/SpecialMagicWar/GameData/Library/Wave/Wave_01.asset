@@ -17,21 +17,7 @@ MonoBehaviour:
   - template: {fileID: 11400000, guid: 9bf7bea92e0fa6547a6f97144a19ceb6, type: 2}
     spawnPosition: {x: -2.4, y: -2, z: 0}
     delayTime: 0
-    spawnCount: 10
-    spawnInterval: 2
-    wayPoint:
-    - {x: -2.4, y: 4, z: 0}
-  - template: {fileID: 11400000, guid: 7841b703a16beba49ac1cdb0e8e4b7d4, type: 2}
-    spawnPosition: {x: -2.4, y: -2, z: 0}
-    delayTime: 15
     spawnCount: 5
-    spawnInterval: 1
-    wayPoint:
-    - {x: -2.4, y: 4, z: 0}
-  - template: {fileID: 11400000, guid: 269e391f7a5d9284992edf102179e5cf, type: 2}
-    spawnPosition: {x: -2.4, y: -2, z: 0}
-    delayTime: 22
-    spawnCount: 1
-    spawnInterval: 1
+    spawnInterval: 2
     wayPoint:
     - {x: -2.4, y: 4, z: 0}

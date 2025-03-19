@@ -9,9 +9,11 @@ namespace SpecialMagicWar.Core
     {
         [SerializeField] private PlayerLibraryTemplate _playerLibrary;
         [SerializeField] private HolyAnimalLibraryTemplate _holyAnimalLibrary;
+        [SerializeField] private EnemyLibraryTemplate _bountyLibrary;
         [SerializeField] private WaveLibraryTemplate _waveLibrary;
         
         internal WaveLibraryTemplate waveLibrary => _waveLibrary;
+        internal EnemyLibraryTemplate bountyLibrary => _bountyLibrary;
 
         internal AgentTemplate GetPlayerTemplateById(int id)
         {
