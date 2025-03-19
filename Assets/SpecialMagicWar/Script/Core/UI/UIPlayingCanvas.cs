@@ -27,6 +27,7 @@ namespace SpecialMagicWar.Core
         private UIHolyAnimalCanvas _uiHolyAnimalCanvas;
         private UIEnforceCanvas _uiEnforceCanvas;
         private UIProbabilityInfoCanvas _uiProbabilityInfoCanvas;
+        private UIMiningCanvas _uiMiningCanvas;
 
         private UIGenerateSpellButton _uiGenerateSpellButton;
 
@@ -51,6 +52,7 @@ namespace SpecialMagicWar.Core
             _uiEnforceCanvas = GetComponentInChildren<UIEnforceCanvas>(true);
             _uiProbabilityInfoCanvas = GetComponentInChildren<UIProbabilityInfoCanvas>(true);
             _uiGenerateSpellButton = GetComponentInChildren<UIGenerateSpellButton>();
+            _uiMiningCanvas = GetComponentInChildren<UIMiningCanvas>(true);
             
             BattleManager.Instance.playerCreateSystem.onCreatePlayer += OnCreatePlayer;
         }
@@ -69,6 +71,7 @@ namespace SpecialMagicWar.Core
             _uiHolyAnimalCanvas?.Initialize(_uiSpellCanvas, _holyAnimalToggle);
             _uiEnforceCanvas?.Initialize(_uiProbabilityInfoCanvas, _uiSpellCanvas, _template);
             _uiGenerateSpellButton?.Initialize(_uiSpellCanvas);
+            _uiMiningCanvas?.Initialize(_uiSpellCanvas, _miningToggle);
         }
     }
 }

@@ -187,5 +187,33 @@ namespace SpecialMagicWar.Core
 
             onChangeSpell?.Invoke(_spells);
         }
+
+        internal void GenerateRarityUpperRandomSpell(ERarity rarity)
+        {
+            List<UISpellButton> selectedList;
+
+            switch (rarity)
+            {
+                case ERarity.Epic:
+                    selectedList = _epicRarity;
+                    selectedList.AddRange(_legendRarity);
+                    break;
+                case ERarity.Legend:
+                    selectedList = _legendRarity;
+                    selectedList.AddRange(_beginningRarity);
+                    break;
+                case ERarity.Beginning:
+                    selectedList = _beginningRarity;
+                    selectedList.AddRange(_godRarity);
+                    break;
+                default:
+                    return;
+            }
+
+            var spell = selectedList[Random.Range(0, 6)];
+            spell.Show();
+
+            onChangeSpell?.Invoke(_spells);
+        }
     }
 }
