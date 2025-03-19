@@ -45,6 +45,7 @@ namespace SpecialMagicWar.Core
         private float _inverseMaxCoolDownTime;
         private float _currentCoolDownTime;
         private int _spellCount;
+        private float _spellFactor;
 
         #region 프로퍼티
         internal ActiveSkillTemplate template => _template;
@@ -56,7 +57,9 @@ namespace SpecialMagicWar.Core
             {
                 float result = _template.cooldownTime;
 
-                return result;
+                result *= _spellFactor;
+
+                return Mathf.Max(result, 0);
             }
         }
         #endregion
@@ -99,6 +102,8 @@ namespace SpecialMagicWar.Core
             
             _spellCount++;
             UpdateSpellText();
+
+            _spellFactor = 1 / (1 + (_spellCount * 0.05f));
         }
 
         internal void Hide()
@@ -170,6 +175,8 @@ namespace SpecialMagicWar.Core
             _uiSpellCanvas.GenerateRandomNextSpell(_template.rarity.rarity);
             _spellCount -= 3;
             UpdateSpellText();
+
+            _spellFactor = 1 / (1 + (_spellCount * 0.05f));
 
             if (_spellCount == 0)
             {
