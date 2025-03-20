@@ -62,6 +62,7 @@ namespace SpecialMagicWar.Core
                 {
                     // ¿Ø¥÷ √ ±‚»≠
                     unit.Initialize(template);
+                    unit.SetBotIndex(id);
 
                     // ¿Ø¥÷ µÓ∑œ
                     agentSystem.Regist(unit);

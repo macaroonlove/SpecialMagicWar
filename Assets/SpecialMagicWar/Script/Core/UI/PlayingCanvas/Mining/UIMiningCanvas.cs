@@ -57,6 +57,8 @@ namespace SpecialMagicWar.Core
 
             _soulSystem = BattleManager.Instance.GetSubSystem<SoulSystem>();
             _soulSystem.onChangedSoul += OnChangeSoul;
+
+            OnChangeSoul(0);
         }
 
         private void OnDestroy()

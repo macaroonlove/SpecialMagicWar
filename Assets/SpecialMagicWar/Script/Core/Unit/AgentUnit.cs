@@ -15,6 +15,57 @@ namespace SpecialMagicWar.Core
 
             base.Initialize(this);
         }
+
+        protected override void OnDeath()
+        {
+            base.OnDeath();
+
+            if (botIndex == 0)
+            {
+                // 패배 신호 보내기
+                BattleManager.Instance.DefeatBattle();
+            }
+
+            // 봇에서 제외시키기
+            BattleManager.Instance.deadBot.Add(botIndex);
+
+            // 신수 디스폰
+            var agentSystem = BattleManager.Instance.GetSubSystem<AgentSystem>();
+            var holyAnimals = agentSystem.GetAllHolyAnimals(botIndex);
+            for (int i = holyAnimals.Count - 1; i >= 0; i--)
+            {
+                CoreManager.Instance.GetSubSystem<PoolSystem>().DeSpawn(holyAnimals[i].gameObject, 1);
+                agentSystem.Deregist(holyAnimals[i], botIndex);
+            }
+
+            // 적 디스폰
+            var enemySystem = BattleManager.Instance.GetSubSystem<EnemySystem>();
+            var enemies = enemySystem.GetAllEnemies();
+            for (int i = enemies.Count - 1; i >= 0; i--)
+            {
+                if (enemies[i].botIndex == botIndex)
+                {
+                    CoreManager.Instance.GetSubSystem<PoolSystem>().DeSpawn(enemies[i].gameObject, 1);
+                    enemySystem.Deregist(enemies[i]);
+                }
+            }
+        }
+
+        #region 봇
+        internal int botIndex { get; private set; }
+
+        internal void SetBotIndex(int index)
+        {
+            botIndex = index;
+
+            InitializeBot();
+        }
+
+        private void InitializeBot()
+        {
+
+        }
+        #endregion
     }
 }
 

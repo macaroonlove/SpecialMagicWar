@@ -33,6 +33,8 @@ namespace SpecialMagicWar.Core
 
         internal bool CreateUnit(HolyAnimalTemplate template, int botIndex = 0)
         {
+            if (_poolSystem == null) return false;
+
             int spawnIndex;
             if (botIndex == 0) spawnIndex = _spawnIndex;
             else if (botIndex == 1) spawnIndex = _spawnBot1Index;

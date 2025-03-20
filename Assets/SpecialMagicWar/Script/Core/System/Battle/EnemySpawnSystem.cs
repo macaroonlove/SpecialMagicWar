@@ -23,8 +23,11 @@ namespace SpecialMagicWar.Core
         internal EnemyUnit SpawnUnit(EnemyTemplate template, Vector3 pos)
         {
             int botCount = BattleManager.Instance.botCount;
+            
             if (botCount > 0)
             {
+                var deadBot = BattleManager.Instance.deadBot;
+
                 Vector3 botPos = pos;
                 Vector3 botWayPoint = pos;
                 botWayPoint.y = 4;
@@ -33,6 +36,8 @@ namespace SpecialMagicWar.Core
                 {
                     botPos.x += 1.38f;
                     botWayPoint.x += 1.38f;
+
+                    if (deadBot.Contains(i)) continue;
 
                     var unit = SpawnEnemyUnit(template, botPos);
 
@@ -44,15 +49,40 @@ namespace SpecialMagicWar.Core
                 }
             }
 
-            return SpawnEnemyUnit(template, pos);
+            var playerUnit = SpawnEnemyUnit(template, pos);
+            playerUnit.SetBotIndex(0);
+
+            return playerUnit;
         }
 
         internal EnemyUnit SpawnBountyUnit(EnemyTemplate template, Vector3 pos, int botIndex = 0)
         {
-            if (botIndex == 0) return SpawnEnemyUnit(template, pos);
-            else if (botIndex == 1) return SpawnEnemyUnit(template, pos + new Vector3(1.38f, 0, 0));
-            else if (botIndex == 2) return SpawnEnemyUnit(template, pos + new Vector3(2.76f, 0, 0));
-            else return SpawnEnemyUnit(template, pos + new Vector3(4.14f, 0, 0));
+            if (BattleManager.Instance.deadBot.Contains(botIndex)) return null;
+
+            if (botIndex == 0)
+            {
+                var unit = SpawnEnemyUnit(template, pos);
+                unit.SetBotIndex(botIndex);
+                return unit;
+            }
+            else if (botIndex == 1)
+            {
+                var unit = SpawnEnemyUnit(template, pos + new Vector3(1.38f, 0, 0));
+                unit.SetBotIndex(botIndex);
+                return unit;
+            }
+            else if (botIndex == 2)
+            {
+                var unit = SpawnEnemyUnit(template, pos + new Vector3(2.76f, 0, 0));
+                unit.SetBotIndex(botIndex);
+                return unit;
+            }
+            else
+            {
+                var unit = SpawnEnemyUnit(template, pos + new Vector3(4.14f, 0, 0));
+                unit.SetBotIndex(botIndex);
+                return unit;
+            }
         }
 
         private EnemyUnit SpawnEnemyUnit(EnemyTemplate template, Vector3 pos)

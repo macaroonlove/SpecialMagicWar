@@ -64,6 +64,11 @@ namespace SpecialMagicWar.Core
         {
             if (_matchBotIndex != index) return;
 
+            unit.healthAbility.onDeath += () =>
+            {
+                Destroy(gameObject);
+            };
+
             _template.Initialize();
             _uiSpellCanvas?.Initialize(unit, _template);
             _uiBountyCanvas?.Initialize(null, null);
@@ -256,6 +261,7 @@ namespace SpecialMagicWar.Core
             {
                 _template.UpgradeSpellProbabilityLevel();
 
+                _costSystem.PayBotCost(_needEnforceCost, _matchBotIndex);
                 _needEnforceCost = _template.GetNeedCost();
             }
         }
@@ -268,6 +274,7 @@ namespace SpecialMagicWar.Core
 
                 var soul = _template.GetNeedLandSoul();
 
+                _soulSystem.PayBotSoul(_needLandSoul, _matchBotIndex);
                 _needLandSoul = soul.needSoul;
                 if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);
             }
@@ -281,7 +288,8 @@ namespace SpecialMagicWar.Core
 
                 var soul = _template.GetNeedFireSoul();
 
-                _needLandSoul = soul.needSoul;
+                _soulSystem.PayBotSoul(_needFireSoul, _matchBotIndex);
+                _needFireSoul = soul.needSoul;
                 if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);
             }
         }
@@ -294,7 +302,8 @@ namespace SpecialMagicWar.Core
 
                 var soul = _template.GetNeedWaterSoul();
 
-                _needLandSoul = soul.needSoul;
+                _soulSystem.PayBotSoul(_needWaterSoul, _matchBotIndex);
+                _needWaterSoul = soul.needSoul;
                 if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);
             }
         }
@@ -307,7 +316,8 @@ namespace SpecialMagicWar.Core
 
                 var soul = _template.GetNeedHolyAnimalSoul();
 
-                _needLandSoul = soul.needSoul;
+                _soulSystem.PayBotSoul(_needHolyAnimalSoul, _matchBotIndex);
+                _needHolyAnimalSoul = soul.needSoul;
                 if (soul.template != null)
                 {
                     var holyAnimals = _agentsystem.GetAllHolyAnimals(_matchBotIndex);

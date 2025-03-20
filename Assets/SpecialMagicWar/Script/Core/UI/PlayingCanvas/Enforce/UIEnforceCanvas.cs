@@ -112,6 +112,9 @@ namespace SpecialMagicWar.Core
             _soulSystem = BattleManager.Instance.GetSubSystem<SoulSystem>();
             _costSystem.onChangedCost += OnChangeCost;
             _soulSystem.onChangedSoul += OnChangeSoul;
+
+            OnChangeCost(100);
+            OnChangeSoul(0);
         }
 
         private void OnDestroy()
@@ -242,7 +245,7 @@ namespace SpecialMagicWar.Core
             _waterEnforceLevel.text = level;
             _uiSpellCanvas.UpdateWaterEnforceCount(level);
 
-            if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);            
+            if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);
         }
 
         private void ApplyNeedHolyAnimalSoul()
@@ -270,8 +273,9 @@ namespace SpecialMagicWar.Core
             {
                 bool isMax = _inGameTemplate.UpgradeSpellProbabilityLevel();
 
+                _costSystem.PayCost(_currentNeedCost);
                 ApplyNeedCost();
-
+                
                 if (isMax)
                 {
                     _costSystem.onChangedCost -= OnChangeCost;
@@ -289,6 +293,7 @@ namespace SpecialMagicWar.Core
             {
                 bool isMax = _inGameTemplate.UpgradeLandSoulLevel();
 
+                _soulSystem.PaySoul(_currentNeedLandSoul);
                 ApplyNeedLandSoul();
                 
                 if (isMax)
@@ -305,6 +310,7 @@ namespace SpecialMagicWar.Core
             {
                 bool isMax = _inGameTemplate.UpgradeFireSoulLevel();
 
+                _soulSystem.PaySoul(_currentNeedFireSoul);
                 ApplyNeedFireSoul();
 
                 if (isMax)
@@ -321,6 +327,7 @@ namespace SpecialMagicWar.Core
             {
                 bool isMax = _inGameTemplate.UpgradeWaterSoulLevel();
 
+                _soulSystem.PaySoul(_currentNeedWaterSoul);
                 ApplyNeedWaterSoul();
 
                 if (isMax)
@@ -337,6 +344,7 @@ namespace SpecialMagicWar.Core
             {
                 bool isMax = _inGameTemplate.UpgradeHolyAnimalSoulLevel();
 
+                _soulSystem.PaySoul(_currentNeedHolyAnimalSoul);
                 ApplyNeedHolyAnimalSoul();
 
                 if (isMax)

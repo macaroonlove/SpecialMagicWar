@@ -128,7 +128,7 @@ namespace SpecialMagicWar.Core
                 statusInstance.count = template.hitCount;
             }
 
-            statusDic.Add(template, statusInstance);
+            if (statusDic.ContainsKey(template) == false) statusDic.Add(template, statusInstance);
 
 #if UNITY_EDITOR
             statusList.Add(template);

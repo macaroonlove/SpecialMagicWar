@@ -41,6 +41,7 @@ namespace SpecialMagicWar.Core
 
         private void OnWaveChanged(int waveInfo, float remaining)
         {
+            _waveInfoText.text = $"¶ó¿îµå{waveInfo}";
             StartCoroutine(UpdateRemainingTime(remaining));
         }
 

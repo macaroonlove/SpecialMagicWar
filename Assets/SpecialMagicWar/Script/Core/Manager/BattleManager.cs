@@ -18,10 +18,13 @@ namespace SpecialMagicWar.Core
         internal Transform canvas { get; private set; }
         internal PlayerCreateSystem playerCreateSystem { get; private set; }
         internal int botCount => _botCount;
+        internal List<int> deadBot = new List<int>();
 
         internal event UnityAction onBattleInitialize;
         internal event UnityAction onBattleDeinitialize;
         internal event UnityAction onBattleManagerDestroy;
+        internal event UnityAction onVictory;
+        internal event UnityAction onDefeat;
 
         protected override void Awake()
         {
@@ -44,6 +47,8 @@ namespace SpecialMagicWar.Core
 
         private void Start()
         {
+            deadBot.Clear();
+
             // º¿ »ý¼º
             for (int i = 1; i <= _botCount; i++)
             {
@@ -78,6 +83,16 @@ namespace SpecialMagicWar.Core
             {
                 item.Deinitialize();
             }
+        }
+
+        public void VictoryBattle()
+        {
+            onVictory?.Invoke();
+        }
+
+        public void DefeatBattle()
+        {
+            onDefeat?.Invoke();
         }
 
         public T GetSubSystem<T>() where T : IBattleSystem

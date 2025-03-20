@@ -42,12 +42,11 @@ namespace SpecialMagicWar.Core
             if (_timeSystem.currentTime >= _waveLibrary.waves[_currentWaveIndex].spawnTime)
             {
                 WaveTemplate currentWave = _waveLibrary.waves[_currentWaveIndex];
-                StartWave(currentWave);
+                StartWave(currentWave);         
+
+                onWaveChanged?.Invoke(_currentWaveIndex + 1, (_waveLibrary.waves.Count == _currentWaveIndex + 1) ? 0 : _waveLibrary.waves[_currentWaveIndex + 1].spawnTime - _waveLibrary.waves[_currentWaveIndex].spawnTime);
 
                 _currentWaveIndex++;
-
-                if (_waveLibrary.waves.Count >= _currentWaveIndex + 1) 
-                onWaveChanged?.Invoke(_currentWaveIndex, (_waveLibrary.waves.Count == _currentWaveIndex + 1) ? 0 : _waveLibrary.waves[_currentWaveIndex + 1].spawnTime - _waveLibrary.waves[_currentWaveIndex].spawnTime - 1);
             }
         }
 
@@ -77,6 +76,17 @@ namespace SpecialMagicWar.Core
                 {
                     // 스폰 간격 대기
                     yield return wfs;
+                }
+                
+                // 보스의 아이디를 설정해주기(추후 템플릿에서 받아오도록 변경)
+                if (waveInfo.template.id == 1)
+                {
+                    unit.healthAbility.onDeath += () =>
+                    {
+                        BattleManager.Instance.VictoryBattle();
+                    };
+
+                    yield break;
                 }
             }
         }

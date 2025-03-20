@@ -24,12 +24,22 @@ namespace SpecialMagicWar.Core
         {
             Vector3 finalPosition = casterUnit.transform.position + Vector3.down * _skillRange;
 
-            SpawnProjectile(casterUnit, finalPosition);
+            try
+            {
+                SpawnProjectile(casterUnit, finalPosition);
+            }
+            catch { }
         }
         
         private void SpawnProjectile(Unit casterUnit, Vector3 finalPosition)
         {
-            casterUnit.GetAbility<ProjectileAbility>().SpawnProjectile(_prefab, _spawnPoint, finalPosition, (caster, target) => { SkillImpact(caster, target); });
+            casterUnit?.GetAbility<ProjectileAbility>().SpawnProjectile(_prefab, _spawnPoint, finalPosition, (caster, target) => 
+            { 
+                if (caster != null && target != null)
+                {
+                    SkillImpact(caster, target);
+                }
+            });
         }
 
         protected abstract void SkillImpact(Unit casterUnit, Unit targetUnit);

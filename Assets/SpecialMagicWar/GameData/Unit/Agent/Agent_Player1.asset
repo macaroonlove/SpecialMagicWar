@@ -21,7 +21,7 @@ MonoBehaviour:
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
-  _maxHP: 10000
+  _maxHP: 2000
   _physicalResistance: 50
   _magicResistance: 50
   _hpRecoveryPerSec: 0
