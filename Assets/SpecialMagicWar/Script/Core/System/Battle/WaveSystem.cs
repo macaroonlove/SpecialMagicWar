@@ -47,7 +47,7 @@ namespace SpecialMagicWar.Core
                 _currentWaveIndex++;
 
                 if (_waveLibrary.waves.Count >= _currentWaveIndex + 1) 
-                onWaveChanged?.Invoke(_currentWaveIndex, (_waveLibrary.waves.Count >= _currentWaveIndex + 1) ? 0 : _waveLibrary.waves[_currentWaveIndex + 1].spawnTime - _waveLibrary.waves[_currentWaveIndex].spawnTime - 1);
+                onWaveChanged?.Invoke(_currentWaveIndex, (_waveLibrary.waves.Count == _currentWaveIndex + 1) ? 0 : _waveLibrary.waves[_currentWaveIndex + 1].spawnTime - _waveLibrary.waves[_currentWaveIndex].spawnTime - 1);
             }
         }
 

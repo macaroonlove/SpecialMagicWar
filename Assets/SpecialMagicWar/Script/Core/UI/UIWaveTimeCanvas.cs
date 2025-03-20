@@ -21,6 +21,8 @@ namespace SpecialMagicWar.Core
 
         private WaveSystem _waveSystem;
 
+        private WaitForSeconds _wfs = new WaitForSeconds(1f);
+
         protected override void Initialize()
         {
             BindText(typeof(Texts));
@@ -39,8 +41,6 @@ namespace SpecialMagicWar.Core
 
         private void OnWaveChanged(int waveInfo, float remaining)
         {
-            _waveInfoText.text = $"¿þÀÌºê{waveInfo}";
-
             StartCoroutine(UpdateRemainingTime(remaining));
         }
 
@@ -49,11 +49,11 @@ namespace SpecialMagicWar.Core
             while (remaining > 1)
             {
                 remaining -= 1f;
-
+                
                 int minutes = Mathf.FloorToInt(remaining / 60);
                 int seconds = Mathf.FloorToInt(remaining % 60);
                 _remainingText.text = $"{minutes:00}:{seconds:00}";
-                yield return new WaitForSeconds(1f);
+                yield return _wfs;
             }
         }
     }

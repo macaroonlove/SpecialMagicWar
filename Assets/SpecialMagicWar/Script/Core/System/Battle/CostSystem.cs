@@ -15,7 +15,7 @@ namespace SpecialMagicWar.Core
 
         public void Initialize()
         {
-            SetCost(1000);
+            SetCost(100);
         }
 
         public void Deinitialize()
