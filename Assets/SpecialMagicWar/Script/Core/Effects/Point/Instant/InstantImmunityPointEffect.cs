@@ -1,28 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace SpecialMagicWar.Core
 {
-    public class InstantBuffUnitEffect : InstantUnitEffect
+    public class InstantImmunityPointEffect : InstantPointEffect
     {
         [SerializeField] protected bool _isInfinity;
         [SerializeField] protected float _duration;
-        [SerializeField] protected BuffTemplate _buff;
+        [SerializeField] protected int _count;
+        [SerializeField] protected EDamageType _immunityType;
 
         public override string GetDescription()
         {
-            return "즉시 버프";
+            return "즉시 피해면역";
         }
 
         protected override void SkillImpact(Unit casterUnit, Unit targetUnit)
         {
             if (_isInfinity)
             {
-                targetUnit.GetAbility<BuffAbility>().ApplyBuff(_buff, int.MaxValue);
+                targetUnit.GetAbility<HitAbility>().AddDamageImmunity(_immunityType, _count);
             }
             else
             {
-                targetUnit.GetAbility<BuffAbility>().ApplyBuff(_buff, _duration);
+                if (_count == 0)
+                {
+                    targetUnit.GetAbility<HitAbility>().AddDamageImmunity(_immunityType, _duration);
+                }
+                else
+                {
+                    targetUnit.GetAbility<HitAbility>().AddDamageImmunity(_immunityType, _count, _duration);
+                }
             }
         }
 
@@ -48,21 +58,26 @@ namespace SpecialMagicWar.Core
 
             labelRect.y += 20;
             valueRect.y += 20;
-            GUI.Label(labelRect, "버프");
-            _buff = (BuffTemplate)EditorGUI.ObjectField(valueRect, _buff, typeof(BuffTemplate), false);
+            GUI.Label(labelRect, "개수");
+            _count = EditorGUI.IntField(valueRect, _count);
+
+            labelRect.y += 40;
+            valueRect.y += 40;
+            GUI.Label(labelRect, "무시할 데미지 타입");
+            _immunityType = (EDamageType)EditorGUI.EnumPopup(valueRect, _immunityType);
         }
 
         public override int GetNumRows()
         {
             int rowNum = base.GetNumRows();
 
-            rowNum += 2;
+            rowNum += 6;
 
             if (!_isInfinity)
             {
                 rowNum++;
             }
-
+            
             return rowNum;
         }
 #endif

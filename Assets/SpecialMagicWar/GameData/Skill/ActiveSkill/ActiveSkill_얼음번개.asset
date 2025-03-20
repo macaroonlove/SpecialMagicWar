@@ -48,12 +48,11 @@ MonoBehaviour:
   _isTick: 0
   _tickCycle: 0
   _tickCount: 0
-  _damageType: 2
-  _applyTypeByAmountDatas:
-  - applyType: 0
-    amount: 75000
+  _damageType: 1
+  _damage: 75000
   _attackType: 1
-  _target: 1
+  _target: 3
   _skillRangeType: 0
-  _radius: 0
+  _isHighestHPTarget: 1
+  _radius: 4.5
   _numberOfTarget: 0

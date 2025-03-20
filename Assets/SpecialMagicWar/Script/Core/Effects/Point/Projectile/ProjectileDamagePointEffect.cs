@@ -12,48 +12,23 @@ namespace SpecialMagicWar.Core
         [SerializeField] private int _tickCycle;
         [SerializeField] private int _tickCount;
         [SerializeField] private EDamageType _damageType;
+        [SerializeField] private int _damage;
 
-        [SerializeField] private List<ApplyTypeByAmountData> _applyTypeByAmountDatas = new List<ApplyTypeByAmountData>();
+        [SerializeField] private bool _isAbnormalStatus;
+        [SerializeField] private bool _isInfinity;
+        [SerializeField] private float _duration;
+        [SerializeField] private AbnormalStatusTemplate _abnormalStatus;
 
         public override string GetDescription()
         {
-            return "투사체 데미지 (논타겟팅)";
+            return "투사체 데미지";
         }
 
         public int GetAmount(Unit casterUnit, Unit targetUnit)
         {
-            float totalAmount = 0;
+            float totalAmount = _damage;
 
-            foreach (var applyTypeByAmountData in _applyTypeByAmountDatas)
-            {
-                float typeValue = 0f;
-                switch (applyTypeByAmountData.applyType)
-                {
-                    case EApplyType.Basic:
-                        typeValue = 1;
-                        break;
-                    case EApplyType.ATK:
-                        typeValue = casterUnit.GetAbility<AttackAbility>().baseATK;
-                        break;
-                    case EApplyType.FinalATK:
-                        typeValue = casterUnit.GetAbility<AttackAbility>().finalATK;
-                        break;
-                    case EApplyType.CurrentHP:
-                        typeValue = casterUnit.GetAbility<HealthAbility>().currentHP;
-                        break;
-                    case EApplyType.MAXHP:
-                        typeValue = casterUnit.GetAbility<HealthAbility>().finalMaxHP;
-                        break;
-                    case EApplyType.Enemy_CurrentHP:
-                        typeValue = targetUnit.GetAbility<HealthAbility>().currentHP;
-                        break;
-                    case EApplyType.Enemy_MAXHP:
-                        typeValue = targetUnit.GetAbility<HealthAbility>().finalMaxHP;
-                        break;
-                }
-
-                totalAmount += typeValue * applyTypeByAmountData.amount;
-            }
+            // TODO: 버프 효과 적용
 
             return (int)totalAmount;
         }
@@ -117,6 +92,18 @@ namespace SpecialMagicWar.Core
             {
                 targetUnit.GetAbility<HitAbility>().Hit(damage, _damageType, casterUnit.id);
             }
+
+            if (_isAbnormalStatus)
+            {
+                if (_isInfinity)
+                {
+                    targetUnit.GetAbility<AbnormalStatusAbility>().ApplyAbnormalStatus(_abnormalStatus, int.MaxValue);
+                }
+                else
+                {
+                    targetUnit.GetAbility<AbnormalStatusAbility>().ApplyAbnormalStatus(_abnormalStatus, _duration);
+                }
+            }
         }
 
 #if UNITY_EDITOR
@@ -155,36 +142,36 @@ namespace SpecialMagicWar.Core
             GUI.Label(labelRect, "데미지 타입");
             _damageType = (EDamageType)EditorGUI.EnumPopup(valueRect, _damageType);
 
+
+            labelRect.y += 40;
+            valueRect.y += 40;
+            GUI.Label(labelRect, "상태이상 사용 여부");
+            _isAbnormalStatus = EditorGUI.Toggle(valueRect, _isAbnormalStatus);
+
+            if (_isAbnormalStatus)
+            {
+                labelRect.y += 20;
+                valueRect.y += 20;
+                GUI.Label(labelRect, "무한지속 사용 여부");
+                _isInfinity = EditorGUI.Toggle(valueRect, _isInfinity);
+                if (!_isInfinity)
+                {
+                    labelRect.y += 20;
+                    valueRect.y += 20;
+                    GUI.Label(labelRect, "지속시간");
+                    _duration = EditorGUI.FloatField(valueRect, _duration);
+                }
+
+                labelRect.y += 20;
+                valueRect.y += 20;
+                GUI.Label(labelRect, "상태이상");
+                _abnormalStatus = (AbnormalStatusTemplate)EditorGUI.ObjectField(valueRect, _abnormalStatus, typeof(AbnormalStatusTemplate), false);                
+            }
+
             labelRect.y += 20;
             valueRect.y += 20;
-            GUI.Label(labelRect, "적용 방식");
-            if (GUI.Button(valueRect, "추가"))
-            {
-                _applyTypeByAmountDatas.Add(new ApplyTypeByAmountData());
-            }
-
-            var half = (rect.width - 24) * 0.5f;
-            var applyTypeRect = new Rect(labelRect.x, labelRect.y, half, 20);
-            var amountRect = new Rect(half + 24, labelRect.y, half, 20);
-            var deleteRect = new Rect(rect.width, valueRect.y, 20, 20);
-
-            for (int i = 0; i < _applyTypeByAmountDatas.Count; i++)
-            {
-                var data = _applyTypeByAmountDatas[i];
-
-                applyTypeRect.y += 20;
-                amountRect.y += 20;
-                deleteRect.y += 20;
-
-                data.applyType = (EApplyType)EditorGUI.EnumPopup(applyTypeRect, data.applyType);
-                data.amount = EditorGUI.FloatField(amountRect, data.amount);
-
-                if (GUI.Button(deleteRect, "X"))
-                {
-                    _applyTypeByAmountDatas.RemoveAt(i);
-                    break;
-                }
-            }
+            GUI.Label(labelRect, "데미지");
+            _damage = EditorGUI.IntField(valueRect, _damage);
         }
 
         public override int GetNumRows()
@@ -198,7 +185,15 @@ namespace SpecialMagicWar.Core
                 rowNum += 2;
             }
 
-            rowNum += (int)(_applyTypeByAmountDatas.Count * 1.2f);
+            if (_isAbnormalStatus)
+            {
+                rowNum += 4;
+
+                if (!_isInfinity)
+                {
+                    rowNum++;
+                }
+            }
 
             return rowNum;
         }

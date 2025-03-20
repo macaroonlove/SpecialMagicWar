@@ -43,17 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bccbf8b4f0aba41a55d06c10bd33d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 3195638163789533073, guid: ed3e588a5f739c54b862a20496be3f3e, type: 3}
+  _prefab: {fileID: 3195638163789533073, guid: 94cdffce31fcb904a89d41938bcfa979, type: 3}
   _spawnPoint: 4
-  _skillRange: 10
-  _skillType: 0
-  _projectileAngleStep: 0
-  _projectileCount: 0
+  _skillRange: 4.5
   _repeatCount: 1
   _isTick: 0
   _tickCycle: 0
   _tickCount: 0
-  _damageType: 2
-  _applyTypeByAmountDatas:
-  - applyType: 0
-    amount: 48000
+  _damageType: 0
+  _damage: 48000
+  _isAbnormalStatus: 0
+  _isInfinity: 0
+  _duration: 0
+  _abnormalStatus: {fileID: 0}

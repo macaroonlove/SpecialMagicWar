@@ -127,23 +127,23 @@ namespace SpecialMagicWar.Core
                     break;
                 }
             }
-
+            
             List<UISpellButton> selectedList;
             switch (index)
             {
-                case 1:
+                case 0:
                     selectedList = _godRarity;
                     break;
-                case 2:
+                case 1:
                     selectedList = _beginningRarity;
                     break;
-                case 3:
+                case 2:
                     selectedList = _legendRarity;
                     break;
-                case 4:
+                case 3:
                     selectedList = _epicRarity;
                     break;
-                case 5:
+                case 4:
                     selectedList = _rareRarity;
                     break;
                 default:

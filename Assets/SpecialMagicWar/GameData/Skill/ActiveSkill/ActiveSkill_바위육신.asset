@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8251451389877083335
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6fe7e1e33211e4fa51a3790b199d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: 0
+  _skillRange: 0
+  _targetFX: {fileID: 0}
+  _isInfinity: 1
+  _duration: 0
+  _count: 1
+  _immunityType: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24,7 +43,7 @@ MonoBehaviour:
   _needMana: 0
   _cooldownTime: 10
   _spellType: 0
-  _skillType: 0
+  _skillType: 2
   _unitType: 0
   _skillRange: 0
   _parameterName: attack
@@ -32,24 +51,4 @@ MonoBehaviour:
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}
   effects:
-  - {fileID: 8433454614799196224}
---- !u!114 &8433454614799196224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f08337933d94146a28cbcd12d86079, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetFX: {fileID: 0}
-  _isInfinity: 1
-  _duration: 0
-  _count: 1
-  _immunityType: 2
-  _target: 0
-  _radius: 0
-  _numberOfTarget: 0
+  - {fileID: -8251451389877083335}

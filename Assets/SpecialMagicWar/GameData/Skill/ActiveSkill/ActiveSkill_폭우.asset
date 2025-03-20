@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3971142291313084986
+--- !u!114 &-175905795843660280
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,24 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3cfed2620ab4e47a983f4794b88fd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 85bccbf8b4f0aba41a55d06c10bd33d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 3195638163789533073, guid: ed3e588a5f739c54b862a20496be3f3e, type: 3}
+  _prefab: {fileID: 3195638163789533073, guid: 94cdffce31fcb904a89d41938bcfa979, type: 3}
   _spawnPoint: 0
+  _skillRange: 4.5
   _repeatCount: 1
   _isTick: 0
   _tickCycle: 0
   _tickCount: 0
-  _damageType: 2
-  _applyTypeByAmountDatas:
-  - applyType: 0
-    amount: 400
-  _attackType: 1
-  _target: 2
-  _skillRangeType: 0
-  _radius: 10
-  _numberOfTarget: 5
+  _damageType: 1
+  _damage: 400
+  _isAbnormalStatus: 0
+  _isInfinity: 0
+  _duration: 0
+  _abnormalStatus: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,14 +40,13 @@ MonoBehaviour:
   _sprite: {fileID: 1606628532965834737, guid: 9dbef0fdede574b5fad7cc4a7adcda48, type: 3}
   _id: 5
   _displayName: "\uD3ED\uC6B0"
-  _description: "\uCD5C\uB300 5\uB9C8\uB9AC\uC758 \uC801\uC744 \uD1B5\uACFC\uD560
-    \uC218 \uC788\uB294 \uAC15\uD654\uB41C \uBB3C\uBC29\uC6B8\uC744 \uB358\uC838
-    400\uC758 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  _description: "\uC801\uC744 \uD1B5\uACFC\uD560 \uC218 \uC788\uB294 \uAC15\uD654\uB41C
+    \uBB3C\uBC29\uC6B8\uC744 \uB358\uC838 400\uC758 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   _rarity: {fileID: 11400000, guid: 0923c9a685a91524e96bcc4f83d2a8e8, type: 2}
   _needMana: 0
   _cooldownTime: 3
   _spellType: 2
-  _skillType: 0
+  _skillType: 2
   _unitType: 0
   _skillRange: 0
   _parameterName: attack
@@ -57,4 +54,4 @@ MonoBehaviour:
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}
   effects:
-  - {fileID: -3971142291313084986}
+  - {fileID: -175905795843660280}

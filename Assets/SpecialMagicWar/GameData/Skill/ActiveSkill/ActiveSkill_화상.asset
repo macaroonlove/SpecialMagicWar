@@ -50,9 +50,9 @@ MonoBehaviour:
   _duration: 0
   _percentage: 100
   _abnormalStatus: {fileID: 11400000, guid: 6112246d38b0593458882d6452fa1982, type: 2}
-  _target: 4
+  _target: 3
   _attackType: 1
   _skillRangeType: 0
   _isRandomTarget: 1
-  _radius: 10
+  _radius: 4.5
   _numberOfTarget: 0

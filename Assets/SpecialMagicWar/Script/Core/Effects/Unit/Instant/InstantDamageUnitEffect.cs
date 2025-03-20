@@ -12,8 +12,7 @@ namespace SpecialMagicWar.Core
         [SerializeField] protected int _tickCycle;
         [SerializeField] protected int _tickCount;
         [SerializeField] protected EDamageType _damageType;
-
-        [SerializeField] protected List<ApplyTypeByAmountData> _applyTypeByAmountDatas = new List<ApplyTypeByAmountData>();
+        [SerializeField] protected int _damage;
 
         public override string GetDescription()
         {
@@ -22,38 +21,9 @@ namespace SpecialMagicWar.Core
 
         public int GetAmount(Unit casterUnit, Unit targetUnit)
         {
-            float totalAmount = 0;
+            float totalAmount = _damage;
 
-            foreach (var applyTypeByAmountData in _applyTypeByAmountDatas)
-            {
-                float typeValue = 0f;
-                switch (applyTypeByAmountData.applyType)
-                {
-                    case EApplyType.Basic:
-                        typeValue = 1;
-                        break;
-                    case EApplyType.ATK:
-                        typeValue = casterUnit.GetAbility<AttackAbility>().baseATK;
-                        break;
-                    case EApplyType.FinalATK:
-                        typeValue = casterUnit.GetAbility<AttackAbility>().finalATK;
-                        break;
-                    case EApplyType.CurrentHP:
-                        typeValue = casterUnit.GetAbility<HealthAbility>().currentHP;
-                        break;
-                    case EApplyType.MAXHP:
-                        typeValue = casterUnit.GetAbility<HealthAbility>().finalMaxHP;
-                        break;
-                    case EApplyType.Enemy_CurrentHP:
-                        typeValue = targetUnit.GetAbility<HealthAbility>().currentHP;
-                        break;
-                    case EApplyType.Enemy_MAXHP:
-                        typeValue = targetUnit.GetAbility<HealthAbility>().finalMaxHP;
-                        break;
-                }
-
-                totalAmount += typeValue * applyTypeByAmountData.amount;
-            }
+            // TODO: 강화 적용하기
 
             return (int)totalAmount;
         }
@@ -158,34 +128,8 @@ namespace SpecialMagicWar.Core
 
             labelRect.y += 20;
             valueRect.y += 20;
-            GUI.Label(labelRect, "적용 방식");
-            if (GUI.Button(valueRect, "추가"))
-            {
-                _applyTypeByAmountDatas.Add(new ApplyTypeByAmountData());
-            }
-
-            var half = (rect.width - 24) * 0.5f;
-            var applyTypeRect = new Rect(labelRect.x, labelRect.y, half, 20);
-            var amountRect = new Rect(half + 24, labelRect.y, half, 20);
-            var deleteRect = new Rect(rect.width, valueRect.y, 20, 20);
-
-            for (int i = 0; i < _applyTypeByAmountDatas.Count; i++)
-            {
-                var data = _applyTypeByAmountDatas[i];
-
-                applyTypeRect.y += 20;
-                amountRect.y += 20;
-                deleteRect.y += 20;
-
-                data.applyType = (EApplyType)EditorGUI.EnumPopup(applyTypeRect, data.applyType);
-                data.amount = EditorGUI.FloatField(amountRect, data.amount);
-
-                if (GUI.Button(deleteRect, "X"))
-                {
-                    _applyTypeByAmountDatas.RemoveAt(i);
-                    break;
-                }
-            }
+            GUI.Label(labelRect, "데미지");
+            _damage = EditorGUI.IntField(valueRect, _damage);
         }
 
         public override int GetNumRows()
@@ -198,8 +142,6 @@ namespace SpecialMagicWar.Core
             {
                 rowNum += 2;
             }
-
-            rowNum += (int)(_applyTypeByAmountDatas.Count * 1.2f);
 
             return rowNum;
         }

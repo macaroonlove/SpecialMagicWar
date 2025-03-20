@@ -90,7 +90,10 @@ namespace SpecialMagicWar.Core
 
             if (template.delay > 0)
             {
-                StartCoroutine(CoAddStatus(template, duration, isContained));
+                if (gameObject.activeInHierarchy)
+                {
+                    StartCoroutine(CoAddStatus(template, duration, isContained));
+                }
             }
             else
             {

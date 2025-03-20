@@ -11,7 +11,7 @@ namespace SpecialMagicWar.Core
 
         public override string GetDescription()
         {
-            return "투사체 상태이상 (논타겟팅)";
+            return "투사체 상태이상";
         }
 
         protected override void SkillImpact(Unit casterUnit, Unit targetUnit)

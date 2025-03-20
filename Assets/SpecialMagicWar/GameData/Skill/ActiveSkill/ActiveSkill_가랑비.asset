@@ -21,7 +21,7 @@ MonoBehaviour:
   _needMana: 0
   _cooldownTime: 0.8
   _spellType: 2
-  _skillType: 0
+  _skillType: 2
   _unitType: 0
   _skillRange: 0
   _parameterName: attack
@@ -29,8 +29,8 @@ MonoBehaviour:
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}
   effects:
-  - {fileID: 1395206088603111651}
---- !u!114 &1395206088603111651
+  - {fileID: 4868736656910633540}
+--- !u!114 &4868736656910633540
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,21 +39,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3cfed2620ab4e47a983f4794b88fd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 85bccbf8b4f0aba41a55d06c10bd33d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 3195638163789533073, guid: ed3e588a5f739c54b862a20496be3f3e, type: 3}
-  _spawnPoint: 0
+  _spawnPoint: 1
+  _skillRange: 4.5
   _repeatCount: 1
   _isTick: 0
   _tickCycle: 0
   _tickCount: 0
-  _damageType: 2
-  _applyTypeByAmountDatas:
-  - applyType: 0
-    amount: 110
-  _attackType: 1
-  _target: 1
-  _skillRangeType: 0
-  _radius: 10
-  _numberOfTarget: 0
+  _damageType: 1
+  _damage: 110
+  _isAbnormalStatus: 0
+  _isInfinity: 0
+  _duration: 0
+  _abnormalStatus: {fileID: 0}

@@ -15,16 +15,23 @@ namespace SpecialMagicWar.Core
 
         public List<Unit> GetTarget(Unit casterUnit)
         {
-            if (_target == ETarget.AllTarget && _isRandomTarget)
+            if (_target != ETarget.NumTargetInRange)
             {
                 var targets = casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(_target, _radius, _attackType, _skillRangeType);
                 
-                if (targets.Count > 0)
+                if (_isRandomTarget)
                 {
-                    var units = new List<Unit>();
-                    units.Add(targets[Random.Range(0, targets.Count)]);
+                    if (targets.Count > 0)
+                    {
+                        var units = new List<Unit>();
+                        units.Add(targets[Random.Range(0, targets.Count)]);
 
-                    return units;
+                        return units;
+                    }
+                }
+                else
+                {
+                    return targets;
                 }
             }
 
@@ -52,7 +59,7 @@ namespace SpecialMagicWar.Core
                 _radius = EditorGUI.FloatField(valueRect, _radius);
             }
 
-            if (_target == ETarget.AllTarget)
+            if (_target == ETarget.AllTargetInRange)
             {
                 labelRect.y += 20;
                 valueRect.y += 20;
@@ -88,7 +95,7 @@ namespace SpecialMagicWar.Core
                 rowNum += 2;
             }
 
-            if (_target == ETarget.AllTarget)
+            if (_target == ETarget.AllTargetInRange)
             {
                 rowNum++;
             }

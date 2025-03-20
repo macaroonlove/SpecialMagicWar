@@ -47,7 +47,7 @@ namespace SpecialMagicWar.Core
         {
             if (((1 << other.gameObject.layer) & _layerMask) != 0)
             {
-                if (other.TryGetComponent(out Unit targetUnit))
+                if (other.transform.parent.TryGetComponent(out Unit targetUnit))
                 {
                     OnCollision(targetUnit);
                 }

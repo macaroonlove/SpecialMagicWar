@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,11 +11,32 @@ namespace SpecialMagicWar.Core
         [SerializeField] private EAttackType _attackType;
         [SerializeField] private ETarget _target;
         [SerializeField] private ESkillRangeType _skillRangeType;
+        [SerializeField] private bool _isHighestHPTarget;
         [SerializeField] private float _radius;
         [SerializeField] private int _numberOfTarget;
 
         public List<Unit> GetTarget(Unit casterUnit)
         {
+            if (_target != ETarget.NumTargetInRange)
+            {
+                var targets = casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(_target, _radius, _attackType, _skillRangeType);
+
+                if (_isHighestHPTarget)
+                {
+                    if (targets.Count > 0)
+                    {
+                        var units = new List<Unit>();
+                        var unit = targets.OrderByDescending(target => target.healthAbility.currentHP).FirstOrDefault();
+                        units.Add(unit);
+                        return units;
+                    }
+                }
+                else
+                {
+                    return targets;
+                }
+            }
+
             return casterUnit.GetAbility<FindTargetAbility>().FindAttackableTarget(_target, _radius, _attackType, _skillRangeType, _numberOfTarget);
         }
 
@@ -44,6 +66,14 @@ namespace SpecialMagicWar.Core
                 _radius = EditorGUI.FloatField(valueRect, _radius);
             }
 
+            if (_target == ETarget.AllTargetInRange)
+            {
+                labelRect.y += 20;
+                valueRect.y += 20;
+                GUI.Label(labelRect, "체력이 가장 높은 적 한명 받아오기");
+                _isHighestHPTarget = EditorGUI.Toggle(valueRect, _isHighestHPTarget);
+            }
+
             if (_target == ETarget.NumTargetInRange)
             {
                 labelRect.y += 20;
@@ -60,7 +90,7 @@ namespace SpecialMagicWar.Core
         {
             int rowNum = base.GetNumRows();
 
-            rowNum += 3;
+            rowNum += 5;
 
             if (_target != ETarget.Myself && _target != ETarget.AllTarget)
             {

@@ -21,7 +21,7 @@ MonoBehaviour:
   _needMana: 0
   _cooldownTime: 1.3
   _spellType: 0
-  _skillType: 0
+  _skillType: 2
   _unitType: 0
   _skillRange: 0
   _parameterName: attack
@@ -29,8 +29,8 @@ MonoBehaviour:
   _casterFX: {fileID: 0}
   _targetFX: {fileID: 0}
   effects:
-  - {fileID: 8504595588848378478}
---- !u!114 &8504595588848378478
+  - {fileID: 8215812500349329554}
+--- !u!114 &8215812500349329554
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,20 +39,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2468a6a634185654c8ce0ab02e8208f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 76afb4c3b44eade44ac5b7290f6e96c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: 3
+  _skillRange: 0.4
   _targetFX: {fileID: 0}
   _repeatCount: 1
   _isTick: 0
   _tickCycle: 0
   _tickCount: 0
   _damageType: 2
-  _applyTypeByAmountDatas:
-  - applyType: 0
-    amount: 200
-  _attackType: 0
-  _target: 3
-  _skillRangeType: 0
-  _radius: 0.4
-  _numberOfTarget: 0
+  _damage: 200
