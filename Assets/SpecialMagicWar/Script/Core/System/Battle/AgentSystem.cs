@@ -65,6 +65,11 @@ namespace SpecialMagicWar.Core
             return _players;
         }
 
+        internal List<HolyAnimalUnit> GetAllHolyAnimals()
+        {
+            return _holyAnimals;
+        }
+
         /// <summary>
         /// 범위 내에 아군 유닛을 반환 (unitPos와 가까운 유닛부터 반환)
         /// </summary>

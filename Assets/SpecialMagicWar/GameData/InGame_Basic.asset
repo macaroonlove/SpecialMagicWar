@@ -120,15 +120,17 @@ MonoBehaviour:
   - needSoul: 1
     template: {fileID: 0}
   - needSoul: 2
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: b3689dbcd2d3f474a82c426407fc7397, type: 2}
   - needSoul: 3
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: eff82b7e873f69644a4aeae471e0589a, type: 2}
   - needSoul: 4
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: d972982154049c849bfc305d288298a0, type: 2}
+  - needSoul: 5
+    template: {fileID: 11400000, guid: cf5704c1fa6de024eb48c5fa620ebd83, type: 2}
   - needSoul: 0
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: aa71ed21ec30fd440a59f3b3c0076f81, type: 2}
   _spellProbabilityLevel: 0
   _landSoulLevel: 0
-  _fireSoulLevel: 5
+  _fireSoulLevel: 0
   _waterSoulLevel: 0
-  _holyAnimalSoulLevel: 0
+  _holyAnimalSoulLevel: 2

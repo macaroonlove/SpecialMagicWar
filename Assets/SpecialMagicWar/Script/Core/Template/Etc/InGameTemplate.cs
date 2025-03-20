@@ -120,9 +120,9 @@ namespace SpecialMagicWar.Core
         #endregion
 
         #region Holy Animal Soul
-        public int GetNeedHolyAnimalSoul()
+        public NeedSoulList GetNeedHolyAnimalSoul()
         {
-            return _holyAnimalSoulList[_holyAnimalSoulLevel].needSoul;
+            return _holyAnimalSoulList[_holyAnimalSoulLevel];
         }
 
         public bool UpgradeHolyAnimalSoulLevel()

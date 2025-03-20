@@ -34,6 +34,7 @@ namespace SpecialMagicWar.Core
         #endregion
 
         private BuffAbility _buffAbility;
+        private AgentSystem _agentsystem;
         private CostSystem _costSystem;
         private SoulSystem _soulSystem;
         private UIProbabilityInfoCanvas _uiProbabilityInfoCanvas;
@@ -106,6 +107,7 @@ namespace SpecialMagicWar.Core
             ApplyNeedHolyAnimalSoul();
             _uiProbabilityInfoCanvas.Show(_inGameTemplate.GetSpellProbability());
 
+            _agentsystem = BattleManager.Instance.GetSubSystem<AgentSystem>();
             _costSystem = BattleManager.Instance.GetSubSystem<CostSystem>();
             _soulSystem = BattleManager.Instance.GetSubSystem<SoulSystem>();
             _costSystem.onChangedCost += OnChangeCost;
@@ -245,9 +247,20 @@ namespace SpecialMagicWar.Core
 
         private void ApplyNeedHolyAnimalSoul()
         {
-            _currentNeedHolyAnimalSoul = _inGameTemplate.GetNeedHolyAnimalSoul();
+            var soul = _inGameTemplate.GetNeedHolyAnimalSoul();
+
+            _currentNeedHolyAnimalSoul = soul.needSoul;
             _needHolyAnimalSoulText.text = _currentNeedHolyAnimalSoul.ToString();
             _holyAnimalEnforceLevel.text = _inGameTemplate.holyAnimalSoulLevel.ToString();
+
+            if (soul.template != null) 
+            {
+                var holyAnimals = _agentsystem.GetAllHolyAnimals();
+                foreach (var holyAnimal in holyAnimals)
+                {
+                    holyAnimal.GetAbility<BuffAbility>().ApplyBuff(soul.template, int.MaxValue);
+                }
+            }
         }
         #endregion
 
