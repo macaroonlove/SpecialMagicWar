@@ -36,6 +36,7 @@ namespace SpecialMagicWar.Core
         internal List<UISpellButton> spells => _spells;
 
         internal event UnityAction<List<UISpellButton>> onChangeSpell;
+        internal event UnityAction<int> onChangeSpellCount;
 
         protected override void Initialize()
         {
@@ -155,6 +156,7 @@ namespace SpecialMagicWar.Core
             spell.Show();
 
             onChangeSpell?.Invoke(_spells);
+            onChangeSpellCount?.Invoke(_spells.Sum(x => x.spellCount));
 
             return spell;
         }
@@ -188,6 +190,7 @@ namespace SpecialMagicWar.Core
             spell.Show();
 
             onChangeSpell?.Invoke(_spells);
+            onChangeSpellCount?.Invoke(_spells.Sum(x => x.spellCount));
         }
 
         internal void GenerateRarityUpperRandomSpell(ERarity rarity)
@@ -216,6 +219,7 @@ namespace SpecialMagicWar.Core
             spell.Show();
 
             onChangeSpell?.Invoke(_spells);
+            onChangeSpellCount?.Invoke(_spells.Sum(x => x.spellCount));
         }
     }
 }

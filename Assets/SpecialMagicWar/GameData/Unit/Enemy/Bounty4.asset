@@ -21,9 +21,9 @@ MonoBehaviour:
   _gainSoul: 3
   _moveSpeed: 2
   _moveType: 0
-  _atk: 0
-  _attackTerm: 0
-  _attackRange: 0
+  _atk: 300
+  _attackTerm: 1
+  _attackRange: 0.4
   _isProjectileAttack: 0
   _projectilePrefab: {fileID: 0}
   _spawnPoint: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
-  _maxHP: 1200000
+  _maxHP: 15000
   _physicalResistance: 0
   _magicResistance: 0
   _hpRecoveryPerSec: 0

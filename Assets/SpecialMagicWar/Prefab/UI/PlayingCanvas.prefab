@@ -2184,7 +2184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6 / 25
+  m_text: 0 / 25
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83912e966562e0745ac643ee7cf26310, type: 2}
   m_sharedMaterial: {fileID: 1556408044341741637, guid: 83912e966562e0745ac643ee7cf26310,
@@ -7008,6 +7008,7 @@ GameObject:
   - component: {fileID: 6694726401558072037}
   - component: {fileID: 5206677639433223694}
   - component: {fileID: 7171980281407306628}
+  - component: {fileID: 3534344703529912582}
   m_Layer: 5
   m_Name: SpellCountDisplay
   m_TagString: Untagged
@@ -7065,6 +7066,18 @@ MonoBehaviour:
   duration: 0.25
   ease: 9
   _canvasGroup: {fileID: 5206677639433223694}
+--- !u!114 &3534344703529912582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609045476036244044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e9f378644279545b2f63d34a66e2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4655046235459668592
 GameObject:
   m_ObjectHideFlags: 0
