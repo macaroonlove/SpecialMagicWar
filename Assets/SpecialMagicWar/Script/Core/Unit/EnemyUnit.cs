@@ -34,7 +34,7 @@ namespace SpecialMagicWar.Core
             }
             if (template.gainSoul > 0)
             {
-                BattleManager.Instance.GetSubSystem<SoulSystem>().AddSoul(template.gainCost);
+                BattleManager.Instance.GetSubSystem<SoulSystem>().AddSoul(template.gainSoul);
             }
         }
 
@@ -56,7 +56,7 @@ namespace SpecialMagicWar.Core
             }
             if (template.gainSoul > 0)
             {
-                BattleManager.Instance.GetSubSystem<SoulSystem>().AddBotSoul(template.gainCost, botIndex);
+                BattleManager.Instance.GetSubSystem<SoulSystem>().AddBotSoul(template.gainSoul, botIndex);
             }
         }
 
