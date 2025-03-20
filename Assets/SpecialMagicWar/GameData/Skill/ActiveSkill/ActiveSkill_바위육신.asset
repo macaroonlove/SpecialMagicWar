@@ -15,7 +15,7 @@ MonoBehaviour:
   _target: 0
   _skillRange: 0
   _isPoint: 0
-  _targetFX: {fileID: 0}
+  _targetFX: {fileID: 11400000, guid: 1d358ba1b86893e41a2fa4cea0b150f0, type: 2}
   _isInfinity: 1
   _duration: 0
   _count: 1

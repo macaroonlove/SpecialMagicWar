@@ -15,7 +15,7 @@ MonoBehaviour:
   _target: 3
   _skillRange: 0.4
   _isPoint: 0
-  _targetFX: {fileID: 0}
+  _targetFX: {fileID: 11400000, guid: bcf268ddf24b5fd47932601221a059e5, type: 2}
   _repeatCount: 1
   _isTick: 0
   _tickCycle: 0

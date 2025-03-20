@@ -21,7 +21,7 @@ namespace SpecialMagicWar.Core
 
         public void Initialize()
         {
-            SetSoul(0);
+            SetSoul(100);
 
             int botCount = BattleManager.Instance.botCount;
             for (int i = 1; i <= botCount; i++)

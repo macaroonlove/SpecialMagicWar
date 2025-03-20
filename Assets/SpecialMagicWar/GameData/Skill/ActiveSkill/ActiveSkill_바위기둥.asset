@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2468a6a634185654c8ce0ab02e8208f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetFX: {fileID: 0}
+  _targetFX: {fileID: 11400000, guid: 27b6c01515f395e46b4fe939a441ac52, type: 2}
   _repeatCount: 1
   _isTick: 0
   _tickCycle: 0

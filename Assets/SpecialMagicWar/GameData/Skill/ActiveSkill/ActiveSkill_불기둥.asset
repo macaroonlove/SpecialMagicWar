@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bccbf8b4f0aba41a55d06c10bd33d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 3195638163789533073, guid: 94cdffce31fcb904a89d41938bcfa979, type: 3}
+  _prefab: {fileID: 6951728541803574625, guid: 7b3f497cf7fd2ef4f9bcac1652fdd861, type: 3}
   _spawnPoint: 4
   _skillRange: 2.5
   _repeatCount: 1
