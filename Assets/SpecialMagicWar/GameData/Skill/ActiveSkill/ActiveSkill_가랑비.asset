@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
   m_Name: "ActiveSkill_\uAC00\uB791\uBE44"
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 7195734205691627793, guid: f4fd86b5ee49b470697a84be25c668cb, type: 3}
+  _sprite: {fileID: 21300000, guid: e85f884baac7eed48ae13bd4d6885384, type: 3}
   _id: 2
   _displayName: "\uAC00\uB791\uBE44"
   _description: "\uBB3C\uBC29\uC6B8\uC744 \uB358\uC838 \uCC98\uC74C \uB9DE\uB294

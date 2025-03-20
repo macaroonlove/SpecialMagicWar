@@ -36,8 +36,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5093661109052b9438d278789d9e23d4, type: 3}
   m_Name: "ActiveSkill_\uC9C0\uC9C4"
   m_EditorClassIdentifier: 
-  _sprite: {fileID: -3786673782929868589, guid: 9319101edbfea48f58b3eb3a01e16f2a,
-    type: 3}
+  _sprite: {fileID: 21300000, guid: f04a65553a1a7a447bc38bc4bc3e3f5d, type: 3}
   _id: 15
   _displayName: "\uC9C0\uC9C4"
   _description: "\uB300\uC9C0\uC758 \uBC1C\uBC14\uB2E5\uC73C\uB85C \uADFC\uC811\uD55C
