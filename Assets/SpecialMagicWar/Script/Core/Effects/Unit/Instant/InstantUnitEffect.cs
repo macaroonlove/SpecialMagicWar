@@ -8,10 +8,14 @@ namespace SpecialMagicWar.Core
     {
         [SerializeField] protected FX _targetFX;
 
-        public override void Execute(Unit casterUnit, Unit targetUnit)
+        protected ESpellType _spellType;
+
+        public override void Execute(Unit casterUnit, Unit targetUnit, ESpellType spellType)
         {
             if (casterUnit == null || targetUnit == null) return;
             if (targetUnit.isDie) return;
+
+            _spellType = spellType;
 
             SkillImpact(casterUnit, targetUnit);
 

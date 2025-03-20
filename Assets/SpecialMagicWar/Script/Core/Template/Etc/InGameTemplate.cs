@@ -78,9 +78,9 @@ namespace SpecialMagicWar.Core
         #endregion
 
         #region Land Soul
-        public int GetNeedLandSoul()
+        public NeedSoulList GetNeedLandSoul()
         {
-            return _landSoulList[_landSoulLevel].needSoul;
+            return _landSoulList[_landSoulLevel];
         }
 
         public bool UpgradeLandSoulLevel()
@@ -92,9 +92,9 @@ namespace SpecialMagicWar.Core
         #endregion
 
         #region Fire Soul
-        public int GetNeedFireSoul()
+        public NeedSoulList GetNeedFireSoul()
         {
-            return _fireSoulList[_landSoulLevel].needSoul;
+            return _fireSoulList[_fireSoulLevel];
         }
 
         public bool UpgradeFireSoulLevel()
@@ -106,9 +106,9 @@ namespace SpecialMagicWar.Core
         #endregion
 
         #region Water Soul
-        public int GetNeedWaterSoul()
+        public NeedSoulList GetNeedWaterSoul()
         {
-            return _waterSoulList[_landSoulLevel].needSoul;
+            return _waterSoulList[_waterSoulLevel];
         }
 
         public bool UpgradeWaterSoulLevel()
@@ -122,7 +122,7 @@ namespace SpecialMagicWar.Core
         #region Holy Animal Soul
         public int GetNeedHolyAnimalSoul()
         {
-            return _holyAnimalSoulList[_landSoulLevel].needSoul;
+            return _holyAnimalSoulList[_holyAnimalSoulLevel].needSoul;
         }
 
         public bool UpgradeHolyAnimalSoulLevel()
@@ -150,6 +150,6 @@ namespace SpecialMagicWar.Core
     public class NeedSoulList
     {
         public int needSoul;
-        public PassiveSkillTemplate template;
+        public BuffTemplate template;
     }
 }

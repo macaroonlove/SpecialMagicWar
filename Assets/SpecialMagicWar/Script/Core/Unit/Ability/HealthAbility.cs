@@ -310,7 +310,7 @@ namespace SpecialMagicWar.Core
 
             foreach (var effect in _passiveSkillAbility.healEventEffects)
             {
-                effect.Execute(unit, casterUnit);
+                effect.Execute(unit, casterUnit, ESpellType.Land);
             }
         }
 

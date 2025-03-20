@@ -7,6 +7,6 @@ namespace SpecialMagicWar.Core
     /// </summary>
     public abstract class PointEffect : Effect
     {
-        public abstract void Execute(Unit casterUnit, Vector3 targetVector);
+        public abstract void Execute(Unit casterUnit, ESpellType spellType);
     }
 }

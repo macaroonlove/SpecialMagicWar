@@ -33,6 +33,7 @@ namespace SpecialMagicWar.Core
         }
         #endregion
 
+        private BuffAbility _buffAbility;
         private CostSystem _costSystem;
         private SoulSystem _soulSystem;
         private UIProbabilityInfoCanvas _uiProbabilityInfoCanvas;
@@ -64,8 +65,9 @@ namespace SpecialMagicWar.Core
         private int _currentNeedWaterSoul;
         private int _currentNeedHolyAnimalSoul;
 
-        internal void Initialize(UIProbabilityInfoCanvas uiProbabilityInfoCanvas, UISpellCanvas uiSpellCanvas, InGameTemplate inGameTemplate)
+        internal void Initialize(AgentUnit unit, UIProbabilityInfoCanvas uiProbabilityInfoCanvas, UISpellCanvas uiSpellCanvas, InGameTemplate inGameTemplate)
         {
+            _buffAbility = unit.GetAbility<BuffAbility>();
             _uiProbabilityInfoCanvas = uiProbabilityInfoCanvas;
             _inGameTemplate = inGameTemplate;
             _uiSpellCanvas = uiSpellCanvas;
@@ -201,32 +203,44 @@ namespace SpecialMagicWar.Core
 
         private void ApplyNeedLandSoul()
         {
-            _currentNeedLandSoul = _inGameTemplate.GetNeedLandSoul();
+            var soul = _inGameTemplate.GetNeedLandSoul();
+            
+            _currentNeedLandSoul = soul.needSoul;
             _needLandSoulText.text = _currentNeedLandSoul.ToString();
             
             var level = _inGameTemplate.landSoulLevel.ToString();
             _landEnforceLevel.text = level;
             _uiSpellCanvas.UpdateLandEnforceCount(level);
+
+            if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);
         }
 
         private void ApplyNeedFireSoul()
         {
-            _currentNeedFireSoul = _inGameTemplate.GetNeedFireSoul();
+            var soul = _inGameTemplate.GetNeedFireSoul();
+            
+            _currentNeedFireSoul = soul.needSoul;
             _needFireSoulText.text = _currentNeedFireSoul.ToString();
 
             var level = _inGameTemplate.fireSoulLevel.ToString();
             _fireEnforceLevel.text = level;
             _uiSpellCanvas.UpdateFireEnforceCount(level);
+
+            if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);
         }
 
         private void ApplyNeedWaterSoul()
         {
-            _currentNeedWaterSoul = _inGameTemplate.GetNeedWaterSoul();
+            var soul = _inGameTemplate.GetNeedWaterSoul();
+            
+            _currentNeedWaterSoul = soul.needSoul;
             _needWaterSoulText.text = _currentNeedWaterSoul.ToString();
             
             var level = _inGameTemplate.waterSoulLevel.ToString();
             _waterEnforceLevel.text = level;
             _uiSpellCanvas.UpdateWaterEnforceCount(level);
+
+            if (soul.template != null) _buffAbility.ApplyBuff(soul.template, int.MaxValue);            
         }
 
         private void ApplyNeedHolyAnimalSoul()

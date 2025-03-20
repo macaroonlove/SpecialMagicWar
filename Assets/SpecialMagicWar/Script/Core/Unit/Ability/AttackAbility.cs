@@ -390,7 +390,7 @@ namespace SpecialMagicWar.Core
             {
                 foreach (var effect in _passiveSkillAbility.attackEventEffects)
                 {
-                    effect.Execute(unit, attackTarget);
+                    effect.Execute(unit, attackTarget, ESpellType.Land);
                 }
             }
         }
@@ -455,7 +455,7 @@ namespace SpecialMagicWar.Core
 
             foreach (var effect in _passiveSkillAbility.attackEventEffects)
             {
-                effect.Execute(unit, healTarget);
+                effect.Execute(unit, healTarget, ESpellType.Land);
             }
         }
         #endregion

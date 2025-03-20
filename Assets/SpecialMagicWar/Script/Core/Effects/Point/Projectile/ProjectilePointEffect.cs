@@ -10,14 +10,17 @@ namespace SpecialMagicWar.Core
 
         [SerializeField] protected float _skillRange;
 
-        public override void Execute(Unit casterUnit, Vector3 targetVector)
+        protected ESpellType _spellType;
+
+        public override void Execute(Unit casterUnit, ESpellType spellType)
         {
             if (casterUnit == null) return;
-
-            SpawnStraightProjectiles(casterUnit, targetVector);
+            
+            _spellType = spellType;
+            SpawnStraightProjectiles(casterUnit);
         }
 
-        private void SpawnStraightProjectiles(Unit casterUnit, Vector3 targetVector)
+        private void SpawnStraightProjectiles(Unit casterUnit)
         {
             Vector3 finalPosition = casterUnit.transform.position + Vector3.down * _skillRange;
 

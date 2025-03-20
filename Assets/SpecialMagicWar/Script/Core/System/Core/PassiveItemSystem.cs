@@ -143,7 +143,7 @@ namespace SpecialMagicWar.Core
                             }
                             else if (effect is UnitEffect unitEffect)
                             {
-                                unitEffect.Execute(casterUnit, targetUnit);
+                                unitEffect.Execute(casterUnit, targetUnit, ESpellType.Land);
                             }
                         }
 

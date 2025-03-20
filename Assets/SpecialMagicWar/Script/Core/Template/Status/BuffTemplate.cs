@@ -205,6 +205,10 @@ namespace SpecialMagicWar.Editor
 
             menu.AddItem(new GUIContent("공격 대상이 되지 않습니다."), false, CreateEffectCallback, typeof(UnableToTargetOfAttackEffect));
 
+            menu.AddItem(new GUIContent("땅 타입 공격력 증가"), false, CreateEffectCallback, typeof(LandATKIncreaseDataEffect));
+            menu.AddItem(new GUIContent("불 타입 공격력 증가"), false, CreateEffectCallback, typeof(FireATKIncreaseDataEffect));
+            menu.AddItem(new GUIContent("물 타입 공격력 증가"), false, CreateEffectCallback, typeof(WaterATKIncreaseDataEffect));
+
             menu.ShowAsContext();
         }
 

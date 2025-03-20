@@ -23,7 +23,33 @@ namespace SpecialMagicWar.Core
         {
             float totalAmount = _damage;
 
-            // TODO: 강화 적용하기
+            var buffAbility = casterUnit.GetAbility<BuffAbility>();
+
+            float result = 1;
+
+            switch (_spellType)
+            {
+                case ESpellType.Land:
+                    foreach (var effect in buffAbility.LandATKIncreaseDataEffects)
+                    {
+                        result += effect.value;
+                    }
+                    break;
+                case ESpellType.Fire:
+                    foreach (var effect in buffAbility.FireATKIncreaseDataEffects)
+                    {
+                        result += effect.value;
+                    }
+                    break;
+                case ESpellType.Water:
+                    foreach (var effect in buffAbility.WaterATKIncreaseDataEffects)
+                    {
+                        result += effect.value;
+                    }
+                    break;
+            }
+
+            totalAmount *= result;
 
             return (int)totalAmount;
         }

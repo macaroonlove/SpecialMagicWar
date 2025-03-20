@@ -136,7 +136,7 @@ namespace SpecialMagicWar.Core
 
                 foreach (var effect in _passiveSkillAbility.hitEventEffects)
                 {
-                    effect.Execute(unit, attackedUnit);
+                    effect.Execute(unit, attackedUnit, ESpellType.Land);
                 }
             }
         }
@@ -158,7 +158,7 @@ namespace SpecialMagicWar.Core
 
             foreach (var effect in _passiveSkillAbility.hitEventEffects)
             {
-                effect.Execute(unit, null);
+                effect.Execute(unit, null, ESpellType.Land);
             }
         }
 
@@ -178,7 +178,7 @@ namespace SpecialMagicWar.Core
 
             foreach (var effect in _passiveSkillAbility.hitEventEffects)
             {
-                effect.Execute(unit, null);
+                effect.Execute(unit, null, ESpellType.Land);
             }
         }
 

@@ -69,7 +69,7 @@ namespace SpecialMagicWar.Core
             _uiSpellCanvas?.Initialize(unit, _template);
             _uiBountyCanvas?.Initialize(_bountyToggle, _uiBountyLockCanvas);
             _uiHolyAnimalCanvas?.Initialize(_uiSpellCanvas, _holyAnimalToggle);
-            _uiEnforceCanvas?.Initialize(_uiProbabilityInfoCanvas, _uiSpellCanvas, _template);
+            _uiEnforceCanvas?.Initialize(unit, _uiProbabilityInfoCanvas, _uiSpellCanvas, _template);
             _uiGenerateSpellButton?.Initialize(_uiSpellCanvas);
             _uiMiningCanvas?.Initialize(_uiSpellCanvas, _miningToggle);
         }

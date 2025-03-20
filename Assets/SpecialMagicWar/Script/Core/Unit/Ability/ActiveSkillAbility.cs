@@ -183,9 +183,6 @@ namespace SpecialMagicWar.Core
                 case EActiveSkillType.Instant:
                     ExecuteInstantSkill(_template);
                     break;
-                case EActiveSkillType.Targeting:
-                    ExecuteTargetingSkill(_template);
-                    break;
                 case EActiveSkillType.NonTargeting:
                     ExecuteNonTargetingSkill(_template);
                     break;
@@ -210,24 +207,11 @@ namespace SpecialMagicWar.Core
 
                         foreach (var target in targets)
                         {
-                            unitEffect.Execute(unit, target);
+                            unitEffect.Execute(unit, target, template.spellType);
                         }
                     }
                 }
             }
-        }
-
-        private void ExecuteTargetingSkill(ActiveSkillTemplate template)
-        {
-            foreach (var effect in template.effects)
-            {
-                if (effect is UnitEffect unitEffect)
-                {
-                    unitEffect.Execute(unit, _targetUnit);
-                }
-            }
-
-            ExecuteTargetFX(template, _targetUnit);
         }
 
         private void ExecuteNonTargetingSkill(ActiveSkillTemplate template)
@@ -236,7 +220,7 @@ namespace SpecialMagicWar.Core
             {
                 if (effect is PointEffect pointEffect)
                 {
-                    pointEffect.Execute(unit, _targetVector);
+                    pointEffect.Execute(unit, template.spellType);
                 }
             }
 

@@ -73,6 +73,12 @@ namespace SpecialMagicWar.Core
 
         private List<UnableToTargetOfAttackEffect> _unableToTargetOfAttackEffects = new List<UnableToTargetOfAttackEffect>();
 
+        private List<LandATKIncreaseDataEffect> _landATKIncreaseDataEffect = new List<LandATKIncreaseDataEffect>();
+        private List<FireATKIncreaseDataEffect> _fireATKIncreaseDataEffect = new List<FireATKIncreaseDataEffect>();
+        private List<WaterATKIncreaseDataEffect> _waterATKIncreaseDataEffect = new List<WaterATKIncreaseDataEffect>();
+        private List<HolyAnimalATKIncreaseDataEffect> _holyAnimalATKIncreaseDataEffect = new List<HolyAnimalATKIncreaseDataEffect>();
+        
+
         #region 프로퍼티
         internal IReadOnlyList<MoveIncreaseDataEffect> MoveIncreaseDataEffects => _moveIncreaseDataEffects;
         internal IReadOnlyList<MoveMultiplierDataEffect> MoveMultiplierDataEffects => _moveMultiplierDataEffects;
@@ -134,6 +140,11 @@ namespace SpecialMagicWar.Core
         internal IReadOnlyList<SetDamageTypeEffect> SetDamageTypeEffects => _setDamageTypeEffects;
 
         internal IReadOnlyList<UnableToTargetOfAttackEffect> UnableToTargetOfAttackEffects => _unableToTargetOfAttackEffects;
+        
+        internal IReadOnlyList<LandATKIncreaseDataEffect> LandATKIncreaseDataEffects => _landATKIncreaseDataEffect;
+        internal IReadOnlyList<FireATKIncreaseDataEffect> FireATKIncreaseDataEffects => _fireATKIncreaseDataEffect;
+        internal IReadOnlyList<WaterATKIncreaseDataEffect> WaterATKIncreaseDataEffects => _waterATKIncreaseDataEffect;
+        internal IReadOnlyList<HolyAnimalATKIncreaseDataEffect> HolyAnimalATKIncreaseDataEffects => _holyAnimalATKIncreaseDataEffect;
         #endregion
         #endregion
 
@@ -440,6 +451,23 @@ namespace SpecialMagicWar.Core
                     {
                         _unableToTargetOfAttackEffects.Add(unableToTargetOfAttackEffect);
                     }
+
+                    else if (effect is LandATKIncreaseDataEffect landATKIncreaseDataEffect)
+                    {
+                        _landATKIncreaseDataEffect.Add(landATKIncreaseDataEffect);
+                    }
+                    else if (effect is FireATKIncreaseDataEffect fireATKIncreaseDataEffect)
+                    {
+                        _fireATKIncreaseDataEffect.Add(fireATKIncreaseDataEffect);
+                    }
+                    else if (effect is WaterATKIncreaseDataEffect waterATKIncreaseDataEffect)
+                    {
+                        _waterATKIncreaseDataEffect.Add(waterATKIncreaseDataEffect);
+                    }
+                    else if (effect is HolyAnimalATKIncreaseDataEffect holyAnimalATKIncreaseDataEffect)
+                    {
+                        _holyAnimalATKIncreaseDataEffect.Add(holyAnimalATKIncreaseDataEffect);
+                    }
                 }
             }
         }
@@ -730,6 +758,23 @@ namespace SpecialMagicWar.Core
                 else if (effect is UnableToTargetOfAttackEffect unableToTargetOfAttackEffect)
                 {
                     _unableToTargetOfAttackEffects.Remove(unableToTargetOfAttackEffect);
+                }
+
+                else if (effect is LandATKIncreaseDataEffect landATKIncreaseDataEffect)
+                {
+                    _landATKIncreaseDataEffect.Remove(landATKIncreaseDataEffect);
+                }
+                else if (effect is FireATKIncreaseDataEffect fireATKIncreaseDataEffect)
+                {
+                    _fireATKIncreaseDataEffect.Remove(fireATKIncreaseDataEffect);
+                }
+                else if (effect is WaterATKIncreaseDataEffect waterATKIncreaseDataEffect)
+                {
+                    _waterATKIncreaseDataEffect.Remove(waterATKIncreaseDataEffect);
+                }
+                else if (effect is HolyAnimalATKIncreaseDataEffect holyAnimalATKIncreaseDataEffect)
+                {
+                    _holyAnimalATKIncreaseDataEffect.Remove(holyAnimalATKIncreaseDataEffect);
                 }
             }
         }

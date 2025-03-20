@@ -81,35 +81,41 @@ MonoBehaviour:
   - needSoul: 1
     template: {fileID: 0}
   - needSoul: 2
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: 68dd8ce667defed48970472a22c2a168, type: 2}
   - needSoul: 3
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: 985d446bbc320084b98e4dff5522d6d7, type: 2}
   - needSoul: 4
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: 0ea9ee516a768db40986a1ffdc655cda, type: 2}
+  - needSoul: 5
+    template: {fileID: 11400000, guid: c33022108424e524d83b833000246056, type: 2}
   - needSoul: 0
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: 878817aa22f0be141ada60fa5976cef2, type: 2}
   _fireSoulList:
   - needSoul: 1
     template: {fileID: 0}
   - needSoul: 2
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: cd0478a19d1b1484ba74b1630a21f565, type: 2}
   - needSoul: 3
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: a228502a12b10cf4ab1208f3900271d9, type: 2}
   - needSoul: 4
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: c38659cc286ba534c9ff898ff835e85b, type: 2}
+  - needSoul: 5
+    template: {fileID: 11400000, guid: d95cacd920746aa489f00365c084bd6e, type: 2}
   - needSoul: 0
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: d3c1b0335ea8d4541a393fd4b188dd28, type: 2}
   _waterSoulList:
   - needSoul: 1
     template: {fileID: 0}
   - needSoul: 2
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: b458566c66b072b4ca399711688edffd, type: 2}
   - needSoul: 3
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: c78a71ac65cdbee468c647fae9d49b2b, type: 2}
   - needSoul: 4
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: 21ec78f7f6ac73e4fa341ff528395dcf, type: 2}
+  - needSoul: 5
+    template: {fileID: 11400000, guid: 44b9695d4156f584a9c4857257a70ae2, type: 2}
   - needSoul: 0
-    template: {fileID: 0}
+    template: {fileID: 11400000, guid: bf4a11b1fe0caae4ca2014777e0b92ee, type: 2}
   _holyAnimalSoulList:
   - needSoul: 1
     template: {fileID: 0}
@@ -123,6 +129,6 @@ MonoBehaviour:
     template: {fileID: 0}
   _spellProbabilityLevel: 0
   _landSoulLevel: 0
-  _fireSoulLevel: 0
+  _fireSoulLevel: 5
   _waterSoulLevel: 0
   _holyAnimalSoulLevel: 0

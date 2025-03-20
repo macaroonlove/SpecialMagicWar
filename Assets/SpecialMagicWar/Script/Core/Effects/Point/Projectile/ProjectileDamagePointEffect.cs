@@ -24,18 +24,44 @@ namespace SpecialMagicWar.Core
             return "투사체 데미지";
         }
 
-        public int GetAmount(Unit casterUnit, Unit targetUnit)
+        public int GetAmount(Unit casterUnit)
         {
             float totalAmount = _damage;
 
-            // TODO: 버프 효과 적용
+            var buffAbility = casterUnit.GetAbility<BuffAbility>();
+
+            float result = 1;
+
+            switch (_spellType)
+            {
+                case ESpellType.Land:
+                    foreach (var effect in buffAbility.LandATKIncreaseDataEffects)
+                    {
+                        result += effect.value;
+                    }
+                    break;
+                case ESpellType.Fire:
+                    foreach (var effect in buffAbility.FireATKIncreaseDataEffects)
+                    {
+                        result += effect.value;
+                    }
+                    break;
+                case ESpellType.Water:
+                    foreach (var effect in buffAbility.WaterATKIncreaseDataEffects)
+                    {
+                        result += effect.value;
+                    }
+                    break;
+            }
+
+            totalAmount *= result;
 
             return (int)totalAmount;
         }
 
         protected override void SkillImpact(Unit casterUnit, Unit targetUnit)
         {
-            int damage = GetAmount(casterUnit, targetUnit);
+            int damage = GetAmount(casterUnit);
 
             Execute_RepeatCount(casterUnit, targetUnit, damage);
         }

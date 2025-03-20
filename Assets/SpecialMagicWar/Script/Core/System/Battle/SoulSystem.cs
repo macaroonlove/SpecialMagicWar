@@ -15,7 +15,7 @@ namespace SpecialMagicWar.Core
 
         public void Initialize()
         {
-            SetSoul(0);
+            SetSoul(100);
         }
 
         public void Deinitialize()

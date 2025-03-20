@@ -11,10 +11,13 @@ namespace SpecialMagicWar.Core
         
         [SerializeField] protected FX _targetFX;
 
-        public override void Execute(Unit casterUnit, Vector3 targetVector)
+        protected ESpellType _spellType;
+
+        public override void Execute(Unit casterUnit, ESpellType spellType)
         {
             if (casterUnit == null) return;
 
+            _spellType = spellType;
             GetTargetStraight(casterUnit);
         }
 
