@@ -105,7 +105,7 @@ namespace SpecialMagicWar.Core
             ApplyNeedFireSoul();
             ApplyNeedWaterSoul();
             ApplyNeedHolyAnimalSoul();
-            _uiProbabilityInfoCanvas.Show(_inGameTemplate.GetSpellProbability());
+            _uiProbabilityInfoCanvas?.Show(_inGameTemplate.GetSpellProbability());
 
             _agentsystem = BattleManager.Instance.GetSubSystem<AgentSystem>();
             _costSystem = BattleManager.Instance.GetSubSystem<CostSystem>();
@@ -279,7 +279,7 @@ namespace SpecialMagicWar.Core
                     _needCostText.text = "Max";
                 }
 
-                _uiProbabilityInfoCanvas.Show(_inGameTemplate.GetSpellProbability());
+                _uiProbabilityInfoCanvas?.Show(_inGameTemplate.GetSpellProbability());
             }
         }
 

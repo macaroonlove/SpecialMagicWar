@@ -22,6 +22,12 @@ namespace SpecialMagicWar.Core
         {
             base.OnDeath();
 
+            if (botIndex > 0)
+            {
+                BotDeath();
+                return;
+            }
+
             if (template.gainCost > 0)
             {
                 BattleManager.Instance.GetSubSystem<CostSystem>().AddCost(template.gainCost);
@@ -31,6 +37,34 @@ namespace SpecialMagicWar.Core
                 BattleManager.Instance.GetSubSystem<SoulSystem>().AddSoul(template.gainCost);
             }
         }
+
+        #region º¿
+        internal int botIndex { get; private set; }
+
+        internal void SetBotIndex(int index)
+        {
+            botIndex = index;
+
+            InitializeBot();
+        }
+
+        private void BotDeath()
+        {
+            if (template.gainCost > 0)
+            {
+                BattleManager.Instance.GetSubSystem<CostSystem>().AddBotCost(template.gainCost, botIndex);
+            }
+            if (template.gainSoul > 0)
+            {
+                BattleManager.Instance.GetSubSystem<SoulSystem>().AddBotSoul(template.gainCost, botIndex);
+            }
+        }
+
+        private void InitializeBot()
+        {
+
+        }
+        #endregion
     }
 }
 

@@ -32,7 +32,7 @@ namespace SpecialMagicWar.Core
         {
             var spawnPosition = GetSpawnPoint(spawnPoint);
 
-            var projectile = _poolSystem.Spawn(prefab).GetComponent<PointProjectile>();
+            var projectile = _poolSystem.Spawn(prefab)?.GetComponent<PointProjectile>();
             projectile.transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
             projectile.Initialize(unit, targetVector, action);
         }

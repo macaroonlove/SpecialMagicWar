@@ -15,15 +15,14 @@ MonoBehaviour:
   _id: 0
   _displayName: Player0
   _description: 
-  _sprite: {fileID: 21300000, guid: 3cca1e9f9f7764c47b051f9bd7568ce6, type: 3}
+  _sprite: {fileID: 21300000, guid: 9bb5cfef66fd2c14e88959bfee2c08f7, type: 3}
   _prefab: {fileID: 2202580174079812442, guid: 8895d2640d77cf64fabc6a3b84212446, type: 3}
-  _damageType: 2
   _criticalHitChance: 0
   _criticalHitDamage: 0
   _physicalPenetration: 0
   _magicPenetration: 0
-  _maxHP: 1000
-  _physicalResistance: 100
-  _magicResistance: 100
+  _maxHP: 10000
+  _physicalResistance: 50
+  _magicResistance: 50
   _hpRecoveryPerSec: 0
   isOwned: 0

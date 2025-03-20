@@ -11,6 +11,7 @@ namespace SpecialMagicWar.Core
     public class PlayerCreateSystem : MonoBehaviour
     {
         internal event UnityAction<AgentUnit> onCreatePlayer;
+        internal event UnityAction<AgentUnit, int> onCreateBot;
 
         internal void CreatePlayer()
         {
@@ -34,6 +35,37 @@ namespace SpecialMagicWar.Core
                     // 유닛 등록
                     agentSystem.Regist(unit);
                     onCreatePlayer?.Invoke(unit);
+                }
+                else
+                {
+                    poolSystem.DeSpawn(obj);
+                }
+            });
+        }
+
+        /// <summary>
+        /// 오프라인 모드에서 사용하는 봇
+        /// </summary>
+        internal void CreateBot(int id)
+        {
+            var agentSystem = BattleManager.Instance.GetSubSystem<AgentSystem>();
+            var poolSystem = CoreManager.Instance.GetSubSystem<PoolSystem>();
+
+            AddressableAssetManager.Instance.GetScriptableObject<AgentTemplate>($"Player{id}", (template) =>
+            {
+                // 유닛 생성하기
+                var obj = poolSystem.Spawn(template.prefab, transform.GetChild(id));
+
+                obj.transform.SetPositionAndRotation(transform.GetChild(id).position, Quaternion.identity);
+
+                if (obj.TryGetComponent(out AgentUnit unit))
+                {
+                    // 유닛 초기화
+                    unit.Initialize(template);
+
+                    // 유닛 등록
+                    agentSystem.Regist(unit);
+                    onCreateBot?.Invoke(unit, id);
                 }
                 else
                 {

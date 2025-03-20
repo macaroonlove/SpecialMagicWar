@@ -45,7 +45,10 @@ namespace SpecialMagicWar.Core
 
         internal void DisableGenerate()
         {
-            _bountyLockCanvas.Show(_bountyToggle, _disableTime);
+            if (_bountyLockCanvas != null)
+            {
+                _bountyLockCanvas.Show(_bountyToggle, _disableTime);
+            }
         }
     }
 }

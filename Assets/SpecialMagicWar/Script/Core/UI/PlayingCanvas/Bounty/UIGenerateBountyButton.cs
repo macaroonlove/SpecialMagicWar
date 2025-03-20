@@ -84,7 +84,7 @@ namespace SpecialMagicWar.Core
 
         private void Generate()
         {
-            var unit = _enemySpawnSystem.SpawnUnit(_template, _spawnPos);
+            var unit = _enemySpawnSystem.SpawnBountyUnit(_template, _spawnPos);
 
             if (unit == null) return;
 

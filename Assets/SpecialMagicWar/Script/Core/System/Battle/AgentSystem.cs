@@ -1,5 +1,6 @@
 using FrameWork.Editor;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +13,7 @@ namespace SpecialMagicWar.Core
     public class AgentSystem : MonoBehaviour, IBattleSystem
     {
         [SerializeField, ReadOnly] private List<AgentUnit> _players = new List<AgentUnit>();
-        [SerializeField, ReadOnly] private List<HolyAnimalUnit> _holyAnimals = new List<HolyAnimalUnit>();
-
-        internal int holyAnimalCount => _holyAnimals.Count;
+        [SerializeField, ReadOnly] private List<(HolyAnimalUnit, int)> _holyAnimals = new List<(HolyAnimalUnit, int)>();
 
         internal event UnityAction<Unit> onRegist;
 
@@ -44,16 +43,16 @@ namespace SpecialMagicWar.Core
             _players.Remove(agent);
         }
 
-        internal void Regist(HolyAnimalUnit holyAnimal)
+        internal void Regist(HolyAnimalUnit holyAnimal, int botIndex)
         {
-            _holyAnimals.Add(holyAnimal);
+            _holyAnimals.Add((holyAnimal, botIndex));
 
             onRegist?.Invoke(holyAnimal);
         }
 
-        internal void Deregist(HolyAnimalUnit holyAnimal)
+        internal void Deregist(HolyAnimalUnit holyAnimal, int botIndex)
         {
-            _holyAnimals.Remove(holyAnimal);
+            _holyAnimals.RemoveAll(item => item.Item1 == holyAnimal && item.Item2 == botIndex);
         }
 
         #region 유틸리티 메서드
@@ -65,9 +64,10 @@ namespace SpecialMagicWar.Core
             return _players;
         }
 
-        internal List<HolyAnimalUnit> GetAllHolyAnimals()
+        internal List<HolyAnimalUnit> GetAllHolyAnimals(int botIndex = 0)
         {
-            return _holyAnimals;
+            return _holyAnimals.Where(item => item.Item2 == botIndex)
+                .Select(item => item.Item1).ToList();
         }
 
         /// <summary>

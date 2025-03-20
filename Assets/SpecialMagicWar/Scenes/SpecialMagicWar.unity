@@ -131,6 +131,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 244738382717368031, guid: a112644fdc1c51f458af928f11df6a94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 569488056243013456, guid: a112644fdc1c51f458af928f11df6a94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504257651897309942, guid: a112644fdc1c51f458af928f11df6a94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3922504144110307591, guid: a112644fdc1c51f458af928f11df6a94,
         type: 3}
       propertyPath: m_RootOrder
@@ -216,6 +231,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6506590907043285418, guid: a112644fdc1c51f458af928f11df6a94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6831481150979897381, guid: a112644fdc1c51f458af928f11df6a94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6866055590285116957, guid: a112644fdc1c51f458af928f11df6a94,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -270,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BattleManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181677158560420876, guid: a112644fdc1c51f458af928f11df6a94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

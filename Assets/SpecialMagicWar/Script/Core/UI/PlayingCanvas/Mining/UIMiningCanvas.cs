@@ -105,7 +105,7 @@ namespace SpecialMagicWar.Core
             _soulSystem.PaySoul(1);
             _uiSpellCanvas.GenerateRarityUpperRandomSpell(ERarity.Epic);
 
-            _miningToggle.isOn = false;
+            Close();
         }
 
         private void BuyMidiumScroll()
@@ -113,7 +113,7 @@ namespace SpecialMagicWar.Core
             _soulSystem.PaySoul(3);
             _uiSpellCanvas.GenerateRarityUpperRandomSpell(ERarity.Legend);
 
-            _miningToggle.isOn = false;
+            Close();
         }
 
         private void BuyHighScroll()
@@ -121,7 +121,15 @@ namespace SpecialMagicWar.Core
             _soulSystem.PaySoul(7);
             _uiSpellCanvas.GenerateRarityUpperRandomSpell(ERarity.Beginning);
 
-            _miningToggle.isOn = false;
+            Close();
+        }
+
+        private void Close()
+        {
+            if (_miningToggle != null)
+            {
+                _miningToggle.isOn = false;
+            }
         }
     }
 }

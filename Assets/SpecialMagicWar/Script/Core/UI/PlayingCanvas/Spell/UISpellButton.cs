@@ -167,7 +167,7 @@ namespace SpecialMagicWar.Core
             }
         }
 
-        private void CompositeSkill()
+        internal void CompositeSkill()
         {
             if (_spellCount < 3) return;
             if (_template.rarity.rarity == ERarity.God) return;

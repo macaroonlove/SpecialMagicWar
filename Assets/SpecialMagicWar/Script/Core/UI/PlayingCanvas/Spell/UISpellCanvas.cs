@@ -100,7 +100,7 @@ namespace SpecialMagicWar.Core
             }
         }
 
-        internal void GenerateRandomSpell()
+        internal UISpellButton GenerateRandomSpell()
         {
             var spellProbabilities = _inGameTemplate.GetSpellProbability();
 
@@ -155,6 +155,8 @@ namespace SpecialMagicWar.Core
             spell.Show();
 
             onChangeSpell?.Invoke(_spells);
+
+            return spell;
         }
 
         internal void GenerateRandomNextSpell(ERarity rarity)

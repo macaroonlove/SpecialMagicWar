@@ -73,7 +73,10 @@ namespace SpecialMagicWar.Core
 
         internal void Close()
         {
-            _holyAnimalToggle.isOn = false;
+            if (_holyAnimalToggle != null)
+            {
+                _holyAnimalToggle.isOn = false;
+            }
         }
     }
 }

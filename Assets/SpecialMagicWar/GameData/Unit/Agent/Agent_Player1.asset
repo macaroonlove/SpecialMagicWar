@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315827f885b2bdb4db10ec962e833c34, type: 3}
+  m_Name: Agent_Player1
+  m_EditorClassIdentifier: 
+  _id: 1
+  _displayName: Player1
+  _description: 
+  _sprite: {fileID: 21300000, guid: f35587ff2ffc7264095e66664aaae0c6, type: 3}
+  _prefab: {fileID: 1310689161422456024, guid: c18cea7900d07c845ad6ec3ffb289d83, type: 3}
+  _criticalHitChance: 0
+  _criticalHitDamage: 0
+  _physicalPenetration: 0
+  _magicPenetration: 0
+  _maxHP: 10000
+  _physicalResistance: 50
+  _magicResistance: 50
+  _hpRecoveryPerSec: 0
+  isOwned: 0
