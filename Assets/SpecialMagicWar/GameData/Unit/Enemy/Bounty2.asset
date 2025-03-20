@@ -21,7 +21,7 @@ MonoBehaviour:
   _gainSoul: 1
   _moveSpeed: 2
   _moveType: 0
-  _atk: 60
+  _atk: 40
   _attackTerm: 1
   _attackRange: 0.4
   _isProjectileAttack: 0

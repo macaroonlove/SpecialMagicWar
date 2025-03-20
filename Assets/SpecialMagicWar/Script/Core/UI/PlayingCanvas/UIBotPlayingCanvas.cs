@@ -190,7 +190,7 @@ namespace SpecialMagicWar.Core
             var bountys = GameDataManager.Instance.bountyLibrary.templates;
             var bounty = bountys[Random.Range(0, bountys.Count)];
 
-            var unit = _enemySpawnSystem.SpawnBountyUnit(bounty, _spawnPos);
+            var unit = _enemySpawnSystem.SpawnBountyUnit(bounty, _spawnPos, _matchBotIndex);
 
             if (unit == null) return;
 
